@@ -155,18 +155,18 @@
   <nav class="site-state">
       <div class="site-state-item site-state-posts">
         <a href="/archives/">
-          <span class="site-state-item-count">2</span>
+          <span class="site-state-item-count">3</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
           <a href="/categories/">
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">categories</span></a>
       </div>
       <div class="site-state-item site-state-tags">
           <a href="/tags/">
-        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-count">3</span>
         <span class="site-state-item-name">tags</span></a>
       </div>
   </nav>
@@ -190,6 +190,9 @@
     </div>
     <ul class="links-of-recent-posts-list">
         <li class="links-of-recent-posts-item">
+          <a href="/2024/07/09/Statistical-Information-in-NLP/" title="2024&#x2F;07&#x2F;09&#x2F;Statistical-Information-in-NLP&#x2F;">Statistical Information in NLP</a>
+        </li>
+        <li class="links-of-recent-posts-item">
           <a href="/2024/07/07/%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/" title="2024&#x2F;07&#x2F;07&#x2F;第一篇文章&#x2F;">第一篇文章</a>
         </li>
         <li class="links-of-recent-posts-item">
@@ -208,6 +211,217 @@
     </div>
 
     <div class="main-inner index posts-expand">
+
+    
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="">
+    <link itemprop="mainEntityOfPage" href="https://jefferyjiang-yf.github.io/2024/07/09/Statistical-Information-in-NLP/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Jeffrey Jiang">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jeffrey Blog">
+      <meta itemprop="description" content="The blog of Jeffery Jiang">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="undefined | Jeffrey Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          <a href="/2024/07/09/Statistical-Information-in-NLP/" class="post-title-link" itemprop="url">Statistical Information in NLP</a>
+        </h2>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2024-07-08 21:27:04 / Modified: 13:28:48" itemprop="dateCreated datePublished" datetime="2024-07-08T21:27:04Z">2024-07-08</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/NLP/" itemprop="url" rel="index"><span itemprop="name">NLP</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="Word count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Word count in article: </span>
+      <span>5.1k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>5 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+          <p>TF-IDF（Term Frequency-Inverse Document Frequency）是一种常用的文本特征提取方法，用于评估一个词在一个文档中的重要性。除了标准的TF-IDF，还有一些变体和扩展来进一步优化特征提取过程。以下是一些常见的变体：</p>
+<ol>
+<li><p><strong>BM25</strong>：</p>
+<ul>
+<li><p>BM25（Best Matching 25）是TF-IDF的一种改进版本，广泛用于信息检索。它考虑了词频饱和现象和文档长度规范化，使得对长文档和短文档的处理更加平衡。</p>
+</li>
+<li><p>公式：</p>
+</li>
+</ul>
+<p> $$<br> \text{BM25}(q, D) &#x3D; \sum_{i&#x3D;1}^{n} IDF(q_i) \cdot \frac{f(q_i, D) \cdot (k_1 + 1)}{f(q_i, D) + k_1 \cdot (1 - b + b \cdot \frac{|D|}{\text{avgdl}})}<br> $$</p>
+<p> 其中，f(q_i, D)是词q_i在文档D中的频率，|D|是文档长度，\text{avgdl}是平均文档长度，k_1和b是调节参数。
+ </p>
+</li>
+<li><p><strong>TF-CHI</strong>：</p>
+<ul>
+<li><p>这种方法结合了词频（TF）和卡方检验（Chi-Square Test，CHI），在考虑词频的同时，引入卡方统计量来衡量词与类别之间的相关性。</p>
+</li>
+<li><p>公式：</p>
+</li>
+</ul>
+<p> $$<br> \text{TF-CHI}(t, c) &#x3D; \text{TF}(t, c) \cdot \chi^2(t, c)<br> $$</p>
+<p> 其中，\chi^2(t, c)是词t和类别c之间的卡方统计量。
+ </p>
+</li>
+<li><p><strong>TF-IG</strong>：</p>
+<ul>
+<li><p>结合了词频和信息增益（Information Gain, IG），通过信息增益来评估词对分类的贡献。</p>
+</li>
+<li><p>公式：</p>
+</li>
+</ul>
+<p> $$<br> \text{TF-IG}(t, c) &#x3D; \text{TF}(t, c) \cdot \text{IG}(t, c)<br> $$</p>
+<p> 其中，\text{IG}(t, c)是词t和类别c之间的信息增益。
+ </p>
+</li>
+<li><p><strong>TF-RF</strong>：</p>
+<ul>
+<li><p>结合了词频和相关系数（Relevance Frequency, RF），用于评估词与类别之间的相关性。</p>
+</li>
+<li><p>公式：</p>
+</li>
+</ul>
+<p> $$<br> \text{TF-RF}(t, c) &#x3D; \text{TF}(t, c) \cdot \text{RF}(t, c)<br> $$</p>
+<p> 其中，\text{RF}(t, c)是词t在类别c中的相关系数。
+ </p>
+</li>
+<li><p><strong>LDA-TF-IDF</strong>：</p>
+<ul>
+<li><p>将主题模型（LDA, Latent Dirichlet Allocation）与TF-IDF结合，通过LDA生成主题分布后，再基于这些主题分布计算TF-IDF。</p>
+</li>
+<li><p>公式：</p>
+</li>
+</ul>
+<p> $$<br> \text{LDA-TF-IDF}(t, D) &#x3D; \text{TF-IDF}(t, D) \cdot P(z | D)<br> $$</p>
+<p> 其中，P(z | D)是文档D中主题z的概率。
+ </p>
+</li>
+<li><p>**Okapi BM25+**：</p>
+<ul>
+<li><p>BM25的进一步改进版本，加入了一些附加参数来增强模型性能。</p>
+</li>
+<li><p>公式类似于BM25，但加入了文档饱和度和文档权重的参数。</p>
+</li>
+</ul>
+</li>
+<li><p><strong>Weighted TF-IDF</strong>：</p>
+<ul>
+<li><p>在计算TF-IDF时，对词频或逆文档频率进行加权。例如，可以根据词的词性、词的重要性、领域专有词等因素进行加权。</p>
+</li>
+<li><p>公式：</p>
+</li>
+</ul>
+<p> $$<br> \text{Weighted TF-IDF}(t, d) &#x3D; w_t \cdot \left( \frac{\text{TF}(t, d)}{\text{DF}(t)} \right)<br> $$</p>
+<p> 其中，w_t是词t的权重，可以根据不同的标准来设定。
+ </p>
+</li>
+<li><p><strong>Logarithmic TF-IDF</strong>：</p>
+<ul>
+<li><p>使用对数变换来平滑词频，减小高频词对模型的影响。</p>
+</li>
+<li><p>公式：</p>
+</li>
+</ul>
+<p> $$<br> \text{Log-TF}(t, d) &#x3D; \log(1 + \text{TF}(t, d))<br> $$</p>
+<p> $$<br> \text{Log-TF-IDF}(t, d) &#x3D; \text{Log-TF}(t, d) \cdot \text{IDF}(t)<br> $$</p>
+</li>
+<li><p><strong>Sublinear TF-IDF</strong>：</p>
+<ul>
+<li><p>对词频进行子线性缩放，通常用于大规模文档集。</p>
+</li>
+<li><p>公式：</p>
+</li>
+</ul>
+<p> $$<br> \text{Sublinear-TF}(t, d) &#x3D; 1 + \log(\text{TF}(t, d))<br> $$</p>
+<p> $$<br> \text{Sublinear-TF-IDF}(t, d) &#x3D; \text{Sublinear-TF}(t, d) \cdot \text{IDF}(t)<br> $$</p>
+</li>
+<li><p><strong>Double Normalization TF-IDF</strong>：</p>
+</li>
+</ol>
+<ul>
+<li><p>通过双重归一化对词频进行标准化，常用于处理文档长度差异。</p>
+</li>
+<li><p>公式：</p>
+</li>
+</ul>
+<p> $$<br>  \text{DoubleNorm-TF}(t, d) &#x3D; 0.5 + 0.5 \cdot \frac{\text{TF}(t, d)}{\max_{t’} \text{TF}(t’, d)}<br> $$<br> $$<br>  \text{DoubleNorm-TF-IDF}(t, d) &#x3D; \text{DoubleNorm-TF}(t, d) \cdot \text{IDF}(t)<br> $$</p>
+<ol start="11">
+<li><strong>TF-IDF with Class-Based Weighting</strong>：</li>
+</ol>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2024/07/09/Statistical-Information-in-NLP/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+    <div>
+      
+    </div>
+    <footer class="post-footer">
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+</div>
+
+
+
 
     
 
@@ -448,13 +662,13 @@
     <span class="post-meta-item-icon">
       <i class="fa fa-chart-line"></i>
     </span>
-    <span title="Word count total">1k</span>
+    <span title="Word count total">6k</span>
   </span>
   <span class="post-meta-item">
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
-    <span title="Reading time total">1 mins.</span>
+    <span title="Reading time total">6 mins.</span>
   </span>
 </div>
 <div class="busuanzi-count">

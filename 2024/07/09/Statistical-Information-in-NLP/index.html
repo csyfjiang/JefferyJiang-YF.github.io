@@ -22,29 +22,28 @@
 
 <script class="next-config" data-name="main" type="application/json">{"hostname":"jefferyjiang-yf.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"mac"},"fold":{"enable":true,"height":500},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":true,"nav":null,"activeClass":"giscus"},"stickytabs":true,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true}}</script><script src="/js/config.js"></script>
 
-    <meta name="description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+    <meta name="description" content="TF-IDF（Term Frequency-Inverse Document Frequency）是一种常用的文本特征提取方法，用于评估一个词在一个文档中的重要性。除了标准的TF-IDF，还有一些变体和扩展来进一步优化特征提取过程。以下是一些常见的变体：  BM25：  BM25（Best Matching 25）是TF-IDF的一种改进版本，广泛用于信息检索。它考虑了词频饱和现象和文档长度规范化">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hello World">
-<meta property="og:url" content="https://jefferyjiang-yf.github.io/2019/07/02/hello-world/index.html">
+<meta property="og:title" content="Statistical Information in NLP">
+<meta property="og:url" content="https://jefferyjiang-yf.github.io/2024/07/09/Statistical-Information-in-NLP/index.html">
 <meta property="og:site_name" content="Jeffrey Blog">
-<meta property="og:description" content="Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick">
+<meta property="og:description" content="TF-IDF（Term Frequency-Inverse Document Frequency）是一种常用的文本特征提取方法，用于评估一个词在一个文档中的重要性。除了标准的TF-IDF，还有一些变体和扩展来进一步优化特征提取过程。以下是一些常见的变体：  BM25：  BM25（Best Matching 25）是TF-IDF的一种改进版本，广泛用于信息检索。它考虑了词频饱和现象和文档长度规范化">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2019-07-01T21:00:00.000Z">
-<meta property="article:modified_time" content="2024-07-06T14:22:17.007Z">
+<meta property="article:published_time" content="2024-07-08T21:27:04.000Z">
+<meta property="article:modified_time" content="2024-07-08T13:28:48.405Z">
 <meta property="article:author" content="Jeffrey Jiang">
-<meta property="article:tag" content="hello">
-<meta property="article:tag" content="world">
+<meta property="article:tag" content="NLP">
 <meta name="twitter:card" content="summary">
 
 
-<link rel="canonical" href="https://jefferyjiang-yf.github.io/2019/07/02/hello-world/">
+<link rel="canonical" href="https://jefferyjiang-yf.github.io/2024/07/09/Statistical-Information-in-NLP/">
 
 
 
-<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://jefferyjiang-yf.github.io/2019/07/02/hello-world/","path":"2019/07/02/hello-world/","title":"Hello World"}</script>
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://jefferyjiang-yf.github.io/2024/07/09/Statistical-Information-in-NLP/","path":"2024/07/09/Statistical-Information-in-NLP/","title":"Statistical Information in NLP"}</script>
 
 <script class="next-config" data-name="calendar" type="application/json">""</script>
-<title>Hello World | Jeffrey Blog</title>
+<title>Statistical Information in NLP | Jeffrey Blog</title>
   
 
 
@@ -144,7 +143,7 @@
       <div class="sidebar-panel-container">
         <!--noindex-->
         <div class="post-toc-wrap sidebar-panel">
-            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Quick-Start"><span class="nav-number">1.</span> <span class="nav-text">Quick Start</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Create-a-new-post"><span class="nav-number">1.1.</span> <span class="nav-text">Create a new post</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Run-server"><span class="nav-number">1.2.</span> <span class="nav-text">Run server</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Generate-static-files"><span class="nav-number">1.3.</span> <span class="nav-text">Generate static files</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Deploy-to-remote-sites"><span class="nav-number">1.4.</span> <span class="nav-text">Deploy to remote sites</span></a></li></ol></li></ol></div>
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Reference"><span class="nav-number">1.</span> <span class="nav-text">Reference</span></a></li></ol></div>
         </div>
         <!--/noindex-->
 
@@ -225,7 +224,7 @@
   
 
   <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
-    <link itemprop="mainEntityOfPage" href="https://jefferyjiang-yf.github.io/2019/07/02/hello-world/">
+    <link itemprop="mainEntityOfPage" href="https://jefferyjiang-yf.github.io/2024/07/09/Statistical-Information-in-NLP/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -238,12 +237,12 @@
     </span>
 
     <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
-      <meta itemprop="name" content="Hello World | Jeffrey Blog">
+      <meta itemprop="name" content="Statistical Information in NLP | Jeffrey Blog">
       <meta itemprop="description" content="">
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          Hello World
+          Statistical Information in NLP
         </h1>
 
         <div class="post-meta-container">
@@ -253,15 +252,9 @@
         <i class="far fa-calendar"></i>
       </span>
       <span class="post-meta-item-text">Posted on</span>
+      
 
-      <time title="Created: 2019-07-01 21:00:00" itemprop="dateCreated datePublished" datetime="2019-07-01T21:00:00Z">2019-07-01</time>
-    </span>
-    <span class="post-meta-item">
-      <span class="post-meta-item-icon">
-        <i class="far fa-calendar-check"></i>
-      </span>
-      <span class="post-meta-item-text">Edited on</span>
-      <time title="Modified: 2024-07-06 14:22:17" itemprop="dateModified" datetime="2024-07-06T14:22:17Z">2024-07-06</time>
+      <time title="Created: 2024-07-08 21:27:04 / Modified: 13:28:48" itemprop="dateCreated datePublished" datetime="2024-07-08T21:27:04Z">2024-07-08</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -269,11 +262,7 @@
       </span>
       <span class="post-meta-item-text">In</span>
         <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/hexo/" itemprop="url" rel="index"><span itemprop="name">hexo</span></a>
-        </span>
-          , 
-        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-          <a href="/categories/hexo/theme/" itemprop="url" rel="index"><span itemprop="name">theme</span></a>
+          <a href="/categories/NLP/" itemprop="url" rel="index"><span itemprop="name">NLP</span></a>
         </span>
     </span>
 
@@ -291,14 +280,14 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Word count in article: </span>
-      <span>367</span>
+      <span>5.1k</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
         <i class="far fa-clock"></i>
       </span>
       <span class="post-meta-item-text">Reading time &asymp;</span>
-      <span>1 mins.</span>
+      <span>5 mins.</span>
     </span>
 </div>
 
@@ -308,19 +297,206 @@
     
     
     
-    <div class="post-body" itemprop="articleBody"><p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/server.html">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/generating.html">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-
-<p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
+    <div class="post-body" itemprop="articleBody"><p>TF-IDF（Term Frequency-Inverse Document Frequency）是一种常用的文本特征提取方法，用于评估一个词在一个文档中的重要性。除了标准的TF-IDF，还有一些变体和扩展来进一步优化特征提取过程。以下是一些常见的变体：</p>
+<ol>
+<li><p><strong>BM25</strong>：</p>
+<ul>
+<li><p>BM25（Best Matching 25）是TF-IDF的一种改进版本，广泛用于信息检索。它考虑了词频饱和现象和文档长度规范化，使得对长文档和短文档的处理更加平衡。</p>
+</li>
+<li><p>公式：</p>
+</li>
+</ul>
+<p> $$<br> \text{BM25}(q, D) &#x3D; \sum_{i&#x3D;1}^{n} IDF(q_i) \cdot \frac{f(q_i, D) \cdot (k_1 + 1)}{f(q_i, D) + k_1 \cdot (1 - b + b \cdot \frac{|D|}{\text{avgdl}})}<br> $$</p>
+<p> 其中，f(q_i, D)是词q_i在文档D中的频率，|D|是文档长度，\text{avgdl}是平均文档长度，k_1和b是调节参数。
+ </p>
+</li>
+<li><p><strong>TF-CHI</strong>：</p>
+<ul>
+<li><p>这种方法结合了词频（TF）和卡方检验（Chi-Square Test，CHI），在考虑词频的同时，引入卡方统计量来衡量词与类别之间的相关性。</p>
+</li>
+<li><p>公式：</p>
+</li>
+</ul>
+<p> $$<br> \text{TF-CHI}(t, c) &#x3D; \text{TF}(t, c) \cdot \chi^2(t, c)<br> $$</p>
+<p> 其中，\chi^2(t, c)是词t和类别c之间的卡方统计量。
+ </p>
+</li>
+<li><p><strong>TF-IG</strong>：</p>
+<ul>
+<li><p>结合了词频和信息增益（Information Gain, IG），通过信息增益来评估词对分类的贡献。</p>
+</li>
+<li><p>公式：</p>
+</li>
+</ul>
+<p> $$<br> \text{TF-IG}(t, c) &#x3D; \text{TF}(t, c) \cdot \text{IG}(t, c)<br> $$</p>
+<p> 其中，\text{IG}(t, c)是词t和类别c之间的信息增益。
+ </p>
+</li>
+<li><p><strong>TF-RF</strong>：</p>
+<ul>
+<li><p>结合了词频和相关系数（Relevance Frequency, RF），用于评估词与类别之间的相关性。</p>
+</li>
+<li><p>公式：</p>
+</li>
+</ul>
+<p> $$<br> \text{TF-RF}(t, c) &#x3D; \text{TF}(t, c) \cdot \text{RF}(t, c)<br> $$</p>
+<p> 其中，\text{RF}(t, c)是词t在类别c中的相关系数。
+ </p>
+</li>
+<li><p><strong>LDA-TF-IDF</strong>：</p>
+<ul>
+<li><p>将主题模型（LDA, Latent Dirichlet Allocation）与TF-IDF结合，通过LDA生成主题分布后，再基于这些主题分布计算TF-IDF。</p>
+</li>
+<li><p>公式：</p>
+</li>
+</ul>
+<p> $$<br> \text{LDA-TF-IDF}(t, D) &#x3D; \text{TF-IDF}(t, D) \cdot P(z | D)<br> $$</p>
+<p> 其中，P(z | D)是文档D中主题z的概率。
+ </p>
+</li>
+<li><p>**Okapi BM25+**：</p>
+<ul>
+<li><p>BM25的进一步改进版本，加入了一些附加参数来增强模型性能。</p>
+</li>
+<li><p>公式类似于BM25，但加入了文档饱和度和文档权重的参数。</p>
+</li>
+</ul>
+</li>
+<li><p><strong>Weighted TF-IDF</strong>：</p>
+<ul>
+<li><p>在计算TF-IDF时，对词频或逆文档频率进行加权。例如，可以根据词的词性、词的重要性、领域专有词等因素进行加权。</p>
+</li>
+<li><p>公式：</p>
+</li>
+</ul>
+<p> $$<br> \text{Weighted TF-IDF}(t, d) &#x3D; w_t \cdot \left( \frac{\text{TF}(t, d)}{\text{DF}(t)} \right)<br> $$</p>
+<p> 其中，w_t是词t的权重，可以根据不同的标准来设定。
+ </p>
+</li>
+<li><p><strong>Logarithmic TF-IDF</strong>：</p>
+<ul>
+<li><p>使用对数变换来平滑词频，减小高频词对模型的影响。</p>
+</li>
+<li><p>公式：</p>
+</li>
+</ul>
+<p> $$<br> \text{Log-TF}(t, d) &#x3D; \log(1 + \text{TF}(t, d))<br> $$</p>
+<p> $$<br> \text{Log-TF-IDF}(t, d) &#x3D; \text{Log-TF}(t, d) \cdot \text{IDF}(t)<br> $$</p>
+</li>
+<li><p><strong>Sublinear TF-IDF</strong>：</p>
+<ul>
+<li><p>对词频进行子线性缩放，通常用于大规模文档集。</p>
+</li>
+<li><p>公式：</p>
+</li>
+</ul>
+<p> $$<br> \text{Sublinear-TF}(t, d) &#x3D; 1 + \log(\text{TF}(t, d))<br> $$</p>
+<p> $$<br> \text{Sublinear-TF-IDF}(t, d) &#x3D; \text{Sublinear-TF}(t, d) \cdot \text{IDF}(t)<br> $$</p>
+</li>
+<li><p><strong>Double Normalization TF-IDF</strong>：</p>
+</li>
+</ol>
+<ul>
+<li><p>通过双重归一化对词频进行标准化，常用于处理文档长度差异。</p>
+</li>
+<li><p>公式：</p>
+</li>
+</ul>
+<p> $$<br>  \text{DoubleNorm-TF}(t, d) &#x3D; 0.5 + 0.5 \cdot \frac{\text{TF}(t, d)}{\max_{t’} \text{TF}(t’, d)}<br> $$<br> $$<br>  \text{DoubleNorm-TF-IDF}(t, d) &#x3D; \text{DoubleNorm-TF}(t, d) \cdot \text{IDF}(t)<br> $$</p>
+<ol start="11">
+<li><strong>TF-IDF with Class-Based Weighting</strong>：</li>
+</ol>
+<ul>
+<li><p>根据词在不同类别中的分布情况进行加权，以增强分类任务的效果。</p>
+</li>
+<li><p>公式：</p>
+</li>
+</ul>
+<p> $$<br>  \text{Class-TF-IDF}(t, d, c) &#x3D; \text{TF-IDF}(t, d) \cdot \text{ClassWeight}(t, c)<br> $$<br>  其中，$\text{ClassWeight}(t, c)$表示词$t$在类别$c$中的重要性权重。</p>
+<ol start="12">
+<li><strong>TF-IDF with Query Expansion</strong>：</li>
+</ol>
+<ul>
+<li><p>在查询扩展过程中使用TF-IDF，对初始查询进行扩展，以包含更多相关的词。</p>
+</li>
+<li><p>公式：</p>
+</li>
+</ul>
+<p> $$<br>  \text{Expanded-TF-IDF}(q, d) &#x3D; \sum_{t \in q \cup E(q)} \text{TF-IDF}(t, d)<br> $$<br>  其中，$E(q)$是查询$q$的扩展词集合。</p>
+<ol start="13">
+<li>**Smooth Inverse Frequency (SIF)**：</li>
+</ol>
+<ul>
+<li><p>用于词向量加权，通过平滑逆频率来减少高频词的影响。</p>
+</li>
+<li><p>公式：</p>
+</li>
+</ul>
+<p> $$<br>  \text{SIF}(t) &#x3D; \frac{a}{a + \text{TF}(t)}<br> $$<br>  其中，$a$是一个小的平滑参数。</p>
+<h1 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h1><ol>
+<li><p><strong>BM25</strong>：</p>
+<ul>
+<li>Robertson, S. E., Walker, S., Beaulieu, M. M., Gatford, M., &amp; Payne, A. (1996). Okapi at TREC-4. In D. K. Harman (Ed.), <em>NIST Special Publication 500-236: Proceedings of The Fourth Text REtrieval Conference (TREC-4)</em> (pp. 73-96). Gaithersburg, MD: National Institute of Standards and Technology. Retrieved from <a target="_blank" rel="noopener" href="https://link.springer.com/referenceworkentry/10.1007/978-0-387-39940-9_921">SpringerLink</a>.</li>
+</ul>
+</li>
+<li><p><strong>TF-CHI</strong>：</p>
+<ul>
+<li>Yang, Y., &amp; Pedersen, J. O. (1997). A comparative study on feature selection in text categorization. In <em>Proceedings of the Fourteenth International Conference on Machine Learning (ICML)</em> (pp. 412-420). San Francisco, CA: Morgan Kaufmann.</li>
+</ul>
+</li>
+<li><p><strong>TF-IG</strong>：</p>
+<ul>
+<li>Yang, Y., &amp; Pedersen, J. O. (1997). A comparative study on feature selection in text categorization. In <em>Proceedings of the Fourteenth International Conference on Machine Learning (ICML)</em> (pp. 412-420). San Francisco, CA: Morgan Kaufmann.</li>
+</ul>
+</li>
+<li><p><strong>TF-RF</strong>：</p>
+<ul>
+<li>Lan, M., Tan, C. L., Su, J., &amp; Lu, Y. (2009). Supervised and traditional term weighting methods for automatic text categorization. <em>IEEE Transactions on Pattern Analysis and Machine Intelligence, 31</em>(4), 721-735. <a target="_blank" rel="noopener" href="https://doi.org/10.1109/TPAMI.2008.110">https://doi.org/10.1109/TPAMI.2008.110</a></li>
+</ul>
+</li>
+<li><p><strong>LDA-TF-IDF</strong>：</p>
+<ul>
+<li>Blei, D. M., Ng, A. Y., &amp; Jordan, M. I. (2003). Latent Dirichlet Allocation. <em>Journal of Machine Learning Research, 3</em>, 993-1022. Retrieved from <a target="_blank" rel="noopener" href="http://www.jmlr.org/papers/volume3/blei03a/blei03a.pdf">JMLR</a>.</li>
+</ul>
+</li>
+<li><p><strong>Okapi BM25+</strong> Robertson, S., Zaragoza, H., &amp; Taylor, M. (2004). Simple BM25 extension to multiple weighted fields. In <em>Proceedings of the Thirteenth ACM International Conference on Information and Knowledge Management</em> (pp. 42-49). ACM. <a target="_blank" rel="noopener" href="https://doi.org/10.1145/1031171.1031181">https://doi.org/10.1145/1031171.1031181</a></p>
+</li>
+<li><p><strong>Weighted TF-IDF</strong>：</p>
+<ul>
+<li>Baeza-Yates, R., &amp; Ribeiro-Neto, B. (1999). <em>Modern Information Retrieval</em>. Addison-Wesley Longman Publishing Co., Inc.</li>
+</ul>
+</li>
+<li><p><strong>Logarithmic TF-IDF</strong>：</p>
+<ul>
+<li>Manning, C. D., Raghavan, P., &amp; Schütze, H. (2008). <em>Introduction to Information Retrieval</em>. Cambridge University Press. <a target="_blank" rel="noopener" href="https://doi.org/10.1017/CBO9780511809071">https://doi.org/10.1017/CBO9780511809071</a></li>
+</ul>
+</li>
+<li><p><strong>Sublinear TF-IDF</strong>：</p>
+<ul>
+<li>Lv, Y., &amp; Zhai, C. (2011). Lower-bounding term frequency normalization. In <em>Proceedings of the 20th ACM International Conference on Information and Knowledge Management</em> (pp. 7-16). ACM. <a target="_blank" rel="noopener" href="https://doi.org/10.1145/2063576.2063581">https://doi.org/10.1145/2063576.2063581</a></li>
+</ul>
+</li>
+<li><p><strong>Double Normalization TF-IDF</strong>：</p>
+<ul>
+<li>Jones, K. S., Walker, S., &amp; Robertson, S. E. (2000). A probabilistic model of information retrieval: development and comparative experiments: Part 2. <em>Information Processing &amp; Management, 36</em>(6), 809-840. <a target="_blank" rel="noopener" href="https://doi.org/10.1016/S0306-4573(00)00016-9">https://doi.org/10.1016/S0306-4573(00)00016-9</a></li>
+</ul>
+</li>
+<li><p><strong>TF-IDF with Class-Based Weighting</strong>：</p>
+<ul>
+<li>Debole, F., &amp; Sebastiani, F. (2003). Supervised term weighting for automated text categorization. In <em>Text mining and its applications</em> (pp. 81-97). Springer. <a target="_blank" rel="noopener" href="https://doi.org/10.1007/3-540-36618-0_15">https://doi.org/10.1007/3-540-36618-0_15</a></li>
+</ul>
+</li>
+<li><p><strong>TF-IDF with Query Expansion</strong>：</p>
+<ul>
+<li>Xu, J., &amp; Croft, W. B. (2000). Improving the effectiveness of information retrieval with local context analysis. <em>ACM Transactions on Information Systems (TOIS), 18</em>(1), 79-112. <a target="_blank" rel="noopener" href="https://doi.org/10.1145/333135.333138">https://doi.org/10.1145/333135.333138</a></li>
+</ul>
+</li>
+<li><p>**Smooth Inverse Frequency (SIF)**：</p>
+<ul>
+<li>Arora, S., Liang, Y., &amp; Ma, T. (2017). A simple but tough-to-beat baseline for sentence embeddings. <em>International Conference on Learning Representations (ICLR)</em>. Retrieved from <a target="_blank" rel="noopener" href="https://openreview.net/pdf?id=SyK00v5xx">ICLR Conference</a>.</li>
+</ul>
+</li>
+</ol>
 
     </div>
 
@@ -364,7 +540,7 @@
   </li>
   <li class="post-copyright-link">
       <strong>Post link: </strong>
-      <a href="https://jefferyjiang-yf.github.io/2019/07/02/hello-world/" title="Hello World">https://jefferyjiang-yf.github.io/2019/07/02/hello-world/</a>
+      <a href="https://jefferyjiang-yf.github.io/2024/07/09/Statistical-Information-in-NLP/" title="Statistical Information in NLP">https://jefferyjiang-yf.github.io/2024/07/09/Statistical-Information-in-NLP/</a>
   </li>
   <li class="post-copyright-license">
       <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/en" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
@@ -373,8 +549,7 @@
 </div>
 
           <div class="post-tags">
-              <a href="/tags/hello/" rel="tag"><i class="fa fa-tag"></i> hello</a>
-              <a href="/tags/world/" rel="tag"><i class="fa fa-tag"></i> world</a>
+              <a href="/tags/NLP/" rel="tag"><i class="fa fa-tag"></i> NLP</a>
           </div>
 
         
@@ -390,11 +565,11 @@
 
           <div class="post-nav">
             <div class="post-nav-item">
+                <a href="/2024/07/07/%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/" rel="prev" title="第一篇文章">
+                  <i class="fa fa-angle-left"></i> 第一篇文章
+                </a>
             </div>
             <div class="post-nav-item">
-                <a href="/2024/07/07/%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/" rel="next" title="第一篇文章">
-                  第一篇文章 <i class="fa fa-angle-right"></i>
-                </a>
             </div>
           </div>
     </footer>
@@ -536,7 +711,7 @@
 
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
-  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://jefferyjiang-yf.github.io/2019/07/02/hello-world/"}</script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://jefferyjiang-yf.github.io/2024/07/09/Statistical-Information-in-NLP/"}</script>
   <script src="/js/third-party/quicklink.js"></script>
 
 </body>
