@@ -250,7 +250,7 @@
       <span class="post-meta-item-text">Posted on</span>
       
 
-      <time title="Created: 2024-07-08 21:27:04 / Modified: 13:28:48" itemprop="dateCreated datePublished" datetime="2024-07-08T21:27:04Z">2024-07-08</time>
+      <time title="Created: 2024-07-08 21:27:04 / Modified: 14:37:33" itemprop="dateCreated datePublished" datetime="2024-07-08T21:27:04Z">2024-07-08</time>
     </span>
     <span class="post-meta-item">
       <span class="post-meta-item-icon">
@@ -287,113 +287,117 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>TF-IDF（Term Frequency-Inverse Document Frequency）是一种常用的文本特征提取方法，用于评估一个词在一个文档中的重要性。除了标准的TF-IDF，还有一些变体和扩展来进一步优化特征提取过程。以下是一些常见的变体：</p>
-<ol>
+          <p>TF-IDF（Term Frequency-Inverse Document
+Frequency）是一种常用的文本特征提取方法，用于评估一个词在一个文档中的重要性。除了标准的TF-IDF，还有一些变体和扩展来进一步优化特征提取过程。以下是一些常见的变体：</p>
+<ol type="1">
 <li><p><strong>BM25</strong>：</p>
 <ul>
-<li><p>BM25（Best Matching 25）是TF-IDF的一种改进版本，广泛用于信息检索。它考虑了词频饱和现象和文档长度规范化，使得对长文档和短文档的处理更加平衡。</p>
-</li>
-<li><p>公式：</p>
-</li>
+<li><p>BM25（Best Matching
+25）是TF-IDF的一种改进版本，广泛用于信息检索。它考虑了词频饱和现象和文档长度规范化，使得对长文档和短文档的处理更加平衡。</p></li>
+<li><p>公式：</p></li>
 </ul>
-<p> $$<br> \text{BM25}(q, D) &#x3D; \sum_{i&#x3D;1}^{n} IDF(q_i) \cdot \frac{f(q_i, D) \cdot (k_1 + 1)}{f(q_i, D) + k_1 \cdot (1 - b + b \cdot \frac{|D|}{\text{avgdl}})}<br> $$</p>
-<p> 其中，f(q_i, D)是词q_i在文档D中的频率，|D|是文档长度，\text{avgdl}是平均文档长度，k_1和b是调节参数。
- </p>
-</li>
+<p><span class="math display">\[  
+\text{BM25}(q, D) = \sum_{i=1}^{n} IDF(q_i) \cdot \frac{f(q_i, D) \cdot
+(k_1 + 1)}{f(q_i, D) + k_1 \cdot (1 - b + b \cdot
+\frac{|D|}{\text{avgdl}})}  
+\]</span></p>
+<p>其中，<span class="math inline">\(f(q_i, D)\)</span>是词<span class="math inline">\(q_i\)</span>在文档D中的频率，|D|是文档长度，<span class="math inline">\(\text{avgdl}\)</span>是平均文档长度，<span class="math inline">\(k_1\)</span>和<span class="math inline">\(b\)</span>是调节参数。</p></li>
 <li><p><strong>TF-CHI</strong>：</p>
 <ul>
-<li><p>这种方法结合了词频（TF）和卡方检验（Chi-Square Test，CHI），在考虑词频的同时，引入卡方统计量来衡量词与类别之间的相关性。</p>
-</li>
-<li><p>公式：</p>
-</li>
+<li><p>这种方法结合了词频（TF）和卡方检验（Chi-Square
+Test，CHI），在考虑词频的同时，引入卡方统计量来衡量词与类别之间的相关性。</p></li>
+<li><p>公式：</p></li>
 </ul>
-<p> $$<br> \text{TF-CHI}(t, c) &#x3D; \text{TF}(t, c) \cdot \chi^2(t, c)<br> $$</p>
-<p> 其中，\chi^2(t, c)是词t和类别c之间的卡方统计量。
- </p>
-</li>
+<p><span class="math display">\[  
+\text{TF-CHI}(t, c) = \text{TF}(t, c) \cdot \chi^2(t, c)  
+\]</span></p>
+<p>其中，<span class="math inline">\(\chi^2(t, c)\)</span>是词<span class="math inline">\(t\)</span>和类别<span class="math inline">\(c\)</span>之间的卡方统计量。</p></li>
 <li><p><strong>TF-IG</strong>：</p>
 <ul>
-<li><p>结合了词频和信息增益（Information Gain, IG），通过信息增益来评估词对分类的贡献。</p>
-</li>
-<li><p>公式：</p>
-</li>
+<li><p>结合了词频和信息增益（Information Gain,
+IG），通过信息增益来评估词对分类的贡献。</p></li>
+<li><p>公式：</p></li>
 </ul>
-<p> $$<br> \text{TF-IG}(t, c) &#x3D; \text{TF}(t, c) \cdot \text{IG}(t, c)<br> $$</p>
-<p> 其中，\text{IG}(t, c)是词t和类别c之间的信息增益。
- </p>
-</li>
+<p><span class="math display">\[  
+\text{TF-IG}(t, c) = \text{TF}(t, c) \cdot \text{IG}(t, c)  
+\]</span></p>
+<p>其中，<span class="math inline">\(\text{IG}(t,
+c)\)</span>是词t和类别c之间的信息增益。</p></li>
 <li><p><strong>TF-RF</strong>：</p>
 <ul>
-<li><p>结合了词频和相关系数（Relevance Frequency, RF），用于评估词与类别之间的相关性。</p>
-</li>
-<li><p>公式：</p>
-</li>
+<li><p>结合了词频和相关系数（Relevance Frequency,
+RF），用于评估词与类别之间的相关性。</p></li>
+<li><p>公式：</p></li>
 </ul>
-<p> $$<br> \text{TF-RF}(t, c) &#x3D; \text{TF}(t, c) \cdot \text{RF}(t, c)<br> $$</p>
-<p> 其中，\text{RF}(t, c)是词t在类别c中的相关系数。
- </p>
-</li>
+<p><span class="math display">\[  
+\text{TF-RF}(t, c) = \text{TF}(t, c) \cdot \text{RF}(t, c)  
+\]</span></p>
+<p>其中，<span class="math inline">\(\text{RF}(t,
+c)\)</span>是词t在类别c中的相关系数。</p></li>
 <li><p><strong>LDA-TF-IDF</strong>：</p>
 <ul>
-<li><p>将主题模型（LDA, Latent Dirichlet Allocation）与TF-IDF结合，通过LDA生成主题分布后，再基于这些主题分布计算TF-IDF。</p>
-</li>
-<li><p>公式：</p>
-</li>
+<li><p>将主题模型（LDA, Latent Dirichlet
+Allocation）与TF-IDF结合，通过LDA生成主题分布后，再基于这些主题分布计算TF-IDF。</p></li>
+<li><p>公式：</p></li>
 </ul>
-<p> $$<br> \text{LDA-TF-IDF}(t, D) &#x3D; \text{TF-IDF}(t, D) \cdot P(z | D)<br> $$</p>
-<p> 其中，P(z | D)是文档D中主题z的概率。
- </p>
-</li>
-<li><p>**Okapi BM25+**：</p>
+<p><span class="math display">\[  
+\text{LDA-TF-IDF}(t, D) = \text{TF-IDF}(t, D) \cdot P(z | D)  
+\]</span></p>
+<p>其中，<span class="math inline">\(P(z |
+D)\)</span>是文档D中主题z的概率。</p></li>
+<li><p><strong>Okapi BM25+</strong>：</p>
 <ul>
-<li><p>BM25的进一步改进版本，加入了一些附加参数来增强模型性能。</p>
-</li>
-<li><p>公式类似于BM25，但加入了文档饱和度和文档权重的参数。</p>
-</li>
-</ul>
-</li>
+<li><p>BM25的进一步改进版本，加入了一些附加参数来增强模型性能。</p></li>
+<li><p>公式类似于BM25，但加入了文档饱和度和文档权重的参数。</p></li>
+</ul></li>
 <li><p><strong>Weighted TF-IDF</strong>：</p>
 <ul>
-<li><p>在计算TF-IDF时，对词频或逆文档频率进行加权。例如，可以根据词的词性、词的重要性、领域专有词等因素进行加权。</p>
-</li>
-<li><p>公式：</p>
-</li>
+<li><p>在计算TF-IDF时，对词频或逆文档频率进行加权。例如，可以根据词的词性、词的重要性、领域专有词等因素进行加权。</p></li>
+<li><p>公式：</p></li>
 </ul>
-<p> $$<br> \text{Weighted TF-IDF}(t, d) &#x3D; w_t \cdot \left( \frac{\text{TF}(t, d)}{\text{DF}(t)} \right)<br> $$</p>
-<p> 其中，w_t是词t的权重，可以根据不同的标准来设定。
- </p>
-</li>
+<p><span class="math display">\[  
+\text{Weighted TF-IDF}(t, d) = w_t \cdot \left( \frac{\text{TF}(t,
+d)}{\text{DF}(t)} \right)  
+\]</span></p>
+<p>其中，<span class="math inline">\(w_t\)</span>是词t的权重，可以根据不同的标准来设定。</p></li>
 <li><p><strong>Logarithmic TF-IDF</strong>：</p>
 <ul>
-<li><p>使用对数变换来平滑词频，减小高频词对模型的影响。</p>
-</li>
-<li><p>公式：</p>
-</li>
+<li><p>使用对数变换来平滑词频，减小高频词对模型的影响。</p></li>
+<li><p>公式：</p></li>
 </ul>
-<p> $$<br> \text{Log-TF}(t, d) &#x3D; \log(1 + \text{TF}(t, d))<br> $$</p>
-<p> $$<br> \text{Log-TF-IDF}(t, d) &#x3D; \text{Log-TF}(t, d) \cdot \text{IDF}(t)<br> $$</p>
-</li>
+<p><span class="math display">\[  
+\text{Log-TF}(t, d) = \log(1 + \text{TF}(t, d))  
+\]</span></p>
+<p><span class="math display">\[  
+\text{Log-TF-IDF}(t, d) = \text{Log-TF}(t, d) \cdot \text{IDF}(t)  
+\]</span></p></li>
 <li><p><strong>Sublinear TF-IDF</strong>：</p>
 <ul>
-<li><p>对词频进行子线性缩放，通常用于大规模文档集。</p>
-</li>
-<li><p>公式：</p>
-</li>
+<li><p>对词频进行子线性缩放，通常用于大规模文档集。</p></li>
+<li><p>公式：</p></li>
 </ul>
-<p> $$<br> \text{Sublinear-TF}(t, d) &#x3D; 1 + \log(\text{TF}(t, d))<br> $$</p>
-<p> $$<br> \text{Sublinear-TF-IDF}(t, d) &#x3D; \text{Sublinear-TF}(t, d) \cdot \text{IDF}(t)<br> $$</p>
-</li>
-<li><p><strong>Double Normalization TF-IDF</strong>：</p>
-</li>
+<p><span class="math display">\[  
+\text{Sublinear-TF}(t, d) = 1 + \log(\text{TF}(t, d))  
+\]</span></p>
+<p><span class="math display">\[  
+\text{Sublinear-TF-IDF}(t, d) = \text{Sublinear-TF}(t, d) \cdot
+\text{IDF}(t)  
+\]</span></p></li>
+<li><p><strong>Double Normalization TF-IDF</strong>：</p></li>
 </ol>
 <ul>
-<li><p>通过双重归一化对词频进行标准化，常用于处理文档长度差异。</p>
-</li>
-<li><p>公式：</p>
-</li>
+<li><p>通过双重归一化对词频进行标准化，常用于处理文档长度差异。</p></li>
+<li><p>公式：</p></li>
 </ul>
-<p> $$<br>  \text{DoubleNorm-TF}(t, d) &#x3D; 0.5 + 0.5 \cdot \frac{\text{TF}(t, d)}{\max_{t’} \text{TF}(t’, d)}<br> $$<br> $$<br>  \text{DoubleNorm-TF-IDF}(t, d) &#x3D; \text{DoubleNorm-TF}(t, d) \cdot \text{IDF}(t)<br> $$</p>
-<ol start="11">
+<p> <span class="math display">\[  
+  \text{DoubleNorm-TF}(t, d) = 0.5 + 0.5 \cdot \frac{\text{TF}(t,
+d)}{\max_{t&#39;} \text{TF}(t&#39;, d)}  
+ \]</span><br>
+ <span class="math display">\[  
+  \text{DoubleNorm-TF-IDF}(t, d) = \text{DoubleNorm-TF}(t, d) \cdot
+\text{IDF}(t)  
+ \]</span></p>
+<ol start="11" type="1">
 <li><strong>TF-IDF with Class-Based Weighting</strong>：</li>
 </ol>
           <!--noindex-->
@@ -471,7 +475,7 @@
         <i class="far fa-file-word"></i>
       </span>
       <span class="post-meta-item-text">Word count in article: </span>
-      <span>919</span>
+      <span>923</span>
     </span>
     <span class="post-meta-item" title="Reading time">
       <span class="post-meta-item-icon">
@@ -489,14 +493,13 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <h1 id="Hexo-博客-新建文章"><a href="#Hexo-博客-新建文章" class="headerlink" title="Hexo 博客 新建文章"></a>Hexo 博客 新建文章</h1><p>输入如下命令，创建一篇新的文章</p>
+          <h1 id="hexo-博客-新建文章">Hexo 博客 新建文章</h1>
+<p>输入如下命令，创建一篇新的文章</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new [layout] &lt;title&gt;</span><br></pre></td></tr></table></figure>
-
 <ul>
-<li><p>layout 是文章的布局，默认为post，可以先不写。</p>
-</li>
-<li><p>title 是文章的标题，也是文件的名字，存储在source&#x2F;_posts下。</p>
-</li>
+<li><p>layout 是文章的布局，默认为post，可以先不写。</p></li>
+<li><p>title
+是文章的标题，也是文件的名字，存储在source/_posts下。</p></li>
 </ul>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@localhost blog]#hexo new &quot;我的第一篇文章&quot;</span><br><span class="line">INFO  Validating config</span><br><span class="line">INFO  Created: D:\blog_hexo\myblog\source\_posts\我的第一篇文章.md</span><br></pre></td></tr></table></figure>
           <!--noindex-->
@@ -611,9 +614,14 @@
     
     
     <div class="post-body" itemprop="articleBody">
-          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
-
+          <p>Welcome to <a target="_blank" rel="noopener" href="https://hexo.io/">Hexo</a>! This is your very
+first post. Check <a target="_blank" rel="noopener" href="https://hexo.io/docs/">documentation</a> for
+more info. If you get any problems when using Hexo, you can find the
+answer in <a target="_blank" rel="noopener" href="https://hexo.io/docs/troubleshooting.html">troubleshooting</a> or
+you can ask me on <a target="_blank" rel="noopener" href="https://github.com/hexojs/hexo/issues">GitHub</a>.</p>
+<h2 id="quick-start">Quick Start</h2>
+<h3 id="create-a-new-post">Create a new post</h3>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">&quot;My New Post&quot;</span></span><br></pre></td></tr></table></figure>
 <p>More info: <a target="_blank" rel="noopener" href="https://hexo.io/docs/writing.html">Writing</a></p>
           <!--noindex-->
             <div class="post-button">
@@ -746,7 +754,7 @@
 
   
 
-  <script class="next-config" data-name="enableMath" type="application/json">false</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"none","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"all","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
 <script src="/js/third-party/math/mathjax.js"></script>
 
 
