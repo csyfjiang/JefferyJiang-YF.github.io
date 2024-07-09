@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/fire.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/fire.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/fire.png">
+  <link rel="mask-icon" href="/images/fire.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Georgia:300,300italic,400,400italic,700,700italic%7CConsolas:300,300italic,400,400italic,700,700italic%7C"Courier+New":300,300italic,400,400italic,700,700italic%7Cmonospace:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"jefferyjiang-yf.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"mac"},"fold":{"enable":true,"height":500},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":true,"nav":null,"activeClass":"giscus"},"stickytabs":true,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="Learning to (Learn at Test Time): RNNs with Expressive Hidden States https:&#x2F;&#x2F;papers.cool&#x2F;arxiv&#x2F;2407.04620 Authors: Yu Sun ; Xinhao Li ; Karan Dalal ; Jiarui Xu ; Arjun Vikram ; Genghan Zhang ; Yann Du">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Learning to Learn at Test Time RNNs with Expressive Hidden States">
+<meta property="og:url" content="https://jefferyjiang-yf.github.io/2024/07/09/Learning-to-Learn-at-Test-Time-RNNs-with-Expressive-Hidden-States/index.html">
+<meta property="og:site_name" content="Jeffrey Blog">
+<meta property="og:description" content="Learning to (Learn at Test Time): RNNs with Expressive Hidden States https:&#x2F;&#x2F;papers.cool&#x2F;arxiv&#x2F;2407.04620 Authors: Yu Sun ; Xinhao Li ; Karan Dalal ; Jiarui Xu ; Arjun Vikram ; Genghan Zhang ; Yann Du">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2024-07-09T13:59:52.000Z">
+<meta property="article:modified_time" content="2024-07-09T06:01:48.713Z">
+<meta property="article:author" content="Jeffrey Jiang">
+<meta property="article:tag" content="RNN">
+<meta property="article:tag" content="NLP">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://jefferyjiang-yf.github.io/2024/07/09/Learning-to-Learn-at-Test-Time-RNNs-with-Expressive-Hidden-States/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://jefferyjiang-yf.github.io/2024/07/09/Learning-to-Learn-at-Test-Time-RNNs-with-Expressive-Hidden-States/","path":"2024/07/09/Learning-to-Learn-at-Test-Time-RNNs-with-Expressive-Hidden-States/","title":"Learning to Learn at Test Time RNNs with Expressive Hidden States"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Learning to Learn at Test Time RNNs with Expressive Hidden States | Jeffrey Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Jeffrey Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Record the growth of life</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-主页|home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>主页|Home</a></li><li class="menu-item menu-item-关于|about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于|About</a></li><li class="menu-item menu-item-标签|tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签|Tags</a></li><li class="menu-item menu-item-分类|categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类|Categories</a></li><li class="menu-item menu-item-归档|archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档|Archives</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="Searching..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#learning-to-learn-at-test-time-rnns-with-expressive-hidden-states"><span class="nav-number">1.</span> <span class="nav-text">Learning
+to (Learn at Test Time): RNNs with Expressive Hidden
+States</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#q-%E8%BF%99%E7%AF%87%E8%AE%BA%E6%96%87%E8%AF%95%E5%9B%BE%E8%A7%A3%E5%86%B3%E4%BB%80%E4%B9%88%E9%97%AE%E9%A2%98"><span class="nav-number">1.1.</span> <span class="nav-text">Q:
+这篇论文试图解决什么问题？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#q-%E6%9C%89%E5%93%AA%E4%BA%9B%E7%9B%B8%E5%85%B3%E7%A0%94%E7%A9%B6"><span class="nav-number">1.2.</span> <span class="nav-text">Q: 有哪些相关研究？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#q-%E8%AE%BA%E6%96%87%E5%A6%82%E4%BD%95%E8%A7%A3%E5%86%B3%E8%BF%99%E4%B8%AA%E9%97%AE%E9%A2%98"><span class="nav-number">1.3.</span> <span class="nav-text">Q:
+论文如何解决这个问题？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#q-%E8%AE%BA%E6%96%87%E5%81%9A%E4%BA%86%E5%93%AA%E4%BA%9B%E5%AE%9E%E9%AA%8C"><span class="nav-number">1.4.</span> <span class="nav-text">Q: 论文做了哪些实验？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#q-%E6%9C%89%E4%BB%80%E4%B9%88%E5%8F%AF%E4%BB%A5%E8%BF%9B%E4%B8%80%E6%AD%A5%E6%8E%A2%E7%B4%A2%E7%9A%84%E7%82%B9"><span class="nav-number">1.5.</span> <span class="nav-text">Q:
+有什么可以进一步探索的点？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#q-%E6%83%B3%E8%A6%81%E8%BF%9B%E4%B8%80%E6%AD%A5%E4%BA%86%E8%A7%A3%E8%AE%BA%E6%96%87"><span class="nav-number">1.6.</span> <span class="nav-text">Q:
+想要进一步了解论文</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Jeffrey Jiang"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Jeffrey Jiang</p>
+  <div class="site-description" itemprop="description">The blog of Jeffery Jiang</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/JefferyJiang-YF" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;JefferyJiang-YF" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/905152222jyf@gmail.com" title="E-Mail → 905152222jyf@gmail.com" rel="noopener me"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/en" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+  <div class="links-of-recent-posts motion-element">
+    <div class="links-of-recent-posts-title">
+      <i class="fa fa-history fa-fw"></i>
+      最近文章
+    </div>
+    <ul class="links-of-recent-posts-list">
+        <li class="links-of-recent-posts-item">
+          <a href="/2024/07/09/Learning-to-Learn-at-Test-Time-RNNs-with-Expressive-Hidden-States/" title="2024&#x2F;07&#x2F;09&#x2F;Learning-to-Learn-at-Test-Time-RNNs-with-Expressive-Hidden-States&#x2F;">Learning to Learn at Test Time RNNs with Expressive Hidden States</a>
+        </li>
+        <li class="links-of-recent-posts-item">
+          <a href="/2024/07/09/Statistical-Information-in-NLP/" title="2024&#x2F;07&#x2F;09&#x2F;Statistical-Information-in-NLP&#x2F;">Statistical Information in NLP</a>
+        </li>
+        <li class="links-of-recent-posts-item">
+          <a href="/2024/07/07/%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/" title="2024&#x2F;07&#x2F;07&#x2F;第一篇文章&#x2F;">第一篇文章</a>
+        </li>
+        <li class="links-of-recent-posts-item">
+          <a href="/2019/07/02/hello-world/" title="2019&#x2F;07&#x2F;02&#x2F;hello-world&#x2F;">Hello World</a>
+        </li>
+    </ul>
+  </div>
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://jefferyjiang-yf.github.io/2024/07/09/Learning-to-Learn-at-Test-Time-RNNs-with-Expressive-Hidden-States/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Jeffrey Jiang">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jeffrey Blog">
+      <meta itemprop="description" content="The blog of Jeffery Jiang">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Learning to Learn at Test Time RNNs with Expressive Hidden States | Jeffrey Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Learning to Learn at Test Time RNNs with Expressive Hidden States
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2024-07-09 13:59:52 / Modified: 06:01:48" itemprop="dateCreated datePublished" datetime="2024-07-09T13:59:52Z">2024-07-09</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/NLP/" itemprop="url" rel="index"><span itemprop="name">NLP</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/NLP/SSM/" itemprop="url" rel="index"><span itemprop="name">SSM</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/NLP/SSM/RNN/" itemprop="url" rel="index"><span itemprop="name">RNN</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="Word count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Word count in article: </span>
+      <span>6.1k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>6 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1
+id="learning-to-learn-at-test-time-rnns-with-expressive-hidden-states"><strong>Learning
+to (Learn at Test Time): RNNs with Expressive Hidden
+States</strong></h1>
+<p><a
+target="_blank" rel="noopener" href="https://papers.cool/arxiv/2407.04620">https://papers.cool/arxiv/2407.04620</a></p>
+<p><strong>Authors:</strong> Yu Sun ; Xinhao Li ; Karan Dalal ; Jiarui
+Xu ; Arjun Vikram ; Genghan Zhang ; Yann Dubois ; Xinlei Chen ; Xiaolong
+Wang ; Sanmi Koyejo ; Tatsunori Hashimoto ; Carlos Guestrin</p>
+<p><strong>Summary:</strong> Self-attention performs well in long
+context but has quadratic complexity. Existing RNN layers have linear
+complexity, but their performance in long context is limited by the
+expressive power of their hidden state. We propose a new class of
+sequence modeling layers with linear complexity and an expressive hidden
+state. The key idea is to make the hidden state a machine learning model
+itself, and the update rule a step of self-supervised learning. Since
+the hidden state is updated by training even on test sequences, our
+layers are called Test-Time Training (TTT) layers. We consider two
+instantiations: TTT-Linear and TTT-MLP, whose hidden state is a linear
+model and a two-layer MLP respectively. We evaluate our instantiations
+at the scale of 125M to 1.3B parameters, comparing with a strong
+Transformer and Mamba, a modern RNN. Both TTT-Linear and TTT-MLP match
+or exceed the baselines. Similar to Transformer, they can keep reducing
+perplexity by conditioning on more tokens, while Mamba cannot after 16k
+context. With preliminary systems optimization, TTT-Linear is already
+faster than Transformer at 8k context and matches Mamba in wall-clock
+time. TTT-MLP still faces challenges in memory I/O, but shows larger
+potential in long context, pointing to a promising direction for future
+research.</p>
+<h2 id="q-这篇论文试图解决什么问题"><strong>Q</strong>:
+这篇论文试图解决什么问题？</h2>
+<p><strong>A</strong>: 这篇论文提出了一种新的序列建模层——Test-Time
+Training (TTT)
+层，旨在解决现有循环神经网络（RNN）在处理长文本序列时所面临的性能限制问题。具体来说，论文指出现有的RNN层虽然具有线性复杂度的优势，但在长文本序列的表达能力上受限于其隐藏状态的固定大小。与之相对的，自注意力（Self-attention）机制虽然在长文本序列上表现更好，但其计算复杂度是二次方的，这限制了其在更大规模序列上的可行性。</p>
+<p>为了解决这个问题，论文提出了TTT层，其核心思想是将隐藏状态设计为一个机器学习模型本身，并通过自监督学习的更新规则来更新这个状态。这样，即使在测试时序上，也可以通过训练来更新隐藏状态，从而提高模型对长文本序列的理解和表达能力。TTT层的设计使得它在保持线性复杂度的同时，能够更好地捕捉和利用长文本序列中的信息，提高了RNN在长文本序列建模中的性能。</p>
+<h2 id="q-有哪些相关研究"><strong>Q</strong>: 有哪些相关研究？</h2>
+<p><strong>A</strong>:
+论文中提到了多个与TTT层相关的研究领域和具体工作，主要包括以下几个方面：</p>
+<ol type="1">
+<li><p><strong>现代RNNs（如Mamba、RWKV、xLSTM、GLA等）</strong>：这些模型都是Structured
+State-Space
+Models，它们尝试通过不同的方式改进RNN的隐藏状态表示，以提高对长序列的建模能力。</p></li>
+<li><p><strong>自注意力机制（Self-attention）</strong>：自注意力是Transformer模型的核心，它通过Key-Value存储历史上下文信息，虽然表达能力强，但计算复杂度较高。</p></li>
+<li><p><strong>测试时学习（Test-Time Training,
+TTT）</strong>：这是一个在测试时对模型进行训练以适应特定输入的概念，先前的研究已经展示了TTT在异常值检测和视频流处理中的有效性。</p></li>
+<li><p><strong>快速权重（Fast
+Weights）</strong>：这是一种在特定数据上更新模型参数的概念，与TTT有关联，但在更新规则上通常不依赖于显式的优化问题。</p></li>
+<li><p><strong>学习学习（Learning to
+Learn）</strong>：也称为元学习或双层优化，指的是模型能够学习如何通过优化过程来学习新任务。</p></li>
+<li><p><strong>非参数学习器（Nonparametric
+Learners）</strong>：如最近邻、支持向量机（SVMs）和核岭回归等，这些方法不依赖于参数化模型，而是直接使用训练数据。</p></li>
+<li><p><strong>Transformer模型</strong>：作为当前NLP领域的主流模型，Transformer通过自注意力机制实现了优秀的性能，但其二次方的计算复杂度限制了其在更长序列上的应用。</p></li>
+<li><p><strong>Mamba模型</strong>：一种现代RNN，使用Structured
+State-Space Models来提高对长序列的建模能力。</p></li>
+<li><p><strong>RWKV模型</strong>：另一种现代RNN，具有矩阵值状态和动态递归。</p></li>
+<li><p><strong>xLSTM和GLA</strong>：这些模型通过改进LSTM和引入门控机制来提高性能。</p></li>
+<li><p><strong>其他RNN变体</strong>：如LSTM、GRU等，它们在序列建模中有着广泛的应用。</p></li>
+</ol>
+<p>论文通过将这些相关研究与提出的TTT层进行比较，展示了TTT层在长序列建模中的潜力和优势。</p>
+<h2 id="q-论文如何解决这个问题"><strong>Q</strong>:
+论文如何解决这个问题？</h2>
+<p><strong>A</strong>: 论文通过提出一种新的序列建模层——Test-Time
+Training (TTT)
+层来解决现有RNN在长文本序列处理中的性能限制问题。具体解决方案包括以下几个关键点：</p>
+<ol type="1">
+<li><p><strong>隐藏状态作为模型</strong>：TTT层的核心思想是将隐藏状态设计为一个机器学习模型本身，这意味着隐藏状态可以包含模型的参数，并且可以通过学习过程进行更新。</p></li>
+<li><p><strong>自监督学习的更新规则</strong>：TTT层的更新规则是自监督学习的一步，这意味着在测试时，即使没有标签，也可以通过训练来更新隐藏状态。这个过程称为测试时训练（TTT）。</p></li>
+<li><p><strong>线性复杂度</strong>：尽管TTT层在更新隐藏状态时进行了训练，但其整体复杂度仍然是线性的，这使得它在处理长序列时比自注意力机制更高效。</p></li>
+<li><p><strong>实例化</strong>：论文提出了两种TTT层的实例化方法，分别是TTT-Linear和TTT-MLP，它们的隐藏状态分别是线性模型和两层MLP（多层感知机）。</p></li>
+<li><p><strong>硬件效率</strong>：为了提高TTT层在实际硬件上的性能，论文提出了两种实用创新：mini-batch
+TTT和对内部操作的双重形式（dual
+form），以更好地利用现代GPU和TPU。</p></li>
+<li><p><strong>端到端优化</strong>：TTT层可以集成到任何网络架构中，并与RNN层和自注意力一样进行端到端优化。</p></li>
+<li><p><strong>自监督任务学习</strong>：TTT层的自监督任务是可学习的，这意味着可以通过外循环来优化任务本身，从而更好地适应语言建模的最终目标。</p></li>
+<li><p><strong>实验验证</strong>：论文通过在不同规模的参数（从125M到1.3B）上的实验，验证了TTT层与强Transformer基线和现代RNN
+Mamba相比的性能。</p></li>
+</ol>
+<p>通过这些方法，TTT层能够在保持线性复杂度的同时，提高对长文本序列的表达能力，从而解决了现有RNN在长文本序列处理中的性能限制问题。</p>
+<h2 id="q-论文做了哪些实验"><strong>Q</strong>: 论文做了哪些实验？</h2>
+<p><strong>A</strong>:
+论文中进行了一系列的实验来评估提出的TTT层与现有的Transformer和Mamba这两种流行的模型的性能对比。实验主要分为以下几个方面：</p>
+<ol type="1">
+<li><p><strong>短上下文（Short
+Context）实验</strong>：在2k和8k的上下文长度上，使用Pile数据集进行实验。这部分实验的目的是评估TTT层在处理较短序列时的性能。</p></li>
+<li><p><strong>长上下文（Long
+Context）实验</strong>：在1k到32k的上下文长度上，使用Books3数据集进行实验。这部分实验的目的是评估TTT层在处理较长序列时的性能和可扩展性。</p></li>
+<li><p><strong>模型大小对比</strong>：实验涵盖了不同大小的模型，包括125M、350M、760M和1.3B参数的配置，以评估模型规模对性能的影响。</p></li>
+<li><p><strong>性能和计算复杂度（FLOPs）的对比</strong>：评估不同模型在相同计算复杂度下的困惑度（Perplexity），以及在不同FLOPs预算下的性能表现。</p></li>
+<li><p><strong>时间效率（Wall-clock
+Time）的对比</strong>：评估不同模型在实际硬件上运行时的前向传播和生成（解码）的速度。</p></li>
+<li><p><strong>Transformer微调（Finetuning）实验</strong>：在长上下文设置中，比较从头开始训练的Transformer与在长上下文中微调的Transformer的性能差异。</p></li>
+<li><p><strong>不同背景架构的对比</strong>：评估TTT层在Transformer背景架构和Mamba背景架构中的性能差异。</p></li>
+<li><p><strong>不同TTT层实例化（TTT-Linear和TTT-MLP）的对比</strong>：评估两种不同隐藏状态（线性模型和两层MLP）的TTT层的性能。</p></li>
+<li><p><strong>系统优化</strong>：评估mini-batch TTT和双重形式（dual
+form）对提高TTT层在硬件上运行效率的影响。</p></li>
+<li><p><strong>理论等价性验证</strong>：通过实验验证TTT层在特定条件下与线性注意力（Linear
+Attention）和自注意力（Self-attention）的等价性。</p></li>
+</ol>
+<p>这些实验结果用于全面评估TTT层的性能，并与现有的Transformer和Mamba模型进行比较。论文还讨论了实验中发现的一些开放性问题，并鼓励社区参与解决这些问题。</p>
+<h2 id="q-有什么可以进一步探索的点"><strong>Q</strong>:
+有什么可以进一步探索的点？</h2>
+<p><strong>A</strong>:
+论文中提出了一些可以进一步探索的点，主要包括以下几个方向：</p>
+<ol type="1">
+<li><p><strong>外循环参数化（Outer-loop
+Parameterization）</strong>：论文中提到，可以探索更多方式来参数化多视图重建任务或更一般的自监督任务家族。这意味着寻找新的方法来设计自监督任务，可能会提高TTT层的性能。</p></li>
+<li><p><strong>系统优化（Systems
+Optimization）</strong>：尽管论文中已经进行了一些系统优化，但仍有改进空间。例如，可以通过时间上的流水线并行性来处理更长的序列，或者进一步优化现有的GPU和TPU实现。</p></li>
+<li><p><strong>更长的上下文和更大的模型（Longer Context and Larger
+Models）</strong>：由于资源限制，论文中的实验没有在百万或十亿级别的上下文长度上进行训练。在更长的上下文中，TTT层的优势可能会更加明显，同时可能需要更大的模型来处理这些长序列。</p></li>
+<li><p><strong>更雄心勃勃的f实例化（More Ambitious Instantiations of
+f）</strong>：随着上下文长度的增加，可能需要更大的f来处理视频任务和具身代理，其中上下文长度可以轻松扩展到数百万或数十亿。</p></li>
+<li><p><strong>多级学习到学习（Multi-level Learning to
+Learn）</strong>：如果f本身是一个自注意力层，那么可以将其视为现有内循环内部的另一个嵌套学习问题。这样，可以构建多个嵌套学习问题的层次结构。</p></li>
+<li><p><strong>人类学习与TTT的联系（Connection between Human Learning
+and
+TTT）</strong>：论文提出，与人类学习过程相比，TTT可能是一种更自然的建模方式，因为人类学习通常不涉及独立同分布（i.i.d.）的实例或训练-测试分割。进一步探索这种联系可能会提供对人类学习和机器学习之间差异的更深入理解。</p></li>
+<li><p><strong>自监督任务的改进（Improvement of Self-Supervised
+Tasks）</strong>：论文中提到，自监督任务是TTT层成功的关键，可以探索更复杂或更高级的任务设计，以提高模型的学习能力。</p></li>
+<li><p><strong>硬件效率的进一步提升（Further Improvement of Hardware
+Efficiency）</strong>：尽管已经采用了mini-batch
+TTT和双重形式来提高硬件效率，但仍有可能通过其他技术进一步提高效率，特别是在大规模并行处理和内存优化方面。</p></li>
+</ol>
+<p>这些方向为未来的研究提供了丰富的探索空间，有助于推动TTT层及相关技术的发展。</p>
+<p><strong>Q</strong>: 总结一下论文的主要内容</p>
+<p><strong>A</strong>: 这篇论文的主要内容可以概括为以下几个要点：</p>
+<ol type="1">
+<li><p><strong>问题识别</strong>：论文指出现有的循环神经网络（RNN）在处理长文本序列时受限于其隐藏状态的固定大小，而自注意力机制虽然在长文本上表现更好，但计算复杂度较高。</p></li>
+<li><p><strong>TTT层的提出</strong>：为了解决上述问题，论文提出了一种新的序列建模层——Test-Time
+Training (TTT)
+层。TTT层的核心思想是将隐藏状态设计为一个机器学习模型，并通过自监督学习的更新规则在测试时更新这个状态。</p></li>
+<li><p><strong>TTT层的特性</strong>：</p>
+<ul>
+<li><p>线性复杂度：TTT层保持了RNN的线性复杂度优势。</p></li>
+<li><p>表达性：通过自监督学习，TTT层能够更好地捕捉长文本序列中的信息。</p></li>
+</ul></li>
+<li><p><strong>实例化方法</strong>：论文提出了两种TTT层的实例化方法——TTT-Linear和TTT-MLP，分别使用线性模型和两层MLP作为隐藏状态。</p></li>
+<li><p><strong>系统优化</strong>：为了提高TTT层在实际硬件上的性能，论文提出了mini-batch
+TTT和双重形式（dual form）的技术，以更好地利用现代GPU和TPU。</p></li>
+<li><p><strong>自监督任务学习</strong>：TTT层的自监督任务是可学习的，可以通过外循环优化，以适应语言建模的最终目标。</p></li>
+<li><p><strong>实验评估</strong>：论文通过在不同规模的参数配置下进行实验，比较了TTT层与Transformer和Mamba模型的性能，证明了TTT层在长文本序列建模中的潜力。</p></li>
+<li><p><strong>未来研究方向</strong>：论文讨论了多个未来研究的方向，包括外循环参数化、系统优化、更长上下文和更大模型的探索、更复杂的隐藏状态模型、多级学习到学习等。</p></li>
+<li><p><strong>理论与实践的结合</strong>：论文不仅提出了理论上的创新，还通过实验验证了TTT层的有效性，并探讨了其与人类学习过程的联系。</p></li>
+<li><p><strong>代码和数据集的公开</strong>：论文提供了代码和使用的数据集，以便研究社区可以复现实验结果并在此基础上进行进一步的研究。</p></li>
+</ol>
+<p>总的来说，这篇论文提出了一种新的序列建模方法，通过在测试时对模型进行训练来提高其在长文本序列上的表达能力，同时保持了计算效率，为未来的研究提供了新的方向和工具。</p>
+<h2 id="q-想要进一步了解论文"><strong>Q</strong>:
+想要进一步了解论文</h2>
+<p><strong>A</strong>:
+以上只是了解一篇论文的几个基本FAQ。如果你还想与Kimi进一步讨论该论文，请点击 <a
+target="_blank" rel="noopener" href="http://kimi.moonshot.cn/_prefill_chat?prefill_prompt=%E6%88%91%E4%BB%AC%E8%A6%81%E8%AE%A8%E8%AE%BA%E7%9A%84%E8%AE%BA%E6%96%87%E6%98%AFLearning%20to%20(Learn%20at%20Test%20Time):%20RNNs%20with%20Expressive%20Hidden%20States%EF%BC%8C%E9%93%BE%E6%8E%A5%E6%98%AF%20https://arxiv.org/pdf/2407.04620%20%EF%BC%8C%E5%B7%B2%E6%9C%89%E7%9A%84FAQ%E9%93%BE%E6%8E%A5%E6%98%AF%20https://papers.cool/arxiv/kimi?paper=2407.04620%20%E3%80%82%E8%AF%B7%E4%BB%A5%E6%AD%A4%E4%B8%BA%E5%9F%BA%E7%A1%80%EF%BC%8C%E7%BB%A7%E7%BB%AD%E5%9B%9E%E7%AD%94%E6%88%91%E5%90%8E%E9%9D%A2%E7%9A%84%E9%97%AE%E9%A2%98%E3%80%82&amp;system_prompt=%E4%BD%A0%E6%98%AF%E4%B8%80%E4%B8%AA%E5%AD%A6%E6%9C%AF%E5%8A%A9%E6%89%8B%EF%BC%8C%E5%90%8E%E9%9D%A2%E7%9A%84%E5%AF%B9%E8%AF%9D%E5%B0%86%E5%9B%B4%E7%BB%95%E7%9D%80%E4%BB%A5%E4%B8%8B%E8%AE%BA%E6%96%87%E5%86%85%E5%AE%B9%E8%BF%9B%E8%A1%8C%EF%BC%8C%E5%B7%B2%E7%BB%8F%E9%80%9A%E8%BF%87%E9%93%BE%E6%8E%A5%E7%BB%99%E5%87%BA%E4%BA%86%E8%AE%BA%E6%96%87%E7%9A%84PDF%E5%92%8C%E8%AE%BA%E6%96%87%E5%B7%B2%E6%9C%89%E7%9A%84FAQ%E3%80%82%E7%94%A8%E6%88%B7%E5%B0%86%E7%BB%A7%E7%BB%AD%E5%90%91%E4%BD%A0%E5%92%A8%E8%AF%A2%E8%AE%BA%E6%96%87%E7%9A%84%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98%EF%BC%8C%E8%AF%B7%E4%BD%A0%E4%BD%9C%E5%87%BA%E4%B8%93%E4%B8%9A%E7%9A%84%E5%9B%9E%E7%AD%94%EF%BC%8C%E4%B8%8D%E8%A6%81%E5%87%BA%E7%8E%B0%E7%AC%AC%E4%B8%80%E4%BA%BA%E7%A7%B0%EF%BC%8C%E5%BD%93%E6%B6%89%E5%8F%8A%E5%88%B0%E5%88%86%E7%82%B9%E5%9B%9E%E7%AD%94%E6%97%B6%EF%BC%8C%E9%BC%93%E5%8A%B1%E4%BD%A0%E4%BB%A5markdown%E6%A0%BC%E5%BC%8F%E8%BE%93%E5%87%BA%E3%80%82&amp;send_immediately=true&amp;force_search=false"><strong>这里</strong></a>  为你跳转Kimi
+AI网页版，并启动一个与该论文相关的新会话。</p>
+<p>转自:
+https://papers.cool/arxiv/search?highlight=1&amp;query=Learning+to+Learn+at+Test+Time+RNNs+with+Expressive+Hidden+States</p>
+
+    </div>
+
+    
+    
+    
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束<i class="fa fa-paw"></i>感谢您的阅读-------------</div>
+    
+</div>
+      
+    </div>
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Buy me a coffee</div>
+  <button>
+    Donate
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechat.png" alt="Jeffrey Jiang WeChat Pay">
+        <span>WeChat Pay</span>
+      </div>
+      <div>
+        <img src="/images/alipay.png" alt="Jeffrey Jiang Alipay">
+        <span>Alipay</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>Jeffrey Jiang
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="https://jefferyjiang-yf.github.io/2024/07/09/Learning-to-Learn-at-Test-Time-RNNs-with-Expressive-Hidden-States/" title="Learning to Learn at Test Time RNNs with Expressive Hidden States">https://jefferyjiang-yf.github.io/2024/07/09/Learning-to-Learn-at-Test-Time-RNNs-with-Expressive-Hidden-States/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/en" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/RNN/" rel="tag"><i class="fa fa-tag"></i> RNN</a>
+              <a href="/tags/NLP/" rel="tag"><i class="fa fa-tag"></i> NLP</a>
+          </div>
+
+        
+  <div class="social-like a2a_kit a2a_kit_size_32 a2a_default_style">
+    <a class="a2a_dd" target="_blank" rel="noopener" href="https://www.addtoany.com/share"></a>
+      <a class="a2a_button_facebook"></a>
+      <a class="a2a_button_twitter"></a>
+      <a class="a2a_button_wechat"></a>
+      <a class="a2a_button_facebook_messenger"></a>
+      <a class="a2a_button_email"></a>
+      <a class="a2a_button_copy_link"></a>
+  </div>
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/07/09/Statistical-Information-in-NLP/" rel="prev" title="Statistical Information in NLP">
+                  <i class="fa fa-angle-left"></i> Statistical Information in NLP
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    
+  
+  <div class="comments">
+    <script src="https://giscus.app/client.js"
+        data-repo="JefferyJiang-YF/JefferyJiang-YF.github.io" 
+        data-repo-id="R_kgDOMPO3Yg" 
+        data-category="Announcements"
+        data-category-id="DIC_kwDOMPO3Ys4CgnPP"
+        data-mapping="pathname" 
+        data-reactions-enabled="1" 
+        data-emit-metadata="1" 
+        data-theme="dark"
+        data-lang="en"
+        crossorigin="anonymous"
+        data-input-position="bottom"
+        data-loading="lazy"
+        async>
+    </script>
+  </div>
+  
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2023 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Copyright ©  Jeffrey Jiang All Rights Reserved.</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="Word count total">12k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">11 mins.</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+  <a href="https://github.com/JefferyJiang-YF" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.9.0/mermaid.min.js","integrity":"sha256-stuqcu2FrjYCXDOytWFA5SoUE/r3nkp6gTglzNSlavU="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+  <script class="next-config" data-name="wavedrom" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/wavedrom.min.js","integrity":"sha256-INLAoJc6quTNfiMWkGZniYO2cxE8mHpddnLow1m6RFs="}}</script>
+  <script class="next-config" data-name="wavedrom_skin" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/skins/default.js","integrity":"sha256-fduc/Zszk5ezWws2uInY/ALWVmIrmV6VTgXbsYSReFI="}}</script>
+  <script src="/js/third-party/tags/wavedrom.js"></script>
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+  <script src="/js/third-party/addtoany.js"></script>
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"all","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://jefferyjiang-yf.github.io/2024/07/09/Learning-to-Learn-at-Test-Time-RNNs-with-Expressive-Hidden-States/"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
+
+</body>
+</html>
