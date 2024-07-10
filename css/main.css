@@ -1582,7 +1582,7 @@ pre code {
     vertical-align: middle;
   }
   .links-of-author a::before {
-    background: #c2ffff;
+    background: #c4a7ff;
     display: inline-block;
     margin-right: 3px;
     transform: translateY(-2px);
@@ -3296,13 +3296,13 @@ body {
 .main-inner > .tabs-comment,
 .main-inner > .comments,
 .main-inner > .pagination {
-  background: rgba(255,255,255,0.565);
+  background: rgba(49,54,63,0.9);
 }
 body {
-  color: #000;
+  color: #fff;
 }
 .posts-expand .post-title-link {
-  color: #000;
+  color: #fff;
 }
 .posts-expand .post-meta-container {
   color: #ff7f50;
