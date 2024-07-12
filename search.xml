@@ -1,174 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Learning to Learn at Test Time RNNs with Expressive Hidden States</title>
-    <url>/2024/07/09/Learning-to-Learn-at-Test-Time-RNNs-with-Expressive-Hidden-States/</url>
-    <content><![CDATA[<h1
-id="learning-to-learn-at-test-time-rnns-with-expressive-hidden-states"><strong>Learning
-to (Learn at Test Time): RNNs with Expressive Hidden
-States</strong></h1>
-<p><a
-href="https://papers.cool/arxiv/2407.04620">https://papers.cool/arxiv/2407.04620</a></p>
-<p><strong>Authors:</strong> Yu Sun ; Xinhao Li ; Karan Dalal ; Jiarui
-Xu ; Arjun Vikram ; Genghan Zhang ; Yann Dubois ; Xinlei Chen ; Xiaolong
-Wang ; Sanmi Koyejo ; Tatsunori Hashimoto ; Carlos Guestrin</p>
-<p><strong>Summary:</strong> Self-attention performs well in long
-context but has quadratic complexity. Existing RNN layers have linear
-complexity, but their performance in long context is limited by the
-expressive power of their hidden state. We propose a new class of
-sequence modeling layers with linear complexity and an expressive hidden
-state. The key idea is to make the hidden state a machine learning model
-itself, and the update rule a step of self-supervised learning. Since
-the hidden state is updated by training even on test sequences, our
-layers are called Test-Time Training (TTT) layers. We consider two
-instantiations: TTT-Linear and TTT-MLP, whose hidden state is a linear
-model and a two-layer MLP respectively. We evaluate our instantiations
-at the scale of 125M to 1.3B parameters, comparing with a strong
-Transformer and Mamba, a modern RNN. Both TTT-Linear and TTT-MLP match
-or exceed the baselines. Similar to Transformer, they can keep reducing
-perplexity by conditioning on more tokens, while Mamba cannot after 16k
-context. With preliminary systems optimization, TTT-Linear is already
-faster than Transformer at 8k context and matches Mamba in wall-clock
-time. TTT-MLP still faces challenges in memory I/O, but shows larger
-potential in long context, pointing to a promising direction for future
-research.</p>
-<h2 id="q-这篇论文试图解决什么问题"><strong>Q</strong>:
-这篇论文试图解决什么问题？</h2>
-<p><strong>A</strong>: 这篇论文提出了一种新的序列建模层——Test-Time
-Training (TTT)
-层，旨在解决现有循环神经网络（RNN）在处理长文本序列时所面临的性能限制问题。具体来说，论文指出现有的RNN层虽然具有线性复杂度的优势，但在长文本序列的表达能力上受限于其隐藏状态的固定大小。与之相对的，自注意力（Self-attention）机制虽然在长文本序列上表现更好，但其计算复杂度是二次方的，这限制了其在更大规模序列上的可行性。</p>
-<p>为了解决这个问题，论文提出了TTT层，其核心思想是将隐藏状态设计为一个机器学习模型本身，并通过自监督学习的更新规则来更新这个状态。这样，即使在测试时序上，也可以通过训练来更新隐藏状态，从而提高模型对长文本序列的理解和表达能力。TTT层的设计使得它在保持线性复杂度的同时，能够更好地捕捉和利用长文本序列中的信息，提高了RNN在长文本序列建模中的性能。</p>
-<h2 id="q-有哪些相关研究"><strong>Q</strong>: 有哪些相关研究？</h2>
-<p><strong>A</strong>:
-论文中提到了多个与TTT层相关的研究领域和具体工作，主要包括以下几个方面：</p>
-<ol type="1">
-<li><p><strong>现代RNNs（如Mamba、RWKV、xLSTM、GLA等）</strong>：这些模型都是Structured
-State-Space
-Models，它们尝试通过不同的方式改进RNN的隐藏状态表示，以提高对长序列的建模能力。</p></li>
-<li><p><strong>自注意力机制（Self-attention）</strong>：自注意力是Transformer模型的核心，它通过Key-Value存储历史上下文信息，虽然表达能力强，但计算复杂度较高。</p></li>
-<li><p><strong>测试时学习（Test-Time Training,
-TTT）</strong>：这是一个在测试时对模型进行训练以适应特定输入的概念，先前的研究已经展示了TTT在异常值检测和视频流处理中的有效性。</p></li>
-<li><p><strong>快速权重（Fast
-Weights）</strong>：这是一种在特定数据上更新模型参数的概念，与TTT有关联，但在更新规则上通常不依赖于显式的优化问题。</p></li>
-<li><p><strong>学习学习（Learning to
-Learn）</strong>：也称为元学习或双层优化，指的是模型能够学习如何通过优化过程来学习新任务。</p></li>
-<li><p><strong>非参数学习器（Nonparametric
-Learners）</strong>：如最近邻、支持向量机（SVMs）和核岭回归等，这些方法不依赖于参数化模型，而是直接使用训练数据。</p></li>
-<li><p><strong>Transformer模型</strong>：作为当前NLP领域的主流模型，Transformer通过自注意力机制实现了优秀的性能，但其二次方的计算复杂度限制了其在更长序列上的应用。</p></li>
-<li><p><strong>Mamba模型</strong>：一种现代RNN，使用Structured
-State-Space Models来提高对长序列的建模能力。</p></li>
-<li><p><strong>RWKV模型</strong>：另一种现代RNN，具有矩阵值状态和动态递归。</p></li>
-<li><p><strong>xLSTM和GLA</strong>：这些模型通过改进LSTM和引入门控机制来提高性能。</p></li>
-<li><p><strong>其他RNN变体</strong>：如LSTM、GRU等，它们在序列建模中有着广泛的应用。</p></li>
-</ol>
-<p>论文通过将这些相关研究与提出的TTT层进行比较，展示了TTT层在长序列建模中的潜力和优势。</p>
-<h2 id="q-论文如何解决这个问题"><strong>Q</strong>:
-论文如何解决这个问题？</h2>
-<p><strong>A</strong>: 论文通过提出一种新的序列建模层——Test-Time
-Training (TTT)
-层来解决现有RNN在长文本序列处理中的性能限制问题。具体解决方案包括以下几个关键点：</p>
-<ol type="1">
-<li><p><strong>隐藏状态作为模型</strong>：TTT层的核心思想是将隐藏状态设计为一个机器学习模型本身，这意味着隐藏状态可以包含模型的参数，并且可以通过学习过程进行更新。</p></li>
-<li><p><strong>自监督学习的更新规则</strong>：TTT层的更新规则是自监督学习的一步，这意味着在测试时，即使没有标签，也可以通过训练来更新隐藏状态。这个过程称为测试时训练（TTT）。</p></li>
-<li><p><strong>线性复杂度</strong>：尽管TTT层在更新隐藏状态时进行了训练，但其整体复杂度仍然是线性的，这使得它在处理长序列时比自注意力机制更高效。</p></li>
-<li><p><strong>实例化</strong>：论文提出了两种TTT层的实例化方法，分别是TTT-Linear和TTT-MLP，它们的隐藏状态分别是线性模型和两层MLP（多层感知机）。</p></li>
-<li><p><strong>硬件效率</strong>：为了提高TTT层在实际硬件上的性能，论文提出了两种实用创新：mini-batch
-TTT和对内部操作的双重形式（dual
-form），以更好地利用现代GPU和TPU。</p></li>
-<li><p><strong>端到端优化</strong>：TTT层可以集成到任何网络架构中，并与RNN层和自注意力一样进行端到端优化。</p></li>
-<li><p><strong>自监督任务学习</strong>：TTT层的自监督任务是可学习的，这意味着可以通过外循环来优化任务本身，从而更好地适应语言建模的最终目标。</p></li>
-<li><p><strong>实验验证</strong>：论文通过在不同规模的参数（从125M到1.3B）上的实验，验证了TTT层与强Transformer基线和现代RNN
-Mamba相比的性能。</p></li>
-</ol>
-<p>通过这些方法，TTT层能够在保持线性复杂度的同时，提高对长文本序列的表达能力，从而解决了现有RNN在长文本序列处理中的性能限制问题。</p>
-<h2 id="q-论文做了哪些实验"><strong>Q</strong>: 论文做了哪些实验？</h2>
-<p><strong>A</strong>:
-论文中进行了一系列的实验来评估提出的TTT层与现有的Transformer和Mamba这两种流行的模型的性能对比。实验主要分为以下几个方面：</p>
-<ol type="1">
-<li><p><strong>短上下文（Short
-Context）实验</strong>：在2k和8k的上下文长度上，使用Pile数据集进行实验。这部分实验的目的是评估TTT层在处理较短序列时的性能。</p></li>
-<li><p><strong>长上下文（Long
-Context）实验</strong>：在1k到32k的上下文长度上，使用Books3数据集进行实验。这部分实验的目的是评估TTT层在处理较长序列时的性能和可扩展性。</p></li>
-<li><p><strong>模型大小对比</strong>：实验涵盖了不同大小的模型，包括125M、350M、760M和1.3B参数的配置，以评估模型规模对性能的影响。</p></li>
-<li><p><strong>性能和计算复杂度（FLOPs）的对比</strong>：评估不同模型在相同计算复杂度下的困惑度（Perplexity），以及在不同FLOPs预算下的性能表现。</p></li>
-<li><p><strong>时间效率（Wall-clock
-Time）的对比</strong>：评估不同模型在实际硬件上运行时的前向传播和生成（解码）的速度。</p></li>
-<li><p><strong>Transformer微调（Finetuning）实验</strong>：在长上下文设置中，比较从头开始训练的Transformer与在长上下文中微调的Transformer的性能差异。</p></li>
-<li><p><strong>不同背景架构的对比</strong>：评估TTT层在Transformer背景架构和Mamba背景架构中的性能差异。</p></li>
-<li><p><strong>不同TTT层实例化（TTT-Linear和TTT-MLP）的对比</strong>：评估两种不同隐藏状态（线性模型和两层MLP）的TTT层的性能。</p></li>
-<li><p><strong>系统优化</strong>：评估mini-batch TTT和双重形式（dual
-form）对提高TTT层在硬件上运行效率的影响。</p></li>
-<li><p><strong>理论等价性验证</strong>：通过实验验证TTT层在特定条件下与线性注意力（Linear
-Attention）和自注意力（Self-attention）的等价性。</p></li>
-</ol>
-<p>这些实验结果用于全面评估TTT层的性能，并与现有的Transformer和Mamba模型进行比较。论文还讨论了实验中发现的一些开放性问题，并鼓励社区参与解决这些问题。</p>
-<h2 id="q-有什么可以进一步探索的点"><strong>Q</strong>:
-有什么可以进一步探索的点？</h2>
-<p><strong>A</strong>:
-论文中提出了一些可以进一步探索的点，主要包括以下几个方向：</p>
-<ol type="1">
-<li><p><strong>外循环参数化（Outer-loop
-Parameterization）</strong>：论文中提到，可以探索更多方式来参数化多视图重建任务或更一般的自监督任务家族。这意味着寻找新的方法来设计自监督任务，可能会提高TTT层的性能。</p></li>
-<li><p><strong>系统优化（Systems
-Optimization）</strong>：尽管论文中已经进行了一些系统优化，但仍有改进空间。例如，可以通过时间上的流水线并行性来处理更长的序列，或者进一步优化现有的GPU和TPU实现。</p></li>
-<li><p><strong>更长的上下文和更大的模型（Longer Context and Larger
-Models）</strong>：由于资源限制，论文中的实验没有在百万或十亿级别的上下文长度上进行训练。在更长的上下文中，TTT层的优势可能会更加明显，同时可能需要更大的模型来处理这些长序列。</p></li>
-<li><p><strong>更雄心勃勃的f实例化（More Ambitious Instantiations of
-f）</strong>：随着上下文长度的增加，可能需要更大的f来处理视频任务和具身代理，其中上下文长度可以轻松扩展到数百万或数十亿。</p></li>
-<li><p><strong>多级学习到学习（Multi-level Learning to
-Learn）</strong>：如果f本身是一个自注意力层，那么可以将其视为现有内循环内部的另一个嵌套学习问题。这样，可以构建多个嵌套学习问题的层次结构。</p></li>
-<li><p><strong>人类学习与TTT的联系（Connection between Human Learning
-and
-TTT）</strong>：论文提出，与人类学习过程相比，TTT可能是一种更自然的建模方式，因为人类学习通常不涉及独立同分布（i.i.d.）的实例或训练-测试分割。进一步探索这种联系可能会提供对人类学习和机器学习之间差异的更深入理解。</p></li>
-<li><p><strong>自监督任务的改进（Improvement of Self-Supervised
-Tasks）</strong>：论文中提到，自监督任务是TTT层成功的关键，可以探索更复杂或更高级的任务设计，以提高模型的学习能力。</p></li>
-<li><p><strong>硬件效率的进一步提升（Further Improvement of Hardware
-Efficiency）</strong>：尽管已经采用了mini-batch
-TTT和双重形式来提高硬件效率，但仍有可能通过其他技术进一步提高效率，特别是在大规模并行处理和内存优化方面。</p></li>
-</ol>
-<p>这些方向为未来的研究提供了丰富的探索空间，有助于推动TTT层及相关技术的发展。</p>
-<p><strong>Q</strong>: 总结一下论文的主要内容</p>
-<p><strong>A</strong>: 这篇论文的主要内容可以概括为以下几个要点：</p>
-<ol type="1">
-<li><p><strong>问题识别</strong>：论文指出现有的循环神经网络（RNN）在处理长文本序列时受限于其隐藏状态的固定大小，而自注意力机制虽然在长文本上表现更好，但计算复杂度较高。</p></li>
-<li><p><strong>TTT层的提出</strong>：为了解决上述问题，论文提出了一种新的序列建模层——Test-Time
-Training (TTT)
-层。TTT层的核心思想是将隐藏状态设计为一个机器学习模型，并通过自监督学习的更新规则在测试时更新这个状态。</p></li>
-<li><p><strong>TTT层的特性</strong>：</p>
-<ul>
-<li><p>线性复杂度：TTT层保持了RNN的线性复杂度优势。</p></li>
-<li><p>表达性：通过自监督学习，TTT层能够更好地捕捉长文本序列中的信息。</p></li>
-</ul></li>
-<li><p><strong>实例化方法</strong>：论文提出了两种TTT层的实例化方法——TTT-Linear和TTT-MLP，分别使用线性模型和两层MLP作为隐藏状态。</p></li>
-<li><p><strong>系统优化</strong>：为了提高TTT层在实际硬件上的性能，论文提出了mini-batch
-TTT和双重形式（dual form）的技术，以更好地利用现代GPU和TPU。</p></li>
-<li><p><strong>自监督任务学习</strong>：TTT层的自监督任务是可学习的，可以通过外循环优化，以适应语言建模的最终目标。</p></li>
-<li><p><strong>实验评估</strong>：论文通过在不同规模的参数配置下进行实验，比较了TTT层与Transformer和Mamba模型的性能，证明了TTT层在长文本序列建模中的潜力。</p></li>
-<li><p><strong>未来研究方向</strong>：论文讨论了多个未来研究的方向，包括外循环参数化、系统优化、更长上下文和更大模型的探索、更复杂的隐藏状态模型、多级学习到学习等。</p></li>
-<li><p><strong>理论与实践的结合</strong>：论文不仅提出了理论上的创新，还通过实验验证了TTT层的有效性，并探讨了其与人类学习过程的联系。</p></li>
-<li><p><strong>代码和数据集的公开</strong>：论文提供了代码和使用的数据集，以便研究社区可以复现实验结果并在此基础上进行进一步的研究。</p></li>
-</ol>
-<p>总的来说，这篇论文提出了一种新的序列建模方法，通过在测试时对模型进行训练来提高其在长文本序列上的表达能力，同时保持了计算效率，为未来的研究提供了新的方向和工具。</p>
-<h2 id="q-想要进一步了解论文"><strong>Q</strong>:
-想要进一步了解论文</h2>
-<p><strong>A</strong>:
-以上只是了解一篇论文的几个基本FAQ。如果你还想与Kimi进一步讨论该论文，请点击 <a
-href="http://kimi.moonshot.cn/_prefill_chat?prefill_prompt=%E6%88%91%E4%BB%AC%E8%A6%81%E8%AE%A8%E8%AE%BA%E7%9A%84%E8%AE%BA%E6%96%87%E6%98%AFLearning%20to%20(Learn%20at%20Test%20Time):%20RNNs%20with%20Expressive%20Hidden%20States%EF%BC%8C%E9%93%BE%E6%8E%A5%E6%98%AF%20https://arxiv.org/pdf/2407.04620%20%EF%BC%8C%E5%B7%B2%E6%9C%89%E7%9A%84FAQ%E9%93%BE%E6%8E%A5%E6%98%AF%20https://papers.cool/arxiv/kimi?paper=2407.04620%20%E3%80%82%E8%AF%B7%E4%BB%A5%E6%AD%A4%E4%B8%BA%E5%9F%BA%E7%A1%80%EF%BC%8C%E7%BB%A7%E7%BB%AD%E5%9B%9E%E7%AD%94%E6%88%91%E5%90%8E%E9%9D%A2%E7%9A%84%E9%97%AE%E9%A2%98%E3%80%82&amp;system_prompt=%E4%BD%A0%E6%98%AF%E4%B8%80%E4%B8%AA%E5%AD%A6%E6%9C%AF%E5%8A%A9%E6%89%8B%EF%BC%8C%E5%90%8E%E9%9D%A2%E7%9A%84%E5%AF%B9%E8%AF%9D%E5%B0%86%E5%9B%B4%E7%BB%95%E7%9D%80%E4%BB%A5%E4%B8%8B%E8%AE%BA%E6%96%87%E5%86%85%E5%AE%B9%E8%BF%9B%E8%A1%8C%EF%BC%8C%E5%B7%B2%E7%BB%8F%E9%80%9A%E8%BF%87%E9%93%BE%E6%8E%A5%E7%BB%99%E5%87%BA%E4%BA%86%E8%AE%BA%E6%96%87%E7%9A%84PDF%E5%92%8C%E8%AE%BA%E6%96%87%E5%B7%B2%E6%9C%89%E7%9A%84FAQ%E3%80%82%E7%94%A8%E6%88%B7%E5%B0%86%E7%BB%A7%E7%BB%AD%E5%90%91%E4%BD%A0%E5%92%A8%E8%AF%A2%E8%AE%BA%E6%96%87%E7%9A%84%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98%EF%BC%8C%E8%AF%B7%E4%BD%A0%E4%BD%9C%E5%87%BA%E4%B8%93%E4%B8%9A%E7%9A%84%E5%9B%9E%E7%AD%94%EF%BC%8C%E4%B8%8D%E8%A6%81%E5%87%BA%E7%8E%B0%E7%AC%AC%E4%B8%80%E4%BA%BA%E7%A7%B0%EF%BC%8C%E5%BD%93%E6%B6%89%E5%8F%8A%E5%88%B0%E5%88%86%E7%82%B9%E5%9B%9E%E7%AD%94%E6%97%B6%EF%BC%8C%E9%BC%93%E5%8A%B1%E4%BD%A0%E4%BB%A5markdown%E6%A0%BC%E5%BC%8F%E8%BE%93%E5%87%BA%E3%80%82&amp;send_immediately=true&amp;force_search=false"><strong>这里</strong></a>  为你跳转Kimi
-AI网页版，并启动一个与该论文相关的新会话。</p>
-<p>转自:
-https://papers.cool/arxiv/search?highlight=1&amp;query=Learning+to+Learn+at+Test+Time+RNNs+with+Expressive+Hidden+States</p>
-]]></content>
-      <categories>
-        <category>NLP</category>
-        <category>SSM</category>
-        <category>RNN</category>
-      </categories>
-      <tags>
-        <tag>RNN</tag>
-        <tag>NLP</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>Comparasion the GPTs with scholar-target used in CN and EN prompt</title>
     <url>/2024/07/12/Comparasion-the-GPTs-with-scholar-target-used-in-CN-and-EN-prompt/</url>
     <content><![CDATA[<h1 id="导读">导读:</h1>
@@ -517,8 +349,9 @@ effectiveness in improving model performance and robustness.</p>
 features for free at <a
 href="https://consensus.app/?utm_source=chatgpt">consensus.app</a>.</p>
 <blockquote>
-<p>PS: Consensus 网站用起来也比较一般 ## 2. Literature Review</p>
+<p>PS: Consensus 网站用起来也比较一般</p>
 </blockquote>
+<h2 id="literature-review-1">2. Literature Review</h2>
 <p>Here are some key research papers on contrastive learning in the
 field of NLP:</p>
 <ol type="1">
@@ -739,11 +572,179 @@ experience!</a></p>
         <category>Scholar_GPT</category>
       </categories>
       <tags>
-        <tag>NLP</tag>
         <tag>AI_Tools</tag>
         <tag>对比学习</tag>
+        <tag>NLP</tag>
         <tag>GPTs</tag>
         <tag>Scholar_GPT</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Learning to Learn at Test Time RNNs with Expressive Hidden States</title>
+    <url>/2024/07/09/Learning-to-Learn-at-Test-Time-RNNs-with-Expressive-Hidden-States/</url>
+    <content><![CDATA[<h1
+id="learning-to-learn-at-test-time-rnns-with-expressive-hidden-states"><strong>Learning
+to (Learn at Test Time): RNNs with Expressive Hidden
+States</strong></h1>
+<p><a
+href="https://papers.cool/arxiv/2407.04620">https://papers.cool/arxiv/2407.04620</a></p>
+<p><strong>Authors:</strong> Yu Sun ; Xinhao Li ; Karan Dalal ; Jiarui
+Xu ; Arjun Vikram ; Genghan Zhang ; Yann Dubois ; Xinlei Chen ; Xiaolong
+Wang ; Sanmi Koyejo ; Tatsunori Hashimoto ; Carlos Guestrin</p>
+<p><strong>Summary:</strong> Self-attention performs well in long
+context but has quadratic complexity. Existing RNN layers have linear
+complexity, but their performance in long context is limited by the
+expressive power of their hidden state. We propose a new class of
+sequence modeling layers with linear complexity and an expressive hidden
+state. The key idea is to make the hidden state a machine learning model
+itself, and the update rule a step of self-supervised learning. Since
+the hidden state is updated by training even on test sequences, our
+layers are called Test-Time Training (TTT) layers. We consider two
+instantiations: TTT-Linear and TTT-MLP, whose hidden state is a linear
+model and a two-layer MLP respectively. We evaluate our instantiations
+at the scale of 125M to 1.3B parameters, comparing with a strong
+Transformer and Mamba, a modern RNN. Both TTT-Linear and TTT-MLP match
+or exceed the baselines. Similar to Transformer, they can keep reducing
+perplexity by conditioning on more tokens, while Mamba cannot after 16k
+context. With preliminary systems optimization, TTT-Linear is already
+faster than Transformer at 8k context and matches Mamba in wall-clock
+time. TTT-MLP still faces challenges in memory I/O, but shows larger
+potential in long context, pointing to a promising direction for future
+research.</p>
+<h2 id="q-这篇论文试图解决什么问题"><strong>Q</strong>:
+这篇论文试图解决什么问题？</h2>
+<p><strong>A</strong>: 这篇论文提出了一种新的序列建模层——Test-Time
+Training (TTT)
+层，旨在解决现有循环神经网络（RNN）在处理长文本序列时所面临的性能限制问题。具体来说，论文指出现有的RNN层虽然具有线性复杂度的优势，但在长文本序列的表达能力上受限于其隐藏状态的固定大小。与之相对的，自注意力（Self-attention）机制虽然在长文本序列上表现更好，但其计算复杂度是二次方的，这限制了其在更大规模序列上的可行性。</p>
+<p>为了解决这个问题，论文提出了TTT层，其核心思想是将隐藏状态设计为一个机器学习模型本身，并通过自监督学习的更新规则来更新这个状态。这样，即使在测试时序上，也可以通过训练来更新隐藏状态，从而提高模型对长文本序列的理解和表达能力。TTT层的设计使得它在保持线性复杂度的同时，能够更好地捕捉和利用长文本序列中的信息，提高了RNN在长文本序列建模中的性能。</p>
+<h2 id="q-有哪些相关研究"><strong>Q</strong>: 有哪些相关研究？</h2>
+<p><strong>A</strong>:
+论文中提到了多个与TTT层相关的研究领域和具体工作，主要包括以下几个方面：</p>
+<ol type="1">
+<li><p><strong>现代RNNs（如Mamba、RWKV、xLSTM、GLA等）</strong>：这些模型都是Structured
+State-Space
+Models，它们尝试通过不同的方式改进RNN的隐藏状态表示，以提高对长序列的建模能力。</p></li>
+<li><p><strong>自注意力机制（Self-attention）</strong>：自注意力是Transformer模型的核心，它通过Key-Value存储历史上下文信息，虽然表达能力强，但计算复杂度较高。</p></li>
+<li><p><strong>测试时学习（Test-Time Training,
+TTT）</strong>：这是一个在测试时对模型进行训练以适应特定输入的概念，先前的研究已经展示了TTT在异常值检测和视频流处理中的有效性。</p></li>
+<li><p><strong>快速权重（Fast
+Weights）</strong>：这是一种在特定数据上更新模型参数的概念，与TTT有关联，但在更新规则上通常不依赖于显式的优化问题。</p></li>
+<li><p><strong>学习学习（Learning to
+Learn）</strong>：也称为元学习或双层优化，指的是模型能够学习如何通过优化过程来学习新任务。</p></li>
+<li><p><strong>非参数学习器（Nonparametric
+Learners）</strong>：如最近邻、支持向量机（SVMs）和核岭回归等，这些方法不依赖于参数化模型，而是直接使用训练数据。</p></li>
+<li><p><strong>Transformer模型</strong>：作为当前NLP领域的主流模型，Transformer通过自注意力机制实现了优秀的性能，但其二次方的计算复杂度限制了其在更长序列上的应用。</p></li>
+<li><p><strong>Mamba模型</strong>：一种现代RNN，使用Structured
+State-Space Models来提高对长序列的建模能力。</p></li>
+<li><p><strong>RWKV模型</strong>：另一种现代RNN，具有矩阵值状态和动态递归。</p></li>
+<li><p><strong>xLSTM和GLA</strong>：这些模型通过改进LSTM和引入门控机制来提高性能。</p></li>
+<li><p><strong>其他RNN变体</strong>：如LSTM、GRU等，它们在序列建模中有着广泛的应用。</p></li>
+</ol>
+<p>论文通过将这些相关研究与提出的TTT层进行比较，展示了TTT层在长序列建模中的潜力和优势。</p>
+<h2 id="q-论文如何解决这个问题"><strong>Q</strong>:
+论文如何解决这个问题？</h2>
+<p><strong>A</strong>: 论文通过提出一种新的序列建模层——Test-Time
+Training (TTT)
+层来解决现有RNN在长文本序列处理中的性能限制问题。具体解决方案包括以下几个关键点：</p>
+<ol type="1">
+<li><p><strong>隐藏状态作为模型</strong>：TTT层的核心思想是将隐藏状态设计为一个机器学习模型本身，这意味着隐藏状态可以包含模型的参数，并且可以通过学习过程进行更新。</p></li>
+<li><p><strong>自监督学习的更新规则</strong>：TTT层的更新规则是自监督学习的一步，这意味着在测试时，即使没有标签，也可以通过训练来更新隐藏状态。这个过程称为测试时训练（TTT）。</p></li>
+<li><p><strong>线性复杂度</strong>：尽管TTT层在更新隐藏状态时进行了训练，但其整体复杂度仍然是线性的，这使得它在处理长序列时比自注意力机制更高效。</p></li>
+<li><p><strong>实例化</strong>：论文提出了两种TTT层的实例化方法，分别是TTT-Linear和TTT-MLP，它们的隐藏状态分别是线性模型和两层MLP（多层感知机）。</p></li>
+<li><p><strong>硬件效率</strong>：为了提高TTT层在实际硬件上的性能，论文提出了两种实用创新：mini-batch
+TTT和对内部操作的双重形式（dual
+form），以更好地利用现代GPU和TPU。</p></li>
+<li><p><strong>端到端优化</strong>：TTT层可以集成到任何网络架构中，并与RNN层和自注意力一样进行端到端优化。</p></li>
+<li><p><strong>自监督任务学习</strong>：TTT层的自监督任务是可学习的，这意味着可以通过外循环来优化任务本身，从而更好地适应语言建模的最终目标。</p></li>
+<li><p><strong>实验验证</strong>：论文通过在不同规模的参数（从125M到1.3B）上的实验，验证了TTT层与强Transformer基线和现代RNN
+Mamba相比的性能。</p></li>
+</ol>
+<p>通过这些方法，TTT层能够在保持线性复杂度的同时，提高对长文本序列的表达能力，从而解决了现有RNN在长文本序列处理中的性能限制问题。</p>
+<h2 id="q-论文做了哪些实验"><strong>Q</strong>: 论文做了哪些实验？</h2>
+<p><strong>A</strong>:
+论文中进行了一系列的实验来评估提出的TTT层与现有的Transformer和Mamba这两种流行的模型的性能对比。实验主要分为以下几个方面：</p>
+<ol type="1">
+<li><p><strong>短上下文（Short
+Context）实验</strong>：在2k和8k的上下文长度上，使用Pile数据集进行实验。这部分实验的目的是评估TTT层在处理较短序列时的性能。</p></li>
+<li><p><strong>长上下文（Long
+Context）实验</strong>：在1k到32k的上下文长度上，使用Books3数据集进行实验。这部分实验的目的是评估TTT层在处理较长序列时的性能和可扩展性。</p></li>
+<li><p><strong>模型大小对比</strong>：实验涵盖了不同大小的模型，包括125M、350M、760M和1.3B参数的配置，以评估模型规模对性能的影响。</p></li>
+<li><p><strong>性能和计算复杂度（FLOPs）的对比</strong>：评估不同模型在相同计算复杂度下的困惑度（Perplexity），以及在不同FLOPs预算下的性能表现。</p></li>
+<li><p><strong>时间效率（Wall-clock
+Time）的对比</strong>：评估不同模型在实际硬件上运行时的前向传播和生成（解码）的速度。</p></li>
+<li><p><strong>Transformer微调（Finetuning）实验</strong>：在长上下文设置中，比较从头开始训练的Transformer与在长上下文中微调的Transformer的性能差异。</p></li>
+<li><p><strong>不同背景架构的对比</strong>：评估TTT层在Transformer背景架构和Mamba背景架构中的性能差异。</p></li>
+<li><p><strong>不同TTT层实例化（TTT-Linear和TTT-MLP）的对比</strong>：评估两种不同隐藏状态（线性模型和两层MLP）的TTT层的性能。</p></li>
+<li><p><strong>系统优化</strong>：评估mini-batch TTT和双重形式（dual
+form）对提高TTT层在硬件上运行效率的影响。</p></li>
+<li><p><strong>理论等价性验证</strong>：通过实验验证TTT层在特定条件下与线性注意力（Linear
+Attention）和自注意力（Self-attention）的等价性。</p></li>
+</ol>
+<p>这些实验结果用于全面评估TTT层的性能，并与现有的Transformer和Mamba模型进行比较。论文还讨论了实验中发现的一些开放性问题，并鼓励社区参与解决这些问题。</p>
+<h2 id="q-有什么可以进一步探索的点"><strong>Q</strong>:
+有什么可以进一步探索的点？</h2>
+<p><strong>A</strong>:
+论文中提出了一些可以进一步探索的点，主要包括以下几个方向：</p>
+<ol type="1">
+<li><p><strong>外循环参数化（Outer-loop
+Parameterization）</strong>：论文中提到，可以探索更多方式来参数化多视图重建任务或更一般的自监督任务家族。这意味着寻找新的方法来设计自监督任务，可能会提高TTT层的性能。</p></li>
+<li><p><strong>系统优化（Systems
+Optimization）</strong>：尽管论文中已经进行了一些系统优化，但仍有改进空间。例如，可以通过时间上的流水线并行性来处理更长的序列，或者进一步优化现有的GPU和TPU实现。</p></li>
+<li><p><strong>更长的上下文和更大的模型（Longer Context and Larger
+Models）</strong>：由于资源限制，论文中的实验没有在百万或十亿级别的上下文长度上进行训练。在更长的上下文中，TTT层的优势可能会更加明显，同时可能需要更大的模型来处理这些长序列。</p></li>
+<li><p><strong>更雄心勃勃的f实例化（More Ambitious Instantiations of
+f）</strong>：随着上下文长度的增加，可能需要更大的f来处理视频任务和具身代理，其中上下文长度可以轻松扩展到数百万或数十亿。</p></li>
+<li><p><strong>多级学习到学习（Multi-level Learning to
+Learn）</strong>：如果f本身是一个自注意力层，那么可以将其视为现有内循环内部的另一个嵌套学习问题。这样，可以构建多个嵌套学习问题的层次结构。</p></li>
+<li><p><strong>人类学习与TTT的联系（Connection between Human Learning
+and
+TTT）</strong>：论文提出，与人类学习过程相比，TTT可能是一种更自然的建模方式，因为人类学习通常不涉及独立同分布（i.i.d.）的实例或训练-测试分割。进一步探索这种联系可能会提供对人类学习和机器学习之间差异的更深入理解。</p></li>
+<li><p><strong>自监督任务的改进（Improvement of Self-Supervised
+Tasks）</strong>：论文中提到，自监督任务是TTT层成功的关键，可以探索更复杂或更高级的任务设计，以提高模型的学习能力。</p></li>
+<li><p><strong>硬件效率的进一步提升（Further Improvement of Hardware
+Efficiency）</strong>：尽管已经采用了mini-batch
+TTT和双重形式来提高硬件效率，但仍有可能通过其他技术进一步提高效率，特别是在大规模并行处理和内存优化方面。</p></li>
+</ol>
+<p>这些方向为未来的研究提供了丰富的探索空间，有助于推动TTT层及相关技术的发展。</p>
+<p><strong>Q</strong>: 总结一下论文的主要内容</p>
+<p><strong>A</strong>: 这篇论文的主要内容可以概括为以下几个要点：</p>
+<ol type="1">
+<li><p><strong>问题识别</strong>：论文指出现有的循环神经网络（RNN）在处理长文本序列时受限于其隐藏状态的固定大小，而自注意力机制虽然在长文本上表现更好，但计算复杂度较高。</p></li>
+<li><p><strong>TTT层的提出</strong>：为了解决上述问题，论文提出了一种新的序列建模层——Test-Time
+Training (TTT)
+层。TTT层的核心思想是将隐藏状态设计为一个机器学习模型，并通过自监督学习的更新规则在测试时更新这个状态。</p></li>
+<li><p><strong>TTT层的特性</strong>：</p>
+<ul>
+<li><p>线性复杂度：TTT层保持了RNN的线性复杂度优势。</p></li>
+<li><p>表达性：通过自监督学习，TTT层能够更好地捕捉长文本序列中的信息。</p></li>
+</ul></li>
+<li><p><strong>实例化方法</strong>：论文提出了两种TTT层的实例化方法——TTT-Linear和TTT-MLP，分别使用线性模型和两层MLP作为隐藏状态。</p></li>
+<li><p><strong>系统优化</strong>：为了提高TTT层在实际硬件上的性能，论文提出了mini-batch
+TTT和双重形式（dual form）的技术，以更好地利用现代GPU和TPU。</p></li>
+<li><p><strong>自监督任务学习</strong>：TTT层的自监督任务是可学习的，可以通过外循环优化，以适应语言建模的最终目标。</p></li>
+<li><p><strong>实验评估</strong>：论文通过在不同规模的参数配置下进行实验，比较了TTT层与Transformer和Mamba模型的性能，证明了TTT层在长文本序列建模中的潜力。</p></li>
+<li><p><strong>未来研究方向</strong>：论文讨论了多个未来研究的方向，包括外循环参数化、系统优化、更长上下文和更大模型的探索、更复杂的隐藏状态模型、多级学习到学习等。</p></li>
+<li><p><strong>理论与实践的结合</strong>：论文不仅提出了理论上的创新，还通过实验验证了TTT层的有效性，并探讨了其与人类学习过程的联系。</p></li>
+<li><p><strong>代码和数据集的公开</strong>：论文提供了代码和使用的数据集，以便研究社区可以复现实验结果并在此基础上进行进一步的研究。</p></li>
+</ol>
+<p>总的来说，这篇论文提出了一种新的序列建模方法，通过在测试时对模型进行训练来提高其在长文本序列上的表达能力，同时保持了计算效率，为未来的研究提供了新的方向和工具。</p>
+<h2 id="q-想要进一步了解论文"><strong>Q</strong>:
+想要进一步了解论文</h2>
+<p><strong>A</strong>:
+以上只是了解一篇论文的几个基本FAQ。如果你还想与Kimi进一步讨论该论文，请点击 <a
+href="http://kimi.moonshot.cn/_prefill_chat?prefill_prompt=%E6%88%91%E4%BB%AC%E8%A6%81%E8%AE%A8%E8%AE%BA%E7%9A%84%E8%AE%BA%E6%96%87%E6%98%AFLearning%20to%20(Learn%20at%20Test%20Time):%20RNNs%20with%20Expressive%20Hidden%20States%EF%BC%8C%E9%93%BE%E6%8E%A5%E6%98%AF%20https://arxiv.org/pdf/2407.04620%20%EF%BC%8C%E5%B7%B2%E6%9C%89%E7%9A%84FAQ%E9%93%BE%E6%8E%A5%E6%98%AF%20https://papers.cool/arxiv/kimi?paper=2407.04620%20%E3%80%82%E8%AF%B7%E4%BB%A5%E6%AD%A4%E4%B8%BA%E5%9F%BA%E7%A1%80%EF%BC%8C%E7%BB%A7%E7%BB%AD%E5%9B%9E%E7%AD%94%E6%88%91%E5%90%8E%E9%9D%A2%E7%9A%84%E9%97%AE%E9%A2%98%E3%80%82&amp;system_prompt=%E4%BD%A0%E6%98%AF%E4%B8%80%E4%B8%AA%E5%AD%A6%E6%9C%AF%E5%8A%A9%E6%89%8B%EF%BC%8C%E5%90%8E%E9%9D%A2%E7%9A%84%E5%AF%B9%E8%AF%9D%E5%B0%86%E5%9B%B4%E7%BB%95%E7%9D%80%E4%BB%A5%E4%B8%8B%E8%AE%BA%E6%96%87%E5%86%85%E5%AE%B9%E8%BF%9B%E8%A1%8C%EF%BC%8C%E5%B7%B2%E7%BB%8F%E9%80%9A%E8%BF%87%E9%93%BE%E6%8E%A5%E7%BB%99%E5%87%BA%E4%BA%86%E8%AE%BA%E6%96%87%E7%9A%84PDF%E5%92%8C%E8%AE%BA%E6%96%87%E5%B7%B2%E6%9C%89%E7%9A%84FAQ%E3%80%82%E7%94%A8%E6%88%B7%E5%B0%86%E7%BB%A7%E7%BB%AD%E5%90%91%E4%BD%A0%E5%92%A8%E8%AF%A2%E8%AE%BA%E6%96%87%E7%9A%84%E7%9B%B8%E5%85%B3%E9%97%AE%E9%A2%98%EF%BC%8C%E8%AF%B7%E4%BD%A0%E4%BD%9C%E5%87%BA%E4%B8%93%E4%B8%9A%E7%9A%84%E5%9B%9E%E7%AD%94%EF%BC%8C%E4%B8%8D%E8%A6%81%E5%87%BA%E7%8E%B0%E7%AC%AC%E4%B8%80%E4%BA%BA%E7%A7%B0%EF%BC%8C%E5%BD%93%E6%B6%89%E5%8F%8A%E5%88%B0%E5%88%86%E7%82%B9%E5%9B%9E%E7%AD%94%E6%97%B6%EF%BC%8C%E9%BC%93%E5%8A%B1%E4%BD%A0%E4%BB%A5markdown%E6%A0%BC%E5%BC%8F%E8%BE%93%E5%87%BA%E3%80%82&amp;send_immediately=true&amp;force_search=false"><strong>这里</strong></a>  为你跳转Kimi
+AI网页版，并启动一个与该论文相关的新会话。</p>
+<p>转自:
+https://papers.cool/arxiv/search?highlight=1&amp;query=Learning+to+Learn+at+Test+Time+RNNs+with+Expressive+Hidden+States</p>
+]]></content>
+      <categories>
+        <category>NLP</category>
+        <category>SSM</category>
+        <category>RNN</category>
+      </categories>
+      <tags>
+        <tag>NLP</tag>
+        <tag>RNN</tag>
       </tags>
   </entry>
   <entry>
@@ -1049,42 +1050,6 @@ href="https://hexo.io/docs/one-command-deployment.html">Deployment</a></p>
         <tag>hello</tag>
         <tag>world</tag>
       </tags>
-  </entry>
-  <entry>
-    <title>第一篇文章</title>
-    <url>/2024/07/07/%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/</url>
-    <content><![CDATA[<h1 id="hexo-博客-新建文章">Hexo 博客 新建文章</h1>
-<p>输入如下命令，创建一篇新的文章</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ hexo new [layout] &lt;title&gt;</span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>layout 是文章的布局，默认为post，可以先不写。</p></li>
-<li><p>title
-是文章的标题，也是文件的名字，存储在source/_posts下。</p></li>
-</ul>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@localhost blog]#hexo new &quot;我的第一篇文章&quot;</span><br><span class="line">INFO  Validating config</span><br><span class="line">INFO  Created: D:\blog_hexo\myblog\source\_posts\我的第一篇文章.md</span><br></pre></td></tr></table></figure>
-<p>可以看到创建的文件在<code>\source\_posts</code>路径下，之后在MarkDown编辑器上打开就可以编辑你的文章内容。
-打开创建的MarkDown文件，默认内容如下，我们可以在新建的文件里用MarkDown语法编辑文章</p>
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: 我的第一篇文章</span><br><span class="line">date: 2022-03-15 17:57:05</span><br><span class="line">tags:</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
-<h1 id="布局">布局</h1>
-<p>Hexo 有三种默认布局：<code>post</code>、<code>page</code> 和
-<code>draft</code>在创建者三种不同类型的文件时，它们将会被保存到不同的路径。
-- post - 默认布局，用于文章。 - 保存在<code>source/_posts</code>目录下。
-- page - 用于单页。 - 保存在<code>source</code>目录下。 - draft -
-用于草稿。 - 保存在<code>source/_drafts</code>目录下。
-如果你不想你的文章被处理，你可以将 Front-Matter 中的layout: 设为 false
-。</p>
-<p>Front-matter 参数 Front-matter
-是文章最上方以—分隔的区域，用于指定文章的变量设置 <img data-src="https://tuchuang.org.cn/imgs/2024/07/06/9dd63d3ad75489a1.png" /></p>
-<h1 id="next主题-多层级分类">NexT主题 多层级分类</h1>
-<p>1.单层分类 如果你的一篇文章只分一类，可以像如下方式设置分类名：
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">categories:</span><br><span class="line">- Hexo 博客</span><br></pre></td></tr></table></figure> 2.父子分类
-如果你想让一篇文章处于父类中的子类中，可以像如下方式设置分类名：
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">categories:</span><br><span class="line">- 前端</span><br><span class="line">- 笔记</span><br></pre></td></tr></table></figure> 3.并列分类
-如果你想让一篇文章处于同一层的不同类中，可以像如下方式设置分类名：
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">categories:</span><br><span class="line">- [后端]</span><br><span class="line">- [笔记]</span><br></pre></td></tr></table></figure> 4.同一父类不同子类
-如果你想让一篇文章处于同一父类的不同类中，可以像如下方式设置分类名：
-<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">categories:</span><br><span class="line">- [学习,html]</span><br><span class="line">- [学习,http]</span><br></pre></td></tr></table></figure> 总体效果图： <img data-src="https://tuchuang.org.cn/imgs/2024/07/06/9b053c5df042c6bf.png" /></p>
-]]></content>
   </entry>
   <entry>
     <title>TTT人话版解读-Learning-to-Learn-at-Test-Time-RNNs-with-Expressive-Hidden-States</title>
@@ -1481,5 +1446,41 @@ href="https://arxiv.org/abs/2407.04620">链接</a></h1>
         <tag>NLP</tag>
         <tag>自回归模型</tag>
       </tags>
+  </entry>
+  <entry>
+    <title>第一篇文章</title>
+    <url>/2024/07/07/%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0/</url>
+    <content><![CDATA[<h1 id="hexo-博客-新建文章">Hexo 博客 新建文章</h1>
+<p>输入如下命令，创建一篇新的文章</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">$ hexo new [layout] &lt;title&gt;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>layout 是文章的布局，默认为post，可以先不写。</p></li>
+<li><p>title
+是文章的标题，也是文件的名字，存储在source/_posts下。</p></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">[root@localhost blog]#hexo new &quot;我的第一篇文章&quot;</span><br><span class="line">INFO  Validating config</span><br><span class="line">INFO  Created: D:\blog_hexo\myblog\source\_posts\我的第一篇文章.md</span><br></pre></td></tr></table></figure>
+<p>可以看到创建的文件在<code>\source\_posts</code>路径下，之后在MarkDown编辑器上打开就可以编辑你的文章内容。
+打开创建的MarkDown文件，默认内容如下，我们可以在新建的文件里用MarkDown语法编辑文章</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: 我的第一篇文章</span><br><span class="line">date: 2022-03-15 17:57:05</span><br><span class="line">tags:</span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+<h1 id="布局">布局</h1>
+<p>Hexo 有三种默认布局：<code>post</code>、<code>page</code> 和
+<code>draft</code>在创建者三种不同类型的文件时，它们将会被保存到不同的路径。
+- post - 默认布局，用于文章。 - 保存在<code>source/_posts</code>目录下。
+- page - 用于单页。 - 保存在<code>source</code>目录下。 - draft -
+用于草稿。 - 保存在<code>source/_drafts</code>目录下。
+如果你不想你的文章被处理，你可以将 Front-Matter 中的layout: 设为 false
+。</p>
+<p>Front-matter 参数 Front-matter
+是文章最上方以—分隔的区域，用于指定文章的变量设置 <img data-src="https://tuchuang.org.cn/imgs/2024/07/06/9dd63d3ad75489a1.png" /></p>
+<h1 id="next主题-多层级分类">NexT主题 多层级分类</h1>
+<p>1.单层分类 如果你的一篇文章只分一类，可以像如下方式设置分类名：
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">categories:</span><br><span class="line">- Hexo 博客</span><br></pre></td></tr></table></figure> 2.父子分类
+如果你想让一篇文章处于父类中的子类中，可以像如下方式设置分类名：
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">categories:</span><br><span class="line">- 前端</span><br><span class="line">- 笔记</span><br></pre></td></tr></table></figure> 3.并列分类
+如果你想让一篇文章处于同一层的不同类中，可以像如下方式设置分类名：
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">categories:</span><br><span class="line">- [后端]</span><br><span class="line">- [笔记]</span><br></pre></td></tr></table></figure> 4.同一父类不同子类
+如果你想让一篇文章处于同一父类的不同类中，可以像如下方式设置分类名：
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">categories:</span><br><span class="line">- [学习,html]</span><br><span class="line">- [学习,http]</span><br></pre></td></tr></table></figure> 总体效果图： <img data-src="https://tuchuang.org.cn/imgs/2024/07/06/9b053c5df042c6bf.png" /></p>
+]]></content>
   </entry>
 </search>
