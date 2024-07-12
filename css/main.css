@@ -1365,10 +1365,12 @@ pre code {
   }
 }
 .brand {
-  border-bottom: 0;
-  color: var(--brand-color);
+  border-bottom: none;
+  color: #fc6423 !important;
   display: inline-block;
-  padding: 0;
+  line-height: 1.375em;
+  padding: 0 40px;
+  position: relative;
 }
 .brand:hover {
   color: var(--brand-hover-color);
@@ -1582,7 +1584,7 @@ pre code {
     vertical-align: middle;
   }
   .links-of-author a::before {
-    background: #c4a7ff;
+    background: #a60159;
     display: inline-block;
     margin-right: 3px;
     transform: translateY(-2px);
@@ -2115,6 +2117,7 @@ pre code {
   margin-bottom: 35px;
   margin-left: 35px;
   position: relative;
+  color: #fefbd8 !important;
 }
 @media (max-width: 767px) {
   .posts-collapse .post-content {
@@ -2209,7 +2212,7 @@ pre code {
 }
 .posts-collapse .post-content .post-title a {
   border-bottom: 0;
-  color: var(--link-color);
+  color: #fefbd8 !important;
 }
 .posts-collapse .post-content .post-title .fa {
   font-size: 0.875em;
@@ -2343,12 +2346,14 @@ pre code {
   top: 0;
   width: 100%;
 }
-.post-body p a {
+.post-body p a,
+.post-body ul li a {
   color: #0593d3;
   border-bottom: none;
   border-bottom: 1px solid #0593d3;
 }
-.post-body p a:hover {
+.post-body p a:hover,
+.post-body ul li a:hover {
   color: #fc6423;
   border-bottom: none;
   border-bottom: 1px solid #fc6423;
@@ -2594,6 +2599,9 @@ pre code {
     transform: rotateZ(-30deg);
   }
 }
+.category-all-page {
+  color: #fefbd8;
+}
 .category-all-page .category-all-title {
   text-align: center;
 }
@@ -2738,92 +2746,92 @@ ul.breadcrumb li:last-child {
 }
 .tag-cloud-0 {
   border-bottom-color: #aaa;
-  color: #aaa;
+  color: #fefbd8 !important;
 }
 .tag-cloud-1 {
   border-bottom-color: #9a9a9a;
-  color: #9a9a9a;
+  color: #fefbd8 !important;
 }
 .tag-cloud-2 {
   border-bottom-color: #8b8b8b;
-  color: #8b8b8b;
+  color: #fefbd8 !important;
 }
 .tag-cloud-3 {
   border-bottom-color: #7c7c7c;
-  color: #7c7c7c;
+  color: #fefbd8 !important;
 }
 .tag-cloud-4 {
   border-bottom-color: #6c6c6c;
-  color: #6c6c6c;
+  color: #fefbd8 !important;
 }
 .tag-cloud-5 {
   border-bottom-color: #5d5d5d;
-  color: #5d5d5d;
+  color: #fefbd8 !important;
 }
 .tag-cloud-6 {
   border-bottom-color: #4e4e4e;
-  color: #4e4e4e;
+  color: #fefbd8 !important;
 }
 .tag-cloud-7 {
   border-bottom-color: #3e3e3e;
-  color: #3e3e3e;
+  color: #fefbd8 !important;
 }
 .tag-cloud-8 {
   border-bottom-color: #2f2f2f;
-  color: #2f2f2f;
+  color: #fefbd8 !important;
 }
 .tag-cloud-9 {
   border-bottom-color: #202020;
-  color: #202020;
+  color: #fefbd8 !important;
 }
 .tag-cloud-10 {
   border-bottom-color: #111;
-  color: #111;
+  color: #fefbd8 !important;
 }
 @media (prefers-color-scheme: dark) {
   .tag-cloud-0 {
     border-bottom-color: #555;
-    color: #555;
+    color: #fefbd8 !important;
   }
   .tag-cloud-1 {
     border-bottom-color: #646464;
-    color: #646464;
+    color: #fefbd8 !important;
   }
   .tag-cloud-2 {
     border-bottom-color: #737373;
-    color: #737373;
+    color: #fefbd8 !important;
   }
   .tag-cloud-3 {
     border-bottom-color: #828282;
-    color: #828282;
+    color: #fefbd8 !important;
   }
   .tag-cloud-4 {
     border-bottom-color: #929292;
-    color: #929292;
+    color: #fefbd8 !important;
   }
   .tag-cloud-5 {
     border-bottom-color: #a1a1a1;
-    color: #a1a1a1;
+    color: #fefbd8 !important;
   }
   .tag-cloud-6 {
     border-bottom-color: #b0b0b0;
-    color: #b0b0b0;
+    color: #fefbd8 !important;
   }
   .tag-cloud-7 {
     border-bottom-color: #c0c0c0;
-    color: #c0c0c0;
+    color: #fefbd8 !important;
   }
   .tag-cloud-8 {
     border-bottom-color: #cfcfcf;
-    color: #cfcfcf;
+    color: #fefbd8 !important;
   }
   .tag-cloud-9 {
     border-bottom-color: #dedede;
-    color: #dedede;
+    color: #fefbd8 !important;
   }
   .tag-cloud-10 {
     border-bottom-color: #eee;
-    color: #eee;
+    color: #fefbd8 !important;
   }
 }
 .search-active {
@@ -3025,6 +3033,12 @@ header.header {
     box-shadow: 0 0 16px rgba(0,0,0,0.5);
   }
 }
+.site-brand-container i {
+  background: #fc6423 !important;
+  display: block;
+  height: 1px;
+  position: relative;
+}
 .site-meta {
   padding: 20px 0;
 }
@@ -3139,6 +3153,12 @@ header.header {
     background: none;
     border: 0;
     color: #e34603;
+  }
+  .sidebar .sidebar-button button i {
+    background: #fc6423 !important;
+    display: block;
+    height: 1px;
+    position: relative;
   }
   .links-of-author {
     display: flex;
@@ -3306,6 +3326,13 @@ body {
 }
 .posts-expand .post-meta-container {
   color: #ff7f50;
+}
+.posts-expand .post-meta-container a {
+  color: #ff7f50; /* 设置链接颜色为红色 */
+  text-decoration: none; /* 如果不需要下划线，可以去掉 */
+}
+.posts-expand .post-meta-container a:hover {
+  color: #fff; /* 设置悬停状态下的链接颜色 */
 }
 .sidebar {
   opacity: 0.9;

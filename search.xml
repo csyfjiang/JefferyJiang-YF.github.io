@@ -169,6 +169,584 @@ https://papers.cool/arxiv/search?highlight=1&amp;query=Learning+to+Learn+at+Test
       </tags>
   </entry>
   <entry>
+    <title>Comparasion the GPTs with scholar-target used in CN and EN prompt</title>
+    <url>/2024/07/12/Comparasion-the-GPTs-with-scholar-target-used-in-CN-and-EN-prompt/</url>
+    <content><![CDATA[<h1 id="导读">导读:</h1>
+<p>对比学习在自然语言处理（NLP）领域的应用研究正在不断深入。本文旨在评估四款主要的GPT模型，即<code>Consensus</code>、<code>Literature Review</code>、<code>Scholar AI GPT</code>和<code>Scholar GPT</code>，通过它们在检索对比学习相关研究工作、博客和视频教程等资源方面的表现进行测评。这些模型各具特色，能够提供不同层次的学术支持和实际应用建议。测评内容包括模型在搜索相关研究资源的精准度、提供信息的全面性及实用性。通过对比这些模型的表现，旨在帮助研究者和开发者选择最合适的工具，以便高效地获取和利用对比学习在NLP领域的最新进展和应用成果。</p>
+<p><img data-src="https://pic.imgdb.cn/item/66909a02d9c307b7e9d3aefb.png" /></p>
+<h1 id="中文-prompt">中文 Prompt</h1>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">找一些对比学习在NLP领域的相关研究工作,博客视频教程都可以</span><br></pre></td></tr></table></figure>
+<h2 id="consensus">1. Consensus</h2>
+<p>Here are some resources that provide comprehensive insights into
+contrastive learning in the field of natural language processing
+(NLP):</p>
+<ol type="1">
+<li><p><strong>Tutorial at NAACL 2022</strong>: This tutorial provides a
+detailed introduction to the fundamentals of contrastive learning
+approaches and their application in NLP. It includes tutorial slides,
+videos, and a paper reading list. The tutorial covers contrastive
+learning objectives, data sampling and augmentation strategies,
+successful applications, and future directions for using contrastive
+learning in NLP tasks such as text classification, question answering,
+and summarization. You can access the materials <a
+href="https://contrastive-nlp-tutorial.github.io/">here</a>, <a
+href="https://contrastive-nlp-tutorial.github.io/">oai_citation:1,Contrastive
+Data and Learning for Natural Language Processing</a>.</p></li>
+<li><p><strong>YouTube Video on Contrastive Learning for Pre-trained
+Language Models</strong>: This video is part of the AACL 2022 tutorial
+series and offers a deep dive into recent advances in pre-trained
+language models using contrastive learning. It's a helpful resource for
+visual learners and can be found on <a
+href="https://www.youtube.com/watch?v=ACukQV5mjm8">YouTube</a>, <a
+href="https://www.youtube.com/watch?v=ACukQV5mjm8#:~:text=URL%3A%20https%3A%2F%2Fwww,100">oai_citation:2,Contrastive
+Learning for Pre-trained Language Models | AACL 2022 Tutorial -
+YouTube</a>.</p></li>
+<li><p><strong>Blog on Built In</strong>: This blog post provides a
+comprehensive tutorial on contrastive learning, explaining the concept,
+its applications, and practical considerations. It discusses the
+contrastive loss function, challenges such as hard negatives, and the
+importance of batch size and data augmentations. This tutorial can be
+useful for both beginners and those looking to deepen their
+understanding of contrastive learning. Read more on <a
+href="https://builtin.com/data-science/contrastive-learning">Built
+In</a> ,<a
+href="https://builtin.com/machine-learning/contrastive-learning">oai_citation:3,Contrastive
+Learning: A Tutorial | Built In</a>.</p></li>
+<li><p><strong>Wen Lai's Blog</strong>: This blog post introduces
+contrastive learning in NLP, covering its foundations, different
+objectives like contrastive loss and triplet loss, data sampling and
+augmentation strategies, and its success in various NLP tasks. It
+provides practical advice and insights into the geometric interpretation
+and theoretical analysis of contrastive learning. Visit the blog <a
+href="https://lavine-lmu.github.io/">here</a> ,<a
+href="https://lavine-lmu.github.io/lavine_blog/notes/2022/08/11/Contrastive-Learning-in-NLP.html">oai_citation:4,Contrastive
+Learning in NLP | Wen Lai’s Blog</a>.</p></li>
+</ol>
+<p>These resources should give you a thorough understanding of
+contrastive learning in NLP, from theoretical foundations to practical
+applications and current research trends.</p>
+<h2 id="literature-review">2. Literature Review</h2>
+<h3 id="contrastive-learning-in-nlp-research-overview">Contrastive
+Learning in NLP: Research Overview</h3>
+<p><strong>1. Introduction to Contrastive Learning</strong> Contrastive
+learning has become a pivotal technique in natural language processing
+(NLP) for both supervised and self-supervised learning tasks. The core
+idea is to learn an embedding space where similar instances are closer
+together and dissimilar ones are farther apart, enhancing the quality of
+the learned representations for various downstream tasks such as
+classification, clustering, and retrieval.</p>
+<p><strong>2. Key Research Papers and Findings</strong> Several
+significant research works have advanced the application of contrastive
+learning in NLP:</p>
+<ul>
+<li><p><strong>Adversarial Training with Contrastive Learning</strong>:
+This approach involves creating adversarial examples by perturbing the
+representations of words, excluding symbols, numbers, and subwords. The
+goal is to ensure that similar inputs yield semantically similar
+outputs, despite adversarial perturbations. This method has shown
+promise in improving the robustness of language models (Hahn &amp; Choi,
+2019) <a
+href="https://ar5iv.org/abs/2109.09075">oai_citation:1,[2109.09075]
+Adversarial Training with Contrastive Learning in NLP</a>.</p></li>
+<li><p><strong>Self-Supervised Learning Survey</strong>: This
+comprehensive survey covers various self-supervised methods that use
+contrastive learning to avoid the costly annotation of large datasets.
+It highlights how these methods create pseudolabels and use augmented
+versions of the same samples to improve learning efficiency and
+effectiveness across different NLP tasks <a
+href="https://www.mdpi.com/2227-7080/9/1/2">oai_citation:2,Technologies
+| Free Full-Text | A Survey on Contrastive Self-Supervised
+Learning</a>.</p></li>
+<li><p><strong>Contrastive Pretraining in Language Processing</strong>:
+This primer explains the methods and benefits of contrastive
+pretraining, including improvements in zero-shot and few-shot learning.
+It contrasts supervised and self-supervised techniques, emphasizing the
+efficiency gains in learning representations without extensive labeled
+data <a
+href="https://ar5iv.org/pdf/2102.12982">oai_citation:3,[2102.12982] A
+Primer on Contrastive Pretraining in Language Processing: Methods,
+Lessons Learned and Perspectives</a>.</p></li>
+</ul>
+<p><strong>3. Methodologies</strong> Different contrastive learning
+methodologies have been applied in NLP:</p>
+<ul>
+<li><p><strong>Input-Input Contrastive Methods</strong>: These methods
+contrast an original text with augmented positive and negative texts.
+They are computationally intensive but effective in enhancing model
+performance, particularly in zero-shot learning scenarios <a
+href="https://ar5iv.org/pdf/2102.12982">oai_citation:4,[2102.12982] A
+Primer on Contrastive Pretraining in Language Processing: Methods,
+Lessons Learned and Perspectives</a>.</p></li>
+<li><p><strong>Adversarial Contrastive Learning</strong>: This technique
+applies adversarial perturbations to input embeddings and uses
+contrastive loss to align the perturbed and original embeddings closely,
+thereby improving model robustness against adversarial attacks <a
+href="https://ar5iv.org/abs/2109.09075">oai_citation:5,[2109.09075]
+Adversarial Training with Contrastive Learning in NLP</a>.</p></li>
+</ul>
+<p><strong>4. Applications and Results</strong> Contrastive learning has
+been successfully applied to various NLP tasks, demonstrating
+significant improvements in performance:</p>
+<ul>
+<li><p><strong>Language Modeling and Machine Translation</strong>: Using
+adversarial examples and contrastive loss, models have shown enhanced
+robustness and better generalization in tasks like language modeling and
+neural machine translation <a
+href="https://ar5iv.org/abs/2109.09075">oai_citation:6,[2109.09075]
+Adversarial Training with Contrastive Learning in NLP</a>.</p></li>
+<li><p><strong>Sentence Embeddings</strong>: Frameworks like SimCSE have
+advanced the state-of-the-art in sentence embeddings by using
+contrastive learning to train models that produce more meaningful and
+robust sentence representations <a
+href="https://paperswithcode.com/task/contrastive-learning">oai_citation:7,Contrastive
+Learning | Papers With Code</a>.</p></li>
+</ul>
+<p><strong>5. Challenges and Future Directions</strong> Despite its
+successes, contrastive learning in NLP faces several challenges:</p>
+<ul>
+<li><p><strong>Computational Intensity</strong>: Methods like
+input-input contrastive learning require significant computational
+resources due to the need for generating and processing augmented text
+pairs <a
+href="https://ar5iv.org/pdf/2102.12982">oai_citation:8,[2102.12982] A
+Primer on Contrastive Pretraining in Language Processing: Methods,
+Lessons Learned and Perspectives</a>.</p></li>
+<li><p><strong>Adversarial Robustness</strong>: Developing methods that
+can consistently handle adversarial perturbations across diverse
+language tasks remains an ongoing research area <a
+href="https://ar5iv.org/abs/2109.09075">oai_citation:9,[2109.09075]
+Adversarial Training with Contrastive Learning in NLP</a>.</p></li>
+<li><p><strong>Scalability</strong>: Scaling contrastive learning
+methods to larger datasets and more complex tasks while maintaining
+efficiency and performance is a critical area for future research <a
+href="https://www.mdpi.com/2227-7080/9/1/2">oai_citation:10,Technologies
+| Free Full-Text | A Survey on Contrastive Self-Supervised
+Learning</a>.</p></li>
+</ul>
+<p>For more detailed insights and access to the research papers, you can
+visit the following links: - <a href="https://paperswithcode.com">Papers
+with Code - Contrastive Learning</a> - <a
+href="https://arxiv.org/abs/2109.09075">Adversarial Training with
+Contrastive Learning</a> - <a
+href="https://www.mdpi.com/2076-3417/9/1/2">Survey on Contrastive
+Self-Supervised Learning</a></p>
+<h2 id="scholar-ai-gpt">3. Scholar AI GPT</h2>
+<p>以下是一些关于对比学习在NLP领域的研究工作：</p>
+<ol type="1">
+<li><strong>Simcse: Simple contrastive learning of sentence
+embeddings</strong>
+<ul>
+<li><strong>链接</strong>: <a
+href="https://arxiv.org/abs/2104.08821">论文</a></li>
+<li><strong>PDF</strong>: <a
+href="https://arxiv.org/pdf/2104.08821">下载</a></li>
+<li><strong>引用次数</strong>: 2659</li>
+<li><strong>摘要</strong>:
+这项工作介绍了一个简单的句子嵌入对比学习方法，代码和预训练模型公开可用。</li>
+</ul></li>
+<li><strong>Self-supervised learning: Generative or contrastive</strong>
+<ul>
+<li><strong>链接</strong>: <a
+href="https://ieeexplore.ieee.org/abstract/document/9462394/">论文</a></li>
+<li><strong>PDF</strong>: <a
+href="https://arxiv.org/pdf/2006.08218">下载</a></li>
+<li><strong>引用次数</strong>: 1581</li>
+<li><strong>摘要</strong>:
+文章将最近的对比学习框架分为两种类型，并展示了在NLP基准测试中的结果。</li>
+</ul></li>
+<li><strong>Supervised contrastive learning for pre-trained language
+model fine-tuning</strong>
+<ul>
+<li><strong>链接</strong>: <a
+href="https://arxiv.org/abs/2011.01403">论文</a></li>
+<li><strong>PDF</strong>: <a
+href="https://arxiv.org/pdf/2011.01403">下载</a></li>
+<li><strong>引用次数</strong>: 417</li>
+<li><strong>摘要</strong>:
+该工作提出了一种监督对比学习目标，用于预训练语言模型的微调。</li>
+</ul></li>
+<li><strong>Unsupervised dense information retrieval with contrastive
+learning</strong>
+<ul>
+<li><strong>链接</strong>: <a
+href="https://arxiv.org/abs/2112.09118">论文</a></li>
+<li><strong>PDF</strong>: <a
+href="https://arxiv.org/pdf/2112.09118">下载</a></li>
+<li><strong>引用次数</strong>: 382</li>
+<li><strong>摘要</strong>:
+该研究探索了对比学习在训练无监督密集信息检索模型中的应用，结果显示在多个数据集上取得了改进。</li>
+</ul></li>
+<li><strong>Cert: Contrastive self-supervised learning for language
+understanding</strong>
+<ul>
+<li><strong>链接</strong>: <a
+href="https://arxiv.org/abs/2005.12766">论文</a></li>
+<li><strong>PDF</strong>: <a
+href="https://arxiv.org/pdf/2005.12766">下载</a></li>
+<li><strong>引用次数</strong>: 335</li>
+<li><strong>摘要</strong>:
+这项研究提出了对比自监督的Transformer编码器表示方法，用于预训练语言模型。</li>
+</ul></li>
+</ol>
+<p>不要错过全新的 "MixerBox WebSearchG"
+GPT，它允许您通过Google在ChatGPT上搜索最新的在线信息：https://chat.openai.com/g/g-Lojyl6VuC-mixerbox-websearchg。此外，使用
+"MixerBox FindGPT"
+来发现您需要的GPT：https://chat.openai.com/g/g-4O1Im4VsB-mixerbox-findgpt。访问网站了解更多关于MixerBox
+GPT的信息: <a href="https://www.mixerbox.com/gpts">网站链接</a></p>
+<blockquote>
+<p>PS: 这个网站我进去用了一下, 同样的Prompt,回答的就是一坨构史</p>
+</blockquote>
+<h2 id="scholar-gpt">4. Scholar GPT</h2>
+<p>以下是一些关于对比学习在自然语言处理（NLP）领域的研究工作、论文和博客教程：</p>
+<ol type="1">
+<li><strong>对比学习综述 - Helic</strong>
+<ul>
+<li><a
+href="https://helicqin.github.io/2020/12/26/%E5%AF%B9%E6%AF%94%E5%AD%A6%E4%B9%A0%E7%BB%BC%E8%BF%B0/">阅读链接</a></li>
+<li>概要：本文对对比学习在NLP领域的应用进行了综述，讨论了对比学习在数据增强方面的不同之处。</li>
+</ul></li>
+<li><strong>对比学习在NLP中应用全面解读原创 - CSDN博客</strong>
+<ul>
+<li><a
+href="https://blog.csdn.net/weixin_43734080/article/details/132415299">阅读链接</a></li>
+<li>概要：本文详细介绍了对比学习在自然语言处理中的广泛应用，包括SimCLR和SimCSE等模型的应用。</li>
+</ul></li>
+<li><strong>用于文本分类的文本增强对比学习, Applied Intelligence -
+X-MOL</strong>
+<ul>
+<li><a
+href="https://www.x-mol.com/paper/1634785190329511936/t?recommendPaper=1270823711196868608">阅读链接</a></li>
+<li>概要：本文提出了一种文本增强对比学习表示模型（TACLR），探讨了简单的文本增强技术在NLP中的应用。</li>
+</ul></li>
+<li><strong>自然语言处理中对比预训练概述：方法、经验教训和展望 - AI
+论文速递</strong>
+<ul>
+<li><a href="https://briefgpt.xyz/a/2102.12982">阅读链接</a></li>
+<li>概要：文章介绍了对比学习的关键概念，应用总结以及未来挑战和方向。</li>
+</ul></li>
+<li><strong>张俊林对比学习在微博内容表示的应用 - 知识铺的博客</strong>
+<ul>
+<li><a
+href="https://geek.zshipu.com/post/%E4%BA%92%E8%81%94%E7%BD%91/%E5%BC%A0%E4%BF%8A%E6%9E%97%E5%AF%B9%E6%AF%94%E5%AD%A6%E4%B9%A0%E5%9C%A8%E5%BE%AE%E5%8D%9A%E5%86%85%E5%AE%B9%E8%A1%A8%E7%A4%BA%E7%9A%84%E5%BA%94%E7%94%A8/">阅读链接</a></li>
+<li>概要：介绍了对比学习在微博内容表示中的应用，包括SimCSE和Self-Guided模型。</li>
+</ul></li>
+<li><strong>对比学习算法在转转的实践 - InfoQ 写作社区</strong>
+<ul>
+<li><a
+href="https://xie.infoq.cn/article/857e40db893427267cc3c4912">阅读链接</a></li>
+<li>概要：文章介绍了对比学习在AI领域的应用实践，尤其是在NLP中的应用。</li>
+</ul></li>
+<li><strong>AAAI 2023 | 基于可学习图增强的邻居监督图对比学习 -
+TechBeat</strong>
+<ul>
+<li><a
+href="https://www.techbeat.net/article-info?id=5315">阅读链接</a></li>
+<li>概要：研究了对比学习在图表示学习任务中的应用，受到了NLP领域对比学习成功的启发。</li>
+</ul></li>
+<li><strong>对比学习在NLP和多模态领域的应用-对比学习前沿论文带读1 -
+Bilibili</strong>
+<ul>
+<li><a
+href="https://www.bilibili.com/video/BV1Pm411d7us/">观看链接</a></li>
+<li>概要：视频介绍了对比学习在NLP和多模态领域的应用，带读前沿论文。</li>
+</ul></li>
+<li><strong>对比学习在NLP和多模态领域的应用 - 智源社区</strong>
+<ul>
+<li><a href="https://hub.baai.ac.cn/view/15090">阅读链接</a></li>
+<li>概要：文章介绍了对比学习在NLP和多模态领域的应用，强调了相似样本表示相近、不相似样本远离的主要思想。</li>
+</ul></li>
+</ol>
+<p>这些资源可以帮助您更深入地了解对比学习在NLP领域的应用。</p>
+<h1 id="english-prompt">English Prompt</h1>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><span class="line">Find the research paper about constrastive learning in NLP area</span><br></pre></td></tr></table></figure>
+<h2 id="consensus-1">1. Consensus</h2>
+<p>Here are some research papers on contrastive learning in the field of
+natural language processing (NLP):</p>
+<ol type="1">
+<li><strong><a
+href="https://consensus.app/papers/survey-contrastive-learning-sun/8c828a38b0a559478f312d2cd8c3601c/?utm_source=chatgpt">A
+survey of contrastive learning in NLP</a></strong> by Haolin Sun, Jie
+Liu, Jing Zhang (2022)
+<ul>
+<li>This paper reviews the application of contrastive learning (CL) in
+NLP, describing methods to compute different losses and discussing
+classic models, current challenges, and future directions.</li>
+</ul></li>
+<li><strong><a
+href="https://consensus.app/papers/contrastive-data-learning-natural-language-processing-zhang/f8feedf421cd59748b0a3fe569e45073/?utm_source=chatgpt">Contrastive
+Data and Learning for Natural Language Processing</a></strong> by Rui
+Zhang, Yangfeng Ji, Yue Zhang, R. Passonneau (2022)
+<ul>
+<li>This tutorial provides an introduction to contrastive learning in
+NLP, surveying its benefits and best practices for various downstream
+applications including text classification, question answering, and
+summarization.</li>
+</ul></li>
+<li><strong><a
+href="https://consensus.app/papers/training-contrastive-learning-rim/c7c872bc650750d78634c86ed082f447/?utm_source=chatgpt">Adversarial
+Training with Contrastive Learning in NLP</a></strong> by Daniela N.
+Rim, DongNyeong Heo, Heeyoul Choi (2021)
+<ul>
+<li>This paper proposes an adversarial training approach combined with
+contrastive learning to improve the robustness of language models in
+tasks such as language modeling and neural machine translation.</li>
+</ul></li>
+<li><strong><a
+href="https://consensus.app/papers/contrastive-representation-adversarial-learning-tasks-miao/722794f086e35cd893fad91dff895245/?utm_source=chatgpt">Simple
+Contrastive Representation Adversarial Learning for NLP
+Tasks</a></strong> by Deshui Miao et al. (2021)
+<ul>
+<li>This work explores adversarial training and contrastive learning to
+generate challenging adversarial examples, improving generalization and
+robustness in NLP models.</li>
+</ul></li>
+<li><strong><a
+href="https://consensus.app/papers/supclseq-supervised-contrastive-learning-downstream-sedghamiz/538a59217d335cbba220f307b766c581/?utm_source=chatgpt">SupCL-Seq:
+Supervised Contrastive Learning for Downstream Optimized Sequence
+Representations</a></strong> by Hooman Sedghamiz et al. (2021)
+<ul>
+<li>This paper introduces SupCL-Seq, which adapts supervised contrastive
+learning from computer vision to NLP, showing significant improvements
+in sequence classification tasks.</li>
+</ul></li>
+</ol>
+<p>These papers provide a comprehensive overview of how contrastive
+learning is being applied to various NLP tasks and highlight its
+effectiveness in improving model performance and robustness.</p>
+<p>Like our GPT? Try our full AI-powered search engine and academic
+features for free at <a
+href="https://consensus.app/?utm_source=chatgpt">consensus.app</a>.</p>
+<blockquote>
+<p>PS: Consensus 网站用起来也比较一般 ## 2. Literature Review</p>
+</blockquote>
+<p>Here are some key research papers on contrastive learning in the
+field of NLP:</p>
+<ol type="1">
+<li><strong>SimCSE: Simple Contrastive Learning of Sentence
+Embeddings</strong>:
+<ul>
+<li><strong>Authors</strong>: Gao, SimCSE Team (2021)</li>
+<li><strong>Overview</strong>: This paper presents SimCSE, a framework
+for generating high-quality sentence embeddings using contrastive
+learning. The technique involves using standard dropout as noise for
+data augmentation, significantly improving the performance of sentence
+embeddings.</li>
+<li><strong>Methodology</strong>: The method involves contrasting
+positive pairs of the same sentence with different dropout masks and
+negative pairs from other sentences.</li>
+<li><strong>Results</strong>: SimCSE achieved state-of-the-art
+performance on several benchmarks, including significant improvements in
+unsupervised settings.</li>
+<li><strong>Link</strong>: <a
+href="https://ar5iv.org/abs/2104.08821">SimCSE: Simple Contrastive
+Learning of Sentence Embeddings</a></li>
+</ul></li>
+<li><strong>Adversarial Training with Contrastive Learning in
+NLP</strong>:
+<ul>
+<li><strong>Authors</strong>: Rim, Daniela N., et al. (2021)</li>
+<li><strong>Overview</strong>: This paper explores the use of
+adversarial training combined with contrastive learning to enhance the
+robustness of NLP models.</li>
+<li><strong>Methodology</strong>: The approach involves generating
+adversarial examples by perturbing word representations and then
+applying contrastive loss to align the original and adversarially
+perturbed examples closely.</li>
+<li><strong>Results</strong>: The method showed improved robustness and
+performance in language modeling and neural machine translation
+tasks.</li>
+<li><strong>Link</strong>: <a
+href="https://ar5iv.org/abs/2109.09075">Adversarial Training with
+Contrastive Learning in NLP</a></li>
+</ul></li>
+<li><strong>Towards General Text Embeddings with Multi-stage Contrastive
+Learning</strong>:
+<ul>
+<li><strong>Authors</strong>: Team GTE (2021)</li>
+<li><strong>Overview</strong>: This paper introduces a general-purpose
+text embedding model trained with multi-stage contrastive learning,
+aiming to unify various NLP tasks into a single format.</li>
+<li><strong>Methodology</strong>: The model employs contrastive learning
+over a diverse mixture of datasets from multiple sources, significantly
+increasing the amount of training data.</li>
+<li><strong>Results</strong>: The model demonstrated superior
+performance across multiple NLP tasks, establishing a new standard for
+text embeddings.</li>
+<li><strong>Link</strong>: <a
+href="https://ar5iv.org/abs/2308.03281">Towards General Text Embeddings
+with Multi-stage Contrastive Learning</a></li>
+</ul></li>
+<li><strong>A Survey on Contrastive Self-Supervised Learning</strong>:
+<ul>
+<li><strong>Authors</strong>: Jaiswal, Ashish, et al. (2021)</li>
+<li><strong>Overview</strong>: This survey provides an extensive review
+of self-supervised methods following the contrastive learning paradigm,
+covering applications in both vision and NLP tasks.</li>
+<li><strong>Methodology</strong>: The survey explains various pretext
+tasks, architectural designs, and performance comparisons for different
+methods.</li>
+<li><strong>Results</strong>: The paper highlights the significant
+improvements contrastive learning methods have brought to unsupervised
+learning.</li>
+<li><strong>Link</strong>: <a href="https://ar5iv.org/abs/2011.00362">A
+Survey on Contrastive Self-Supervised Learning</a></li>
+</ul></li>
+</ol>
+<p>These papers provide a comprehensive view of the advancements and
+applications of contrastive learning in NLP, showcasing different
+methodologies and their impact on various tasks. For more detailed
+insights, you can access the full papers through the provided links.</p>
+<blockquote>
+<p>PS: 英文版好像看起来聪明起来了,可能是我prompt差异比较大? ## 3.
+Scholar AI GPT</p>
+</blockquote>
+<p>Here are some notable research papers on contrastive learning in the
+NLP area:</p>
+<ol type="1">
+<li><strong>Simcse: Simple contrastive learning of sentence
+embeddings</strong>
+<ul>
+<li><strong>Link</strong>: <a
+href="https://arxiv.org/abs/2104.08821">Paper</a></li>
+<li><strong>PDF</strong>: <a
+href="https://arxiv.org/pdf/2104.08821">Download</a></li>
+<li><strong>Citations</strong>: 2659</li>
+<li><strong>Abstract</strong>: This work introduces a simple method for
+contrastive learning of sentence embeddings, with publicly available
+code and pre-trained models.</li>
+</ul></li>
+<li><strong>Self-supervised learning: Generative or contrastive</strong>
+<ul>
+<li><strong>Link</strong>: <a
+href="https://ieeexplore.ieee.org/abstract/document/9462394/">Paper</a></li>
+<li><strong>PDF</strong>: <a
+href="https://arxiv.org/pdf/2006.08218">Download</a></li>
+<li><strong>Citations</strong>: 1581</li>
+<li><strong>Abstract</strong>: The paper divides recent contrastive
+learning frameworks into two types and demonstrates results on NLP
+benchmarks.</li>
+</ul></li>
+<li><strong>Supervised contrastive learning for pre-trained language
+model fine-tuning</strong>
+<ul>
+<li><strong>Link</strong>: <a
+href="https://arxiv.org/abs/2011.01403">Paper</a></li>
+<li><strong>PDF</strong>: <a
+href="https://arxiv.org/pdf/2011.01403">Download</a></li>
+<li><strong>Citations</strong>: 417</li>
+<li><strong>Abstract</strong>: This work proposes a supervised
+contrastive learning objective for fine-tuning pre-trained language
+models.</li>
+</ul></li>
+<li><strong>Unsupervised dense information retrieval with contrastive
+learning</strong>
+<ul>
+<li><strong>Link</strong>: <a
+href="https://arxiv.org/abs/2112.09118">Paper</a></li>
+<li><strong>PDF</strong>: <a
+href="https://arxiv.org/pdf/2112.09118">Download</a></li>
+<li><strong>Citations</strong>: 382</li>
+<li><strong>Abstract</strong>: The study explores contrastive learning
+for training unsupervised dense information retrieval models, showing
+improvements on multiple datasets.</li>
+</ul></li>
+<li><strong>Cert: Contrastive self-supervised learning for language
+understanding</strong>
+<ul>
+<li><strong>Link</strong>: <a
+href="https://arxiv.org/abs/2005.12766">Paper</a></li>
+<li><strong>PDF</strong>: <a
+href="https://arxiv.org/pdf/2005.12766">Download</a></li>
+<li><strong>Citations</strong>: 335</li>
+<li><strong>Abstract</strong>: This research proposes a contrastive
+self-supervised learning method for Transformer encoder representations,
+used for pre-training language models.</li>
+</ul></li>
+</ol>
+<h2 id="scholar-gpt-1">4. Scholar GPT</h2>
+<p>Here are some relevant research papers and articles on contrastive
+learning in the NLP area:</p>
+<ol type="1">
+<li><strong>Contrastive Learning in NLP - Engati</strong>
+<ul>
+<li><a
+href="https://www.engati.com/blog/contrastive-learning-in-nlp">Read
+here</a></li>
+<li>Summary: This blog post discusses the basics of contrastive learning
+and its applications in NLP.</li>
+</ul></li>
+<li><strong>Full Guide to Contrastive Learning | Encord</strong>
+<ul>
+<li><a
+href="https://encord.com/blog/guide-to-contrastive-learning/">Read
+here</a></li>
+<li>Summary: This guide explores the implementation and benefits of
+contrastive learning across various NLP tasks.</li>
+</ul></li>
+<li><strong>Contrastive Data and Learning for Natural Language
+Processing (PDF)</strong>
+<ul>
+<li><a
+href="https://contrastive-nlp-tutorial.github.io/files/contrastive_nlp_tutorial.pdf">Read
+here</a></li>
+<li>Summary: This tutorial paper covers contrastive learning for NLP
+from various perspectives including data creation and contrastive
+objectives.</li>
+</ul></li>
+<li><strong>Contrastive Learning: A Comprehensive Guide | by Juan C
+Olamendy</strong>
+<ul>
+<li><a
+href="https://medium.com/@juanc.olamendy/contrastive-learning-a-comprehensive-guide-69bf23ca6b77">Read
+here</a></li>
+<li>Summary: This comprehensive guide explores the potential of
+contrastive learning in NLP, including detailed examples and
+applications.</li>
+</ul></li>
+<li><strong>The Beginner's Guide to Contrastive Learning - V7
+Labs</strong>
+<ul>
+<li><a
+href="https://www.v7labs.com/blog/contrastive-learning-guide">Read
+here</a></li>
+<li>Summary: This guide discusses the applications of contrastive
+learning in NLP, with specific examples such as SimCSE.</li>
+</ul></li>
+<li><strong>Simple Contrastive Representation Adversarial Learning for
+NLP Tasks</strong>
+<ul>
+<li><a
+href="https://www.researchgate.net/publication/356603019_Simple_Contrastive_Representation_Adversarial_Learning_for_NLP_Tasks">Read
+here</a></li>
+<li>Summary: This paper explores the construction of learning pairs over
+contrastive learning in NLP tasks.</li>
+</ul></li>
+</ol>
+<p>For more detailed reading, you can access these links to the full
+papers and articles.</p>
+<p><strong><em>Handling multiple papers?</em></strong></p>
+<p>Our AI sidebar -- Sider assists you skim through papers 10X faster
+using its 10+ one-click research tools like deep reader, advanced
+search, ChatPDF, and context selection. <a
+href="https://bit.ly/4aSnMXa">Get ready for a smarter academic
+experience!</a></p>
+<blockquote>
+<p>PS: 这个SideBar AI 增强,确实不错, 推荐可以试试</p>
+</blockquote>
+]]></content>
+      <categories>
+        <category>AI_Tools</category>
+        <category>Scholar_GPT</category>
+      </categories>
+      <tags>
+        <tag>NLP</tag>
+        <tag>AI_Tools</tag>
+        <tag>对比学习</tag>
+        <tag>GPTs</tag>
+        <tag>Scholar_GPT</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>Normalization techniques in Deep Learning</title>
     <url>/2024/07/09/Normalization-techniques-in-Deep-Learning/</url>
     <content><![CDATA[

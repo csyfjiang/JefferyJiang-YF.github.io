@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 7.3.0">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/fire.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/fire.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/fire.png">
+  <link rel="mask-icon" href="/images/fire.png" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Georgia:300,300italic,400,400italic,700,700italic%7CConsolas:300,300italic,400,400italic,700,700italic%7C"Courier+New":300,300italic,400,400italic,700,700italic%7Cmonospace:300,300italic,400,400italic,700,700italic&display=swap&subset=latin,latin-ext">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha256-XOqroi11tY4EFQMR9ZYwZWKj5ZXiftSx36RRuC3anlA=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/themes/blue/pace-theme-minimal.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pace/1.2.4/pace.min.js" integrity="sha256-gqd7YTjg/BtfqWSwsJOvndl0Bxc8gFImLEkXQT8+qj0=" crossorigin="anonymous"></script>
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"jefferyjiang-yf.github.io","root":"/","images":"/images","scheme":"Gemini","darkmode":true,"version":"8.20.0","exturl":false,"sidebar":{"position":"left","width_expanded":320,"width_dual_column":240,"display":"post","padding":18,"offset":12},"hljswrap":true,"copycode":{"enable":true,"style":"mac"},"fold":{"enable":true,"height":500},"bookmark":{"enable":true,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":true,"comments":{"style":"tabs","active":"giscus","storage":true,"lazyload":true,"nav":null,"activeClass":"giscus"},"stickytabs":true,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"i18n":{"placeholder":"Searching...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":true,"preload":true}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="导读: 对比学习在自然语言处理（NLP）领域的应用研究正在不断深入。本文旨在评估四款主要的GPT模型，即Consensus、Literature Review、Scholar AI GPT和Scholar GPT，通过它们在检索对比学习相关研究工作、博客和视频教程等资源方面的表现进行测评。这些模型各具特色，能够提供不同层次的学术支持和实际应用建议。测评内容包括模型在搜索相关研究资源的精准度、提供信">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Comparasion the GPTs with scholar-target used in CN and EN prompt">
+<meta property="og:url" content="https://jefferyjiang-yf.github.io/2024/07/12/Comparasion-the-GPTs-with-scholar-target-used-in-CN-and-EN-prompt/index.html">
+<meta property="og:site_name" content="Jeffrey Blog">
+<meta property="og:description" content="导读: 对比学习在自然语言处理（NLP）领域的应用研究正在不断深入。本文旨在评估四款主要的GPT模型，即Consensus、Literature Review、Scholar AI GPT和Scholar GPT，通过它们在检索对比学习相关研究工作、博客和视频教程等资源方面的表现进行测评。这些模型各具特色，能够提供不同层次的学术支持和实际应用建议。测评内容包括模型在搜索相关研究资源的精准度、提供信">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://pic.imgdb.cn/item/66909a02d9c307b7e9d3aefb.png">
+<meta property="article:published_time" content="2024-07-12T10:43:16.000Z">
+<meta property="article:modified_time" content="2024-07-12T03:08:36.404Z">
+<meta property="article:author" content="Jeffrey Jiang">
+<meta property="article:tag" content="NLP">
+<meta property="article:tag" content="AI_Tools">
+<meta property="article:tag" content="对比学习">
+<meta property="article:tag" content="GPTs">
+<meta property="article:tag" content="Scholar_GPT">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic.imgdb.cn/item/66909a02d9c307b7e9d3aefb.png">
+
+
+<link rel="canonical" href="https://jefferyjiang-yf.github.io/2024/07/12/Comparasion-the-GPTs-with-scholar-target-used-in-CN-and-EN-prompt/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"en","comments":true,"permalink":"https://jefferyjiang-yf.github.io/2024/07/12/Comparasion-the-GPTs-with-scholar-target-used-in-CN-and-EN-prompt/","path":"2024/07/12/Comparasion-the-GPTs-with-scholar-target-used-in-CN-and-EN-prompt/","title":"Comparasion the GPTs with scholar-target used in CN and EN prompt"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Comparasion the GPTs with scholar-target used in CN and EN prompt | Jeffrey Blog</title>
+  
+
+
+
+
+
+
+
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="Toggle navigation bar" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Jeffrey Blog</p>
+      <i class="logo-line"></i>
+    </a>
+      <p class="site-subtitle" itemprop="description">Record the growth of life</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="Search" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-主页|home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>主页|Home</a></li><li class="menu-item menu-item-关于|about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于|About</a></li><li class="menu-item menu-item-标签|tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签|Tags</a></li><li class="menu-item menu-item-分类|categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类|Categories</a></li><li class="menu-item menu-item-归档|archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档|Archives</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>Search
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+      <div class="search-header">
+        <span class="search-icon">
+          <i class="fa fa-search"></i>
+        </span>
+        <div class="search-input-container">
+          <input autocomplete="off" autocapitalize="off" maxlength="80"
+                placeholder="Searching..." spellcheck="false"
+                type="search" class="search-input">
+        </div>
+        <span class="popup-btn-close" role="button">
+          <i class="fa fa-times-circle"></i>
+        </span>
+      </div>
+      <div class="search-result-container">
+        <div class="search-result-icon">
+          <i class="fa fa-spinner fa-pulse fa-5x"></i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          Table of Contents
+        </li>
+        <li class="sidebar-nav-overview">
+          Overview
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%AF%BC%E8%AF%BB"><span class="nav-number">1.</span> <span class="nav-text">导读:</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%AD%E6%96%87-prompt"><span class="nav-number">2.</span> <span class="nav-text">中文 Prompt</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#consensus"><span class="nav-number">2.1.</span> <span class="nav-text">1. Consensus</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#literature-review"><span class="nav-number">2.2.</span> <span class="nav-text">2. Literature Review</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#contrastive-learning-in-nlp-research-overview"><span class="nav-number">2.2.1.</span> <span class="nav-text">Contrastive
+Learning in NLP: Research Overview</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#scholar-ai-gpt"><span class="nav-number">2.3.</span> <span class="nav-text">3. Scholar AI GPT</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#scholar-gpt"><span class="nav-number">2.4.</span> <span class="nav-text">4. Scholar GPT</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#english-prompt"><span class="nav-number">3.</span> <span class="nav-text">English Prompt</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#consensus-1"><span class="nav-number">3.1.</span> <span class="nav-text">1. Consensus</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#scholar-gpt-1"><span class="nav-number">3.2.</span> <span class="nav-text">4. Scholar GPT</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Jeffrey Jiang"
+      src="/images/avatar.jpg">
+  <p class="site-author-name" itemprop="name">Jeffrey Jiang</p>
+  <div class="site-description" itemprop="description">The blog of Jeffery Jiang</div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">7</span>
+          <span class="site-state-item-name">posts</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">categories</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">tags</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/JefferyJiang-YF" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;JefferyJiang-YF" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/905152222jyf@gmail.com" title="E-Mail → 905152222jyf@gmail.com" rel="noopener me"><i class="fa fa-envelope fa-fw"></i></a>
+      </span>
+  </div>
+  <div class="cc-license animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/en" class="cc-opacity" rel="noopener" target="_blank"><img src="https://cdnjs.cloudflare.com/ajax/libs/creativecommons-vocabulary/2020.11.3/assets/license_badges/small/by_nc_sa.svg" alt="Creative Commons"></a>
+  </div>
+
+  <div class="links-of-recent-posts motion-element">
+    <div class="links-of-recent-posts-title">
+      <i class="fa fa-history fa-fw"></i>
+      最近文章
+    </div>
+    <ul class="links-of-recent-posts-list">
+        <li class="links-of-recent-posts-item">
+          <a href="/2024/07/12/Comparasion-the-GPTs-with-scholar-target-used-in-CN-and-EN-prompt/" title="2024&#x2F;07&#x2F;12&#x2F;Comparasion-the-GPTs-with-scholar-target-used-in-CN-and-EN-prompt&#x2F;">Comparasion the GPTs with scholar-target used in CN and EN prompt</a>
+        </li>
+        <li class="links-of-recent-posts-item">
+          <a href="/2024/07/11/%E6%9C%AA%E6%9D%A5%E5%B7%B2%E6%9D%A5%EF%BC%9A%E6%8F%AD%E7%A7%98%E4%B8%8B%E4%B8%80%E4%BB%A3%E6%99%BA%E8%83%BD%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B%E7%9A%84%E8%87%AA%E6%88%91%E5%AD%A6%E4%B9%A0%E9%9D%A9%E5%91%BD-%E6%96%B0%E6%A8%A1%E5%9E%8BTTT%E6%AD%A3%E9%9D%A9%E6%96%B0%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%BA%95%E5%B1%82%E6%9E%B6%E6%9E%84/" title="2024&#x2F;07&#x2F;11&#x2F;未来已来：揭秘下一代智能语言模型的自我学习革命-新模型TTT正革新大模型底层架构&#x2F;">TTT人话版解读-Learning-to-Learn-at-Test-Time-RNNs-with-Expressive-Hidden-States</a>
+        </li>
+        <li class="links-of-recent-posts-item">
+          <a href="/2024/07/09/Normalization-techniques-in-Deep-Learning/" title="2024&#x2F;07&#x2F;09&#x2F;Normalization-techniques-in-Deep-Learning&#x2F;">Normalization techniques in Deep Learning</a>
+        </li>
+        <li class="links-of-recent-posts-item">
+          <a href="/2024/07/09/Learning-to-Learn-at-Test-Time-RNNs-with-Expressive-Hidden-States/" title="2024&#x2F;07&#x2F;09&#x2F;Learning-to-Learn-at-Test-Time-RNNs-with-Expressive-Hidden-States&#x2F;">Learning to Learn at Test Time RNNs with Expressive Hidden States</a>
+        </li>
+        <li class="links-of-recent-posts-item">
+          <a href="/2024/07/09/Statistical-Information-in-NLP/" title="2024&#x2F;07&#x2F;09&#x2F;Statistical-Information-in-NLP&#x2F;">Statistical Information in NLP</a>
+        </li>
+    </ul>
+  </div>
+        </div>
+      </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="en">
+    <link itemprop="mainEntityOfPage" href="https://jefferyjiang-yf.github.io/2024/07/12/Comparasion-the-GPTs-with-scholar-target-used-in-CN-and-EN-prompt/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="Jeffrey Jiang">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Jeffrey Blog">
+      <meta itemprop="description" content="The blog of Jeffery Jiang">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Comparasion the GPTs with scholar-target used in CN and EN prompt | Jeffrey Blog">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Comparasion the GPTs with scholar-target used in CN and EN prompt
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">Posted on</span>
+      
+
+      <time title="Created: 2024-07-12 10:43:16 / Modified: 03:08:36" itemprop="dateCreated datePublished" datetime="2024-07-12T10:43:16Z">2024-07-12</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">In</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/AI-Tools/" itemprop="url" rel="index"><span itemprop="name">AI_Tools</span></a>
+        </span>
+          , 
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/AI-Tools/Scholar-GPT/" itemprop="url" rel="index"><span itemprop="name">Scholar_GPT</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="Views" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">Views: </span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+    <span class="post-meta-break"></span>
+    <span class="post-meta-item" title="Word count in article">
+      <span class="post-meta-item-icon">
+        <i class="far fa-file-word"></i>
+      </span>
+      <span class="post-meta-item-text">Word count in article: </span>
+      <span>15k</span>
+    </span>
+    <span class="post-meta-item" title="Reading time">
+      <span class="post-meta-item-icon">
+        <i class="far fa-clock"></i>
+      </span>
+      <span class="post-meta-item-text">Reading time &asymp;</span>
+      <span>14 mins.</span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody"><h1 id="导读">导读:</h1>
+<p>对比学习在自然语言处理（NLP）领域的应用研究正在不断深入。本文旨在评估四款主要的GPT模型，即<code>Consensus</code>、<code>Literature Review</code>、<code>Scholar AI GPT</code>和<code>Scholar GPT</code>，通过它们在检索对比学习相关研究工作、博客和视频教程等资源方面的表现进行测评。这些模型各具特色，能够提供不同层次的学术支持和实际应用建议。测评内容包括模型在搜索相关研究资源的精准度、提供信息的全面性及实用性。通过对比这些模型的表现，旨在帮助研究者和开发者选择最合适的工具，以便高效地获取和利用对比学习在NLP领域的最新进展和应用成果。</p>
+<p><img data-src="https://pic.imgdb.cn/item/66909a02d9c307b7e9d3aefb.png" /></p>
+<h1 id="中文-prompt">中文 Prompt</h1>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">找一些对比学习在NLP领域的相关研究工作,博客视频教程都可以</span><br></pre></td></tr></table></figure>
+<h2 id="consensus">1. Consensus</h2>
+<p>Here are some resources that provide comprehensive insights into
+contrastive learning in the field of natural language processing
+(NLP):</p>
+<ol type="1">
+<li><p><strong>Tutorial at NAACL 2022</strong>: This tutorial provides a
+detailed introduction to the fundamentals of contrastive learning
+approaches and their application in NLP. It includes tutorial slides,
+videos, and a paper reading list. The tutorial covers contrastive
+learning objectives, data sampling and augmentation strategies,
+successful applications, and future directions for using contrastive
+learning in NLP tasks such as text classification, question answering,
+and summarization. You can access the materials <a
+target="_blank" rel="noopener" href="https://contrastive-nlp-tutorial.github.io/">here</a>, <a
+target="_blank" rel="noopener" href="https://contrastive-nlp-tutorial.github.io/">oai_citation:1,Contrastive
+Data and Learning for Natural Language Processing</a>.</p></li>
+<li><p><strong>YouTube Video on Contrastive Learning for Pre-trained
+Language Models</strong>: This video is part of the AACL 2022 tutorial
+series and offers a deep dive into recent advances in pre-trained
+language models using contrastive learning. It's a helpful resource for
+visual learners and can be found on <a
+target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=ACukQV5mjm8">YouTube</a>, <a
+target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=ACukQV5mjm8#:~:text=URL%3A%20https%3A%2F%2Fwww,100">oai_citation:2,Contrastive
+Learning for Pre-trained Language Models | AACL 2022 Tutorial -
+YouTube</a>.</p></li>
+<li><p><strong>Blog on Built In</strong>: This blog post provides a
+comprehensive tutorial on contrastive learning, explaining the concept,
+its applications, and practical considerations. It discusses the
+contrastive loss function, challenges such as hard negatives, and the
+importance of batch size and data augmentations. This tutorial can be
+useful for both beginners and those looking to deepen their
+understanding of contrastive learning. Read more on <a
+target="_blank" rel="noopener" href="https://builtin.com/data-science/contrastive-learning">Built
+In</a> ,<a
+target="_blank" rel="noopener" href="https://builtin.com/machine-learning/contrastive-learning">oai_citation:3,Contrastive
+Learning: A Tutorial | Built In</a>.</p></li>
+<li><p><strong>Wen Lai's Blog</strong>: This blog post introduces
+contrastive learning in NLP, covering its foundations, different
+objectives like contrastive loss and triplet loss, data sampling and
+augmentation strategies, and its success in various NLP tasks. It
+provides practical advice and insights into the geometric interpretation
+and theoretical analysis of contrastive learning. Visit the blog <a
+target="_blank" rel="noopener" href="https://lavine-lmu.github.io/">here</a> ,<a
+target="_blank" rel="noopener" href="https://lavine-lmu.github.io/lavine_blog/notes/2022/08/11/Contrastive-Learning-in-NLP.html">oai_citation:4,Contrastive
+Learning in NLP | Wen Lai’s Blog</a>.</p></li>
+</ol>
+<p>These resources should give you a thorough understanding of
+contrastive learning in NLP, from theoretical foundations to practical
+applications and current research trends.</p>
+<h2 id="literature-review">2. Literature Review</h2>
+<h3 id="contrastive-learning-in-nlp-research-overview">Contrastive
+Learning in NLP: Research Overview</h3>
+<p><strong>1. Introduction to Contrastive Learning</strong> Contrastive
+learning has become a pivotal technique in natural language processing
+(NLP) for both supervised and self-supervised learning tasks. The core
+idea is to learn an embedding space where similar instances are closer
+together and dissimilar ones are farther apart, enhancing the quality of
+the learned representations for various downstream tasks such as
+classification, clustering, and retrieval.</p>
+<p><strong>2. Key Research Papers and Findings</strong> Several
+significant research works have advanced the application of contrastive
+learning in NLP:</p>
+<ul>
+<li><p><strong>Adversarial Training with Contrastive Learning</strong>:
+This approach involves creating adversarial examples by perturbing the
+representations of words, excluding symbols, numbers, and subwords. The
+goal is to ensure that similar inputs yield semantically similar
+outputs, despite adversarial perturbations. This method has shown
+promise in improving the robustness of language models (Hahn &amp; Choi,
+2019) <a
+target="_blank" rel="noopener" href="https://ar5iv.org/abs/2109.09075">oai_citation:1,[2109.09075]
+Adversarial Training with Contrastive Learning in NLP</a>.</p></li>
+<li><p><strong>Self-Supervised Learning Survey</strong>: This
+comprehensive survey covers various self-supervised methods that use
+contrastive learning to avoid the costly annotation of large datasets.
+It highlights how these methods create pseudolabels and use augmented
+versions of the same samples to improve learning efficiency and
+effectiveness across different NLP tasks <a
+target="_blank" rel="noopener" href="https://www.mdpi.com/2227-7080/9/1/2">oai_citation:2,Technologies
+| Free Full-Text | A Survey on Contrastive Self-Supervised
+Learning</a>.</p></li>
+<li><p><strong>Contrastive Pretraining in Language Processing</strong>:
+This primer explains the methods and benefits of contrastive
+pretraining, including improvements in zero-shot and few-shot learning.
+It contrasts supervised and self-supervised techniques, emphasizing the
+efficiency gains in learning representations without extensive labeled
+data <a
+target="_blank" rel="noopener" href="https://ar5iv.org/pdf/2102.12982">oai_citation:3,[2102.12982] A
+Primer on Contrastive Pretraining in Language Processing: Methods,
+Lessons Learned and Perspectives</a>.</p></li>
+</ul>
+<p><strong>3. Methodologies</strong> Different contrastive learning
+methodologies have been applied in NLP:</p>
+<ul>
+<li><p><strong>Input-Input Contrastive Methods</strong>: These methods
+contrast an original text with augmented positive and negative texts.
+They are computationally intensive but effective in enhancing model
+performance, particularly in zero-shot learning scenarios <a
+target="_blank" rel="noopener" href="https://ar5iv.org/pdf/2102.12982">oai_citation:4,[2102.12982] A
+Primer on Contrastive Pretraining in Language Processing: Methods,
+Lessons Learned and Perspectives</a>.</p></li>
+<li><p><strong>Adversarial Contrastive Learning</strong>: This technique
+applies adversarial perturbations to input embeddings and uses
+contrastive loss to align the perturbed and original embeddings closely,
+thereby improving model robustness against adversarial attacks <a
+target="_blank" rel="noopener" href="https://ar5iv.org/abs/2109.09075">oai_citation:5,[2109.09075]
+Adversarial Training with Contrastive Learning in NLP</a>.</p></li>
+</ul>
+<p><strong>4. Applications and Results</strong> Contrastive learning has
+been successfully applied to various NLP tasks, demonstrating
+significant improvements in performance:</p>
+<ul>
+<li><p><strong>Language Modeling and Machine Translation</strong>: Using
+adversarial examples and contrastive loss, models have shown enhanced
+robustness and better generalization in tasks like language modeling and
+neural machine translation <a
+target="_blank" rel="noopener" href="https://ar5iv.org/abs/2109.09075">oai_citation:6,[2109.09075]
+Adversarial Training with Contrastive Learning in NLP</a>.</p></li>
+<li><p><strong>Sentence Embeddings</strong>: Frameworks like SimCSE have
+advanced the state-of-the-art in sentence embeddings by using
+contrastive learning to train models that produce more meaningful and
+robust sentence representations <a
+target="_blank" rel="noopener" href="https://paperswithcode.com/task/contrastive-learning">oai_citation:7,Contrastive
+Learning | Papers With Code</a>.</p></li>
+</ul>
+<p><strong>5. Challenges and Future Directions</strong> Despite its
+successes, contrastive learning in NLP faces several challenges:</p>
+<ul>
+<li><p><strong>Computational Intensity</strong>: Methods like
+input-input contrastive learning require significant computational
+resources due to the need for generating and processing augmented text
+pairs <a
+target="_blank" rel="noopener" href="https://ar5iv.org/pdf/2102.12982">oai_citation:8,[2102.12982] A
+Primer on Contrastive Pretraining in Language Processing: Methods,
+Lessons Learned and Perspectives</a>.</p></li>
+<li><p><strong>Adversarial Robustness</strong>: Developing methods that
+can consistently handle adversarial perturbations across diverse
+language tasks remains an ongoing research area <a
+target="_blank" rel="noopener" href="https://ar5iv.org/abs/2109.09075">oai_citation:9,[2109.09075]
+Adversarial Training with Contrastive Learning in NLP</a>.</p></li>
+<li><p><strong>Scalability</strong>: Scaling contrastive learning
+methods to larger datasets and more complex tasks while maintaining
+efficiency and performance is a critical area for future research <a
+target="_blank" rel="noopener" href="https://www.mdpi.com/2227-7080/9/1/2">oai_citation:10,Technologies
+| Free Full-Text | A Survey on Contrastive Self-Supervised
+Learning</a>.</p></li>
+</ul>
+<p>For more detailed insights and access to the research papers, you can
+visit the following links: - <a target="_blank" rel="noopener" href="https://paperswithcode.com">Papers
+with Code - Contrastive Learning</a> - <a
+target="_blank" rel="noopener" href="https://arxiv.org/abs/2109.09075">Adversarial Training with
+Contrastive Learning</a> - <a
+target="_blank" rel="noopener" href="https://www.mdpi.com/2076-3417/9/1/2">Survey on Contrastive
+Self-Supervised Learning</a></p>
+<h2 id="scholar-ai-gpt">3. Scholar AI GPT</h2>
+<p>以下是一些关于对比学习在NLP领域的研究工作：</p>
+<ol type="1">
+<li><strong>Simcse: Simple contrastive learning of sentence
+embeddings</strong>
+<ul>
+<li><strong>链接</strong>: <a
+target="_blank" rel="noopener" href="https://arxiv.org/abs/2104.08821">论文</a></li>
+<li><strong>PDF</strong>: <a
+target="_blank" rel="noopener" href="https://arxiv.org/pdf/2104.08821">下载</a></li>
+<li><strong>引用次数</strong>: 2659</li>
+<li><strong>摘要</strong>:
+这项工作介绍了一个简单的句子嵌入对比学习方法，代码和预训练模型公开可用。</li>
+</ul></li>
+<li><strong>Self-supervised learning: Generative or contrastive</strong>
+<ul>
+<li><strong>链接</strong>: <a
+target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/9462394/">论文</a></li>
+<li><strong>PDF</strong>: <a
+target="_blank" rel="noopener" href="https://arxiv.org/pdf/2006.08218">下载</a></li>
+<li><strong>引用次数</strong>: 1581</li>
+<li><strong>摘要</strong>:
+文章将最近的对比学习框架分为两种类型，并展示了在NLP基准测试中的结果。</li>
+</ul></li>
+<li><strong>Supervised contrastive learning for pre-trained language
+model fine-tuning</strong>
+<ul>
+<li><strong>链接</strong>: <a
+target="_blank" rel="noopener" href="https://arxiv.org/abs/2011.01403">论文</a></li>
+<li><strong>PDF</strong>: <a
+target="_blank" rel="noopener" href="https://arxiv.org/pdf/2011.01403">下载</a></li>
+<li><strong>引用次数</strong>: 417</li>
+<li><strong>摘要</strong>:
+该工作提出了一种监督对比学习目标，用于预训练语言模型的微调。</li>
+</ul></li>
+<li><strong>Unsupervised dense information retrieval with contrastive
+learning</strong>
+<ul>
+<li><strong>链接</strong>: <a
+target="_blank" rel="noopener" href="https://arxiv.org/abs/2112.09118">论文</a></li>
+<li><strong>PDF</strong>: <a
+target="_blank" rel="noopener" href="https://arxiv.org/pdf/2112.09118">下载</a></li>
+<li><strong>引用次数</strong>: 382</li>
+<li><strong>摘要</strong>:
+该研究探索了对比学习在训练无监督密集信息检索模型中的应用，结果显示在多个数据集上取得了改进。</li>
+</ul></li>
+<li><strong>Cert: Contrastive self-supervised learning for language
+understanding</strong>
+<ul>
+<li><strong>链接</strong>: <a
+target="_blank" rel="noopener" href="https://arxiv.org/abs/2005.12766">论文</a></li>
+<li><strong>PDF</strong>: <a
+target="_blank" rel="noopener" href="https://arxiv.org/pdf/2005.12766">下载</a></li>
+<li><strong>引用次数</strong>: 335</li>
+<li><strong>摘要</strong>:
+这项研究提出了对比自监督的Transformer编码器表示方法，用于预训练语言模型。</li>
+</ul></li>
+</ol>
+<p>不要错过全新的 "MixerBox WebSearchG"
+GPT，它允许您通过Google在ChatGPT上搜索最新的在线信息：https://chat.openai.com/g/g-Lojyl6VuC-mixerbox-websearchg。此外，使用
+"MixerBox FindGPT"
+来发现您需要的GPT：https://chat.openai.com/g/g-4O1Im4VsB-mixerbox-findgpt。访问网站了解更多关于MixerBox
+GPT的信息: <a target="_blank" rel="noopener" href="https://www.mixerbox.com/gpts">网站链接</a></p>
+<blockquote>
+<p>PS: 这个网站我进去用了一下, 同样的Prompt,回答的就是一坨构史</p>
+</blockquote>
+<h2 id="scholar-gpt">4. Scholar GPT</h2>
+<p>以下是一些关于对比学习在自然语言处理（NLP）领域的研究工作、论文和博客教程：</p>
+<ol type="1">
+<li><strong>对比学习综述 - Helic</strong>
+<ul>
+<li><a
+target="_blank" rel="noopener" href="https://helicqin.github.io/2020/12/26/%E5%AF%B9%E6%AF%94%E5%AD%A6%E4%B9%A0%E7%BB%BC%E8%BF%B0/">阅读链接</a></li>
+<li>概要：本文对对比学习在NLP领域的应用进行了综述，讨论了对比学习在数据增强方面的不同之处。</li>
+</ul></li>
+<li><strong>对比学习在NLP中应用全面解读原创 - CSDN博客</strong>
+<ul>
+<li><a
+target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43734080/article/details/132415299">阅读链接</a></li>
+<li>概要：本文详细介绍了对比学习在自然语言处理中的广泛应用，包括SimCLR和SimCSE等模型的应用。</li>
+</ul></li>
+<li><strong>用于文本分类的文本增强对比学习, Applied Intelligence -
+X-MOL</strong>
+<ul>
+<li><a
+target="_blank" rel="noopener" href="https://www.x-mol.com/paper/1634785190329511936/t?recommendPaper=1270823711196868608">阅读链接</a></li>
+<li>概要：本文提出了一种文本增强对比学习表示模型（TACLR），探讨了简单的文本增强技术在NLP中的应用。</li>
+</ul></li>
+<li><strong>自然语言处理中对比预训练概述：方法、经验教训和展望 - AI
+论文速递</strong>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://briefgpt.xyz/a/2102.12982">阅读链接</a></li>
+<li>概要：文章介绍了对比学习的关键概念，应用总结以及未来挑战和方向。</li>
+</ul></li>
+<li><strong>张俊林对比学习在微博内容表示的应用 - 知识铺的博客</strong>
+<ul>
+<li><a
+target="_blank" rel="noopener" href="https://geek.zshipu.com/post/%E4%BA%92%E8%81%94%E7%BD%91/%E5%BC%A0%E4%BF%8A%E6%9E%97%E5%AF%B9%E6%AF%94%E5%AD%A6%E4%B9%A0%E5%9C%A8%E5%BE%AE%E5%8D%9A%E5%86%85%E5%AE%B9%E8%A1%A8%E7%A4%BA%E7%9A%84%E5%BA%94%E7%94%A8/">阅读链接</a></li>
+<li>概要：介绍了对比学习在微博内容表示中的应用，包括SimCSE和Self-Guided模型。</li>
+</ul></li>
+<li><strong>对比学习算法在转转的实践 - InfoQ 写作社区</strong>
+<ul>
+<li><a
+target="_blank" rel="noopener" href="https://xie.infoq.cn/article/857e40db893427267cc3c4912">阅读链接</a></li>
+<li>概要：文章介绍了对比学习在AI领域的应用实践，尤其是在NLP中的应用。</li>
+</ul></li>
+<li><strong>AAAI 2023 | 基于可学习图增强的邻居监督图对比学习 -
+TechBeat</strong>
+<ul>
+<li><a
+target="_blank" rel="noopener" href="https://www.techbeat.net/article-info?id=5315">阅读链接</a></li>
+<li>概要：研究了对比学习在图表示学习任务中的应用，受到了NLP领域对比学习成功的启发。</li>
+</ul></li>
+<li><strong>对比学习在NLP和多模态领域的应用-对比学习前沿论文带读1 -
+Bilibili</strong>
+<ul>
+<li><a
+target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Pm411d7us/">观看链接</a></li>
+<li>概要：视频介绍了对比学习在NLP和多模态领域的应用，带读前沿论文。</li>
+</ul></li>
+<li><strong>对比学习在NLP和多模态领域的应用 - 智源社区</strong>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://hub.baai.ac.cn/view/15090">阅读链接</a></li>
+<li>概要：文章介绍了对比学习在NLP和多模态领域的应用，强调了相似样本表示相近、不相似样本远离的主要思想。</li>
+</ul></li>
+</ol>
+<p>这些资源可以帮助您更深入地了解对比学习在NLP领域的应用。</p>
+<h1 id="english-prompt">English Prompt</h1>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Find the research paper about constrastive learning in NLP area</span><br></pre></td></tr></table></figure>
+<h2 id="consensus-1">1. Consensus</h2>
+<p>Here are some research papers on contrastive learning in the field of
+natural language processing (NLP):</p>
+<ol type="1">
+<li><strong><a
+target="_blank" rel="noopener" href="https://consensus.app/papers/survey-contrastive-learning-sun/8c828a38b0a559478f312d2cd8c3601c/?utm_source=chatgpt">A
+survey of contrastive learning in NLP</a></strong> by Haolin Sun, Jie
+Liu, Jing Zhang (2022)
+<ul>
+<li>This paper reviews the application of contrastive learning (CL) in
+NLP, describing methods to compute different losses and discussing
+classic models, current challenges, and future directions.</li>
+</ul></li>
+<li><strong><a
+target="_blank" rel="noopener" href="https://consensus.app/papers/contrastive-data-learning-natural-language-processing-zhang/f8feedf421cd59748b0a3fe569e45073/?utm_source=chatgpt">Contrastive
+Data and Learning for Natural Language Processing</a></strong> by Rui
+Zhang, Yangfeng Ji, Yue Zhang, R. Passonneau (2022)
+<ul>
+<li>This tutorial provides an introduction to contrastive learning in
+NLP, surveying its benefits and best practices for various downstream
+applications including text classification, question answering, and
+summarization.</li>
+</ul></li>
+<li><strong><a
+target="_blank" rel="noopener" href="https://consensus.app/papers/training-contrastive-learning-rim/c7c872bc650750d78634c86ed082f447/?utm_source=chatgpt">Adversarial
+Training with Contrastive Learning in NLP</a></strong> by Daniela N.
+Rim, DongNyeong Heo, Heeyoul Choi (2021)
+<ul>
+<li>This paper proposes an adversarial training approach combined with
+contrastive learning to improve the robustness of language models in
+tasks such as language modeling and neural machine translation.</li>
+</ul></li>
+<li><strong><a
+target="_blank" rel="noopener" href="https://consensus.app/papers/contrastive-representation-adversarial-learning-tasks-miao/722794f086e35cd893fad91dff895245/?utm_source=chatgpt">Simple
+Contrastive Representation Adversarial Learning for NLP
+Tasks</a></strong> by Deshui Miao et al. (2021)
+<ul>
+<li>This work explores adversarial training and contrastive learning to
+generate challenging adversarial examples, improving generalization and
+robustness in NLP models.</li>
+</ul></li>
+<li><strong><a
+target="_blank" rel="noopener" href="https://consensus.app/papers/supclseq-supervised-contrastive-learning-downstream-sedghamiz/538a59217d335cbba220f307b766c581/?utm_source=chatgpt">SupCL-Seq:
+Supervised Contrastive Learning for Downstream Optimized Sequence
+Representations</a></strong> by Hooman Sedghamiz et al. (2021)
+<ul>
+<li>This paper introduces SupCL-Seq, which adapts supervised contrastive
+learning from computer vision to NLP, showing significant improvements
+in sequence classification tasks.</li>
+</ul></li>
+</ol>
+<p>These papers provide a comprehensive overview of how contrastive
+learning is being applied to various NLP tasks and highlight its
+effectiveness in improving model performance and robustness.</p>
+<p>Like our GPT? Try our full AI-powered search engine and academic
+features for free at <a
+target="_blank" rel="noopener" href="https://consensus.app/?utm_source=chatgpt">consensus.app</a>.</p>
+<blockquote>
+<p>PS: Consensus 网站用起来也比较一般 ## 2. Literature Review</p>
+</blockquote>
+<p>Here are some key research papers on contrastive learning in the
+field of NLP:</p>
+<ol type="1">
+<li><strong>SimCSE: Simple Contrastive Learning of Sentence
+Embeddings</strong>:
+<ul>
+<li><strong>Authors</strong>: Gao, SimCSE Team (2021)</li>
+<li><strong>Overview</strong>: This paper presents SimCSE, a framework
+for generating high-quality sentence embeddings using contrastive
+learning. The technique involves using standard dropout as noise for
+data augmentation, significantly improving the performance of sentence
+embeddings.</li>
+<li><strong>Methodology</strong>: The method involves contrasting
+positive pairs of the same sentence with different dropout masks and
+negative pairs from other sentences.</li>
+<li><strong>Results</strong>: SimCSE achieved state-of-the-art
+performance on several benchmarks, including significant improvements in
+unsupervised settings.</li>
+<li><strong>Link</strong>: <a
+target="_blank" rel="noopener" href="https://ar5iv.org/abs/2104.08821">SimCSE: Simple Contrastive
+Learning of Sentence Embeddings</a></li>
+</ul></li>
+<li><strong>Adversarial Training with Contrastive Learning in
+NLP</strong>:
+<ul>
+<li><strong>Authors</strong>: Rim, Daniela N., et al. (2021)</li>
+<li><strong>Overview</strong>: This paper explores the use of
+adversarial training combined with contrastive learning to enhance the
+robustness of NLP models.</li>
+<li><strong>Methodology</strong>: The approach involves generating
+adversarial examples by perturbing word representations and then
+applying contrastive loss to align the original and adversarially
+perturbed examples closely.</li>
+<li><strong>Results</strong>: The method showed improved robustness and
+performance in language modeling and neural machine translation
+tasks.</li>
+<li><strong>Link</strong>: <a
+target="_blank" rel="noopener" href="https://ar5iv.org/abs/2109.09075">Adversarial Training with
+Contrastive Learning in NLP</a></li>
+</ul></li>
+<li><strong>Towards General Text Embeddings with Multi-stage Contrastive
+Learning</strong>:
+<ul>
+<li><strong>Authors</strong>: Team GTE (2021)</li>
+<li><strong>Overview</strong>: This paper introduces a general-purpose
+text embedding model trained with multi-stage contrastive learning,
+aiming to unify various NLP tasks into a single format.</li>
+<li><strong>Methodology</strong>: The model employs contrastive learning
+over a diverse mixture of datasets from multiple sources, significantly
+increasing the amount of training data.</li>
+<li><strong>Results</strong>: The model demonstrated superior
+performance across multiple NLP tasks, establishing a new standard for
+text embeddings.</li>
+<li><strong>Link</strong>: <a
+target="_blank" rel="noopener" href="https://ar5iv.org/abs/2308.03281">Towards General Text Embeddings
+with Multi-stage Contrastive Learning</a></li>
+</ul></li>
+<li><strong>A Survey on Contrastive Self-Supervised Learning</strong>:
+<ul>
+<li><strong>Authors</strong>: Jaiswal, Ashish, et al. (2021)</li>
+<li><strong>Overview</strong>: This survey provides an extensive review
+of self-supervised methods following the contrastive learning paradigm,
+covering applications in both vision and NLP tasks.</li>
+<li><strong>Methodology</strong>: The survey explains various pretext
+tasks, architectural designs, and performance comparisons for different
+methods.</li>
+<li><strong>Results</strong>: The paper highlights the significant
+improvements contrastive learning methods have brought to unsupervised
+learning.</li>
+<li><strong>Link</strong>: <a target="_blank" rel="noopener" href="https://ar5iv.org/abs/2011.00362">A
+Survey on Contrastive Self-Supervised Learning</a></li>
+</ul></li>
+</ol>
+<p>These papers provide a comprehensive view of the advancements and
+applications of contrastive learning in NLP, showcasing different
+methodologies and their impact on various tasks. For more detailed
+insights, you can access the full papers through the provided links.</p>
+<blockquote>
+<p>PS: 英文版好像看起来聪明起来了,可能是我prompt差异比较大? ## 3.
+Scholar AI GPT</p>
+</blockquote>
+<p>Here are some notable research papers on contrastive learning in the
+NLP area:</p>
+<ol type="1">
+<li><strong>Simcse: Simple contrastive learning of sentence
+embeddings</strong>
+<ul>
+<li><strong>Link</strong>: <a
+target="_blank" rel="noopener" href="https://arxiv.org/abs/2104.08821">Paper</a></li>
+<li><strong>PDF</strong>: <a
+target="_blank" rel="noopener" href="https://arxiv.org/pdf/2104.08821">Download</a></li>
+<li><strong>Citations</strong>: 2659</li>
+<li><strong>Abstract</strong>: This work introduces a simple method for
+contrastive learning of sentence embeddings, with publicly available
+code and pre-trained models.</li>
+</ul></li>
+<li><strong>Self-supervised learning: Generative or contrastive</strong>
+<ul>
+<li><strong>Link</strong>: <a
+target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/abstract/document/9462394/">Paper</a></li>
+<li><strong>PDF</strong>: <a
+target="_blank" rel="noopener" href="https://arxiv.org/pdf/2006.08218">Download</a></li>
+<li><strong>Citations</strong>: 1581</li>
+<li><strong>Abstract</strong>: The paper divides recent contrastive
+learning frameworks into two types and demonstrates results on NLP
+benchmarks.</li>
+</ul></li>
+<li><strong>Supervised contrastive learning for pre-trained language
+model fine-tuning</strong>
+<ul>
+<li><strong>Link</strong>: <a
+target="_blank" rel="noopener" href="https://arxiv.org/abs/2011.01403">Paper</a></li>
+<li><strong>PDF</strong>: <a
+target="_blank" rel="noopener" href="https://arxiv.org/pdf/2011.01403">Download</a></li>
+<li><strong>Citations</strong>: 417</li>
+<li><strong>Abstract</strong>: This work proposes a supervised
+contrastive learning objective for fine-tuning pre-trained language
+models.</li>
+</ul></li>
+<li><strong>Unsupervised dense information retrieval with contrastive
+learning</strong>
+<ul>
+<li><strong>Link</strong>: <a
+target="_blank" rel="noopener" href="https://arxiv.org/abs/2112.09118">Paper</a></li>
+<li><strong>PDF</strong>: <a
+target="_blank" rel="noopener" href="https://arxiv.org/pdf/2112.09118">Download</a></li>
+<li><strong>Citations</strong>: 382</li>
+<li><strong>Abstract</strong>: The study explores contrastive learning
+for training unsupervised dense information retrieval models, showing
+improvements on multiple datasets.</li>
+</ul></li>
+<li><strong>Cert: Contrastive self-supervised learning for language
+understanding</strong>
+<ul>
+<li><strong>Link</strong>: <a
+target="_blank" rel="noopener" href="https://arxiv.org/abs/2005.12766">Paper</a></li>
+<li><strong>PDF</strong>: <a
+target="_blank" rel="noopener" href="https://arxiv.org/pdf/2005.12766">Download</a></li>
+<li><strong>Citations</strong>: 335</li>
+<li><strong>Abstract</strong>: This research proposes a contrastive
+self-supervised learning method for Transformer encoder representations,
+used for pre-training language models.</li>
+</ul></li>
+</ol>
+<h2 id="scholar-gpt-1">4. Scholar GPT</h2>
+<p>Here are some relevant research papers and articles on contrastive
+learning in the NLP area:</p>
+<ol type="1">
+<li><strong>Contrastive Learning in NLP - Engati</strong>
+<ul>
+<li><a
+target="_blank" rel="noopener" href="https://www.engati.com/blog/contrastive-learning-in-nlp">Read
+here</a></li>
+<li>Summary: This blog post discusses the basics of contrastive learning
+and its applications in NLP.</li>
+</ul></li>
+<li><strong>Full Guide to Contrastive Learning | Encord</strong>
+<ul>
+<li><a
+target="_blank" rel="noopener" href="https://encord.com/blog/guide-to-contrastive-learning/">Read
+here</a></li>
+<li>Summary: This guide explores the implementation and benefits of
+contrastive learning across various NLP tasks.</li>
+</ul></li>
+<li><strong>Contrastive Data and Learning for Natural Language
+Processing (PDF)</strong>
+<ul>
+<li><a
+target="_blank" rel="noopener" href="https://contrastive-nlp-tutorial.github.io/files/contrastive_nlp_tutorial.pdf">Read
+here</a></li>
+<li>Summary: This tutorial paper covers contrastive learning for NLP
+from various perspectives including data creation and contrastive
+objectives.</li>
+</ul></li>
+<li><strong>Contrastive Learning: A Comprehensive Guide | by Juan C
+Olamendy</strong>
+<ul>
+<li><a
+target="_blank" rel="noopener" href="https://medium.com/@juanc.olamendy/contrastive-learning-a-comprehensive-guide-69bf23ca6b77">Read
+here</a></li>
+<li>Summary: This comprehensive guide explores the potential of
+contrastive learning in NLP, including detailed examples and
+applications.</li>
+</ul></li>
+<li><strong>The Beginner's Guide to Contrastive Learning - V7
+Labs</strong>
+<ul>
+<li><a
+target="_blank" rel="noopener" href="https://www.v7labs.com/blog/contrastive-learning-guide">Read
+here</a></li>
+<li>Summary: This guide discusses the applications of contrastive
+learning in NLP, with specific examples such as SimCSE.</li>
+</ul></li>
+<li><strong>Simple Contrastive Representation Adversarial Learning for
+NLP Tasks</strong>
+<ul>
+<li><a
+target="_blank" rel="noopener" href="https://www.researchgate.net/publication/356603019_Simple_Contrastive_Representation_Adversarial_Learning_for_NLP_Tasks">Read
+here</a></li>
+<li>Summary: This paper explores the construction of learning pairs over
+contrastive learning in NLP tasks.</li>
+</ul></li>
+</ol>
+<p>For more detailed reading, you can access these links to the full
+papers and articles.</p>
+<p><strong><em>Handling multiple papers?</em></strong></p>
+<p>Our AI sidebar -- Sider assists you skim through papers 10X faster
+using its 10+ one-click research tools like deep reader, advanced
+search, ChatPDF, and context selection. <a
+target="_blank" rel="noopener" href="https://bit.ly/4aSnMXa">Get ready for a smarter academic
+experience!</a></p>
+<blockquote>
+<p>PS: 这个SideBar AI 增强,确实不错, 推荐可以试试</p>
+</blockquote>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="reward-container">
+  <div>Buy me a coffee</div>
+  <button>
+    Donate
+  </button>
+  <div class="post-reward">
+      <div>
+        <img src="/images/wechat.png" alt="Jeffrey Jiang WeChat Pay">
+        <span>WeChat Pay</span>
+      </div>
+      <div>
+        <img src="/images/alipay.png" alt="Jeffrey Jiang Alipay">
+        <span>Alipay</span>
+      </div>
+
+  </div>
+</div>
+
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>Post author:  </strong>Jeffrey Jiang
+  </li>
+  <li class="post-copyright-link">
+      <strong>Post link: </strong>
+      <a href="https://jefferyjiang-yf.github.io/2024/07/12/Comparasion-the-GPTs-with-scholar-target-used-in-CN-and-EN-prompt/" title="Comparasion the GPTs with scholar-target used in CN and EN prompt">https://jefferyjiang-yf.github.io/2024/07/12/Comparasion-the-GPTs-with-scholar-target-used-in-CN-and-EN-prompt/</a>
+  </li>
+  <li class="post-copyright-license">
+      <strong>Copyright Notice:  </strong>All articles in this blog are licensed under <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/en" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> unless stating additionally.
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/NLP/" rel="tag"><i class="fa fa-tag"></i> NLP</a>
+              <a href="/tags/AI-Tools/" rel="tag"><i class="fa fa-tag"></i> AI_Tools</a>
+              <a href="/tags/%E5%AF%B9%E6%AF%94%E5%AD%A6%E4%B9%A0/" rel="tag"><i class="fa fa-tag"></i> 对比学习</a>
+              <a href="/tags/GPTs/" rel="tag"><i class="fa fa-tag"></i> GPTs</a>
+              <a href="/tags/Scholar-GPT/" rel="tag"><i class="fa fa-tag"></i> Scholar_GPT</a>
+          </div>
+
+        
+  <div class="social-like a2a_kit a2a_kit_size_32 a2a_default_style">
+    <a class="a2a_dd" target="_blank" rel="noopener" href="https://www.addtoany.com/share"></a>
+      <a class="a2a_button_facebook"></a>
+      <a class="a2a_button_twitter"></a>
+      <a class="a2a_button_wechat"></a>
+      <a class="a2a_button_facebook_messenger"></a>
+      <a class="a2a_button_email"></a>
+      <a class="a2a_button_copy_link"></a>
+  </div>
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/07/11/%E6%9C%AA%E6%9D%A5%E5%B7%B2%E6%9D%A5%EF%BC%9A%E6%8F%AD%E7%A7%98%E4%B8%8B%E4%B8%80%E4%BB%A3%E6%99%BA%E8%83%BD%E8%AF%AD%E8%A8%80%E6%A8%A1%E5%9E%8B%E7%9A%84%E8%87%AA%E6%88%91%E5%AD%A6%E4%B9%A0%E9%9D%A9%E5%91%BD-%E6%96%B0%E6%A8%A1%E5%9E%8BTTT%E6%AD%A3%E9%9D%A9%E6%96%B0%E5%A4%A7%E6%A8%A1%E5%9E%8B%E5%BA%95%E5%B1%82%E6%9E%B6%E6%9E%84/" rel="prev" title="TTT人话版解读-Learning-to-Learn-at-Test-Time-RNNs-with-Expressive-Hidden-States">
+                  <i class="fa fa-angle-left"></i> TTT人话版解读-Learning-to-Learn-at-Test-Time-RNNs-with-Expressive-Hidden-States
+                </a>
+            </div>
+            <div class="post-nav-item">
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+    
+  
+  <div class="comments">
+    <script src="https://giscus.app/client.js"
+        data-repo="JefferyJiang-YF/JefferyJiang-YF.github.io" 
+        data-repo-id="R_kgDOMPO3Yg" 
+        data-category="Announcements"
+        data-category-id="DIC_kwDOMPO3Ys4CgnPP"
+        data-mapping="pathname" 
+        data-reactions-enabled="1" 
+        data-emit-metadata="1" 
+        data-theme="dark"
+        data-lang="en"
+        crossorigin="anonymous"
+        data-input-position="bottom"
+        data-loading="lazy"
+        async>
+    </script>
+  </div>
+  
+  
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+  <div class="copyright">
+    &copy; 2023 – 
+    <span itemprop="copyrightYear">2024</span>
+    <span class="with-love">
+      <i class="fa fa-heart"></i>
+    </span>
+    <span class="author" itemprop="copyrightHolder">Copyright ©  Jeffrey Jiang All Rights Reserved.</span>
+  </div>
+<div class="wordcount">
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-line"></i>
+    </span>
+    <span title="Word count total">37k</span>
+  </span>
+  <span class="post-meta-item">
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    <span title="Reading time total">34 mins.</span>
+  </span>
+</div>
+<div class="busuanzi-count">
+    <span class="post-meta-item" id="busuanzi_container_site_uv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="Total Visitors">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="Total Views">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
+  <div class="powered-by">Powered by <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+  <div class="sidebar-dimmer"></div>
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up fa-lg"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+  <a href="https://github.com/JefferyJiang-YF" class="github-corner" title="Follow me on GitHub" aria-label="Follow me on GitHub" rel="noopener" target="_blank"><svg width="80" height="80" viewBox="0 0 250 250" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path></svg></a>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js" integrity="sha256-j+yj56cdEY2CwkVtGyz18fNybFGpMGJ8JxG3GSyO2+I=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/sidebar.js"></script><script src="/js/next-boot.js"></script><script src="/js/bookmark.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+  <script class="next-config" data-name="mermaid" type="application/json">{"enable":true,"theme":{"light":"default","dark":"dark"},"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.9.0/mermaid.min.js","integrity":"sha256-stuqcu2FrjYCXDOytWFA5SoUE/r3nkp6gTglzNSlavU="}}</script>
+  <script src="/js/third-party/tags/mermaid.js"></script>
+
+  <script class="next-config" data-name="wavedrom" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/wavedrom.min.js","integrity":"sha256-INLAoJc6quTNfiMWkGZniYO2cxE8mHpddnLow1m6RFs="}}</script>
+  <script class="next-config" data-name="wavedrom_skin" type="application/json">{"enable":true,"js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/wavedrom/3.5.0/skins/default.js","integrity":"sha256-fduc/Zszk5ezWws2uInY/ALWVmIrmV6VTgXbsYSReFI="}}</script>
+  <script src="/js/third-party/tags/wavedrom.js"></script>
+
+
+  <script src="/js/third-party/pace.js"></script>
+
+  <script src="/js/third-party/addtoany.js"></script>
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+  
+
+  <script class="next-config" data-name="enableMath" type="application/json">true</script><script class="next-config" data-name="mathjax" type="application/json">{"enable":true,"tags":"all","js":{"url":"https://cdnjs.cloudflare.com/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","integrity":"sha256-MASABpB4tYktI2Oitl4t+78w/lyA+D7b/s9GEP0JOGI="}}</script>
+<script src="/js/third-party/math/mathjax.js"></script>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/quicklink/2.3.0/quicklink.umd.js" integrity="sha256-yvJQOINiH9fWemHn0vCA5lsHWJaHs6/ZmO+1Ft04SvM=" crossorigin="anonymous"></script>
+  <script class="next-config" data-name="quicklink" type="application/json">{"enable":true,"home":true,"archive":true,"delay":true,"timeout":3000,"priority":true,"url":"https://jefferyjiang-yf.github.io/2024/07/12/Comparasion-the-GPTs-with-scholar-target-used-in-CN-and-EN-prompt/"}</script>
+  <script src="/js/third-party/quicklink.js"></script>
+
+</body>
+</html>
